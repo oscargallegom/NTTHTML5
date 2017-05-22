@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<parameters>
+  <parameter name="NTTDBConnectionString-Web.config Connection String" description="NTTDBConnectionString Connection String used in web.config by the application to access the database." defaultValue="Data Source=T-NN\SQLEXPRESS;Initial Catalog=NTTDB;Persist Security Info=True;User ID=sa;Password=pass$word" tags="SqlConnectionString">
+    <parameterEntry kind="XmlFile" scope="E:\\Borrar\\NTTHTML5_Dev\\obj\\Release\\Package\\PackageTmp\\Web\.config$" match="/configuration/connectionStrings/add[@name='NTTDBConnectionString']/@connectionString" />
+  </parameter>
+  <parameter name="SSURGO_SOILDBConnectionString-Web.config Connection String" description="SSURGO_SOILDBConnectionString Connection String used in web.config by the application to access the database." defaultValue="Data Source=T-NN\SQLEXPRESS;Initial Catalog=SSURGO_SOILDB;Persist Security Info=True;User ID=sa;Password=pass$word" tags="SqlConnectionString">
+    <parameterEntry kind="XmlFile" scope="E:\\Borrar\\NTTHTML5_Dev\\obj\\Release\\Package\\PackageTmp\\Web\.config$" match="/configuration/connectionStrings/add[@name='SSURGO_SOILDBConnectionString']/@connectionString" />
+  </parameter>
+  <parameter name="SSURGO_SOILDBConnectionString1-Web.config Connection String" description="SSURGO_SOILDBConnectionString1 Connection String used in web.config by the application to access the database." defaultValue="Data Source=T-NN\SQLEXPRESS;Initial Catalog=SSURGO_SOILDB;Integrated Security=True" tags="SqlConnectionString">
+    <parameterEntry kind="XmlFile" scope="E:\\Borrar\\NTTHTML5_Dev\\obj\\Release\\Package\\PackageTmp\\Web\.config$" match="/configuration/connectionStrings/add[@name='SSURGO_SOILDBConnectionString1']/@connectionString" />
+  </parameter>
+  <parameter name="SSURGOSOILDB2014ConnectionString-Web.config Connection String" description="SSURGOSOILDB2014ConnectionString Connection String used in web.config by the application to access the database." defaultValue="Data Source=T-NN1\SQLEXPRESS;Initial Catalog=SSURGOSOILDB2014;Persist Security Info=True;User ID=sa;Password=pass$word" tags="SqlConnectionString">
+    <parameterEntry kind="XmlFile" scope="E:\\Borrar\\NTTHTML5_Dev\\obj\\Release\\Package\\PackageTmp\\Web\.config$" match="/configuration/connectionStrings/add[@name='SSURGOSOILDB2014ConnectionString']/@connectionString" />
+  </parameter>
+</parameters>

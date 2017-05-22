@@ -1,0 +1,178 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<root>
+   <Errors>An error occured. Please fix the problem and try again. Error--&gt; </Errors>
+   <FieldArea>Field area less or equal to zero </FieldArea>
+   <FieldName>No field name</FieldName>
+   <ProjectOpened>Project Opened Successfully</ProjectOpened>
+   <ProjectSaved>Project Saved Successfully</ProjectSaved>
+   <OptionCanceled>Option Cancelled</OptionCanceled>
+   <ProjectClosed>Project Closed Successfully</ProjectClosed>
+   <FieldNoFields>There are not fields for this project. You should add at least one field. Please add a field to be able to continue</FieldNoFields>
+   <InformationBeingSaved>Please wait information is being saved . . . . . .!</InformationBeingSaved>
+   <InformationSaved>information saved</InformationSaved>
+   <InformationNoSaved>Information no saved</InformationNoSaved>
+   <LayerNoLayers>The Selected Soil does not have any layers</LayerNoLayers>
+   <LocationMedthodSelected>method for location selected</LocationMedthodSelected>
+   <LocationNoMethod>Please select location method and enter the information required to be able to save and continue.</LocationNoMethod>
+   <LocationUserInput>Please enter a description for location to be able to identify the project location</LocationUserInput>
+   <ManagementNoScenarios>Please create a scenario before adding a crop system or bmp</ManagementNoScenarios>
+   <ProjectBeingCreated>Project is being created. Please Wait . . . . .!</ProjectBeingCreated>
+   <ProjectCreated>Project Created Successfully</ProjectCreated>
+   <ProjectCreationCanceled>Project Creation Cancelled</ProjectCreationCanceled>
+   <ProjectNotCreated>Please create or open a project to be able to save the project and continue to Location Page</ProjectNotCreated>
+   <ProjectNotSaved>Project has not been created or saved yet</ProjectNotSaved>
+   <RecordAdded>has been added</RecordAdded>
+   <RecordDeleted>Selected Records deleted successfully</RecordDeleted>
+   <SoilAdding>Soil is being added. Please Wait . . . .!</SoilAdding>
+   <SoilFieldSelected>No field selected from the list. Please select the field and then click add</SoilFieldSelected>
+   <SoilNoSoils>There are no soils for this field. You should add at least one soil to each field to be able to continue</SoilNoSoils>
+   <SoilPercentages>Total soil percentage is 0% or more than 100%. Please check soil percentage and fix the problem to be able to continue</SoilPercentages>
+   <SoilSelected>No soil selected from the list. Please select soil and then click Add Soil</SoilSelected>
+   <SoilSSA>Soils for soil survey area listed</SoilSSA>
+   <SoilSurveyAreaSelected>The Selected Survey Area does not have Soils</SoilSurveyAreaSelected>
+   <WeatherMethodNoSelected>Please select the way weather is going to be used</WeatherMethodNoSelected>
+   <WeatherMethodSelected>Method was selected for weather information</WeatherMethodSelected>
+   <WeatherNotSaved>Weather has not being selected/saved. Please go back to weather page and select or upload the weather information, then save and continue</WeatherNotSaved>
+   <WeatherUploadCanceled>Uploading weather was cancelled</WeatherUploadCanceled>
+   <WeatherUploaded>Weather information has been uploaded successfully</WeatherUploaded>
+   <WrongValue>value is wrong</WrongValue>
+   <ProjectNoName>Please enter project name</ProjectNoName>
+   <SimulationNoFieldNoScenario>No field or no scenario selected</SimulationNoFieldNoScenario>
+   <SimulationNoSubproject>No subproject selected</SimulationNoSubproject>
+   <EmailMessage>Email successfully sent</EmailMessage>
+   <ScenarioExist>This scenario was already created</ScenarioExist>
+  <ScenarioName>Please enter scenario name</ScenarioName>
+   <SubprojectExist>This subproject was already created</SubprojectExist>
+   <TryAgain>Please check the information entered, fix the problem, and try again</TryAgain>
+   <NumericValue>The Value must be a number</NumericValue>
+   <InitialYear>Initial year should be at least the initial weather information year plus five years</InitialYear>
+   <FinalYear>Final year should be less or equal to the final year in the weather information</FinalYear>
+   <ChangeValue>Please change the value</ChangeValue>
+   <Warning>Warning</Warning>
+   <FilesCreation>An Error happends creating this project. Please close it and try again</FilesCreation>
+   <StateNoAvailable>The state selected is not available at this moment</StateNoAvailable>
+   <Field_ScenarioSelected>Field/Scenario already selected</Field_ScenarioSelected>
+   <SubprojectSelected>Subproject already selected</SubprojectSelected>
+   <SaveCoordinatesError>Error saving coordinates. Please try again</SaveCoordinatesError>
+   <!--New Messages-->
+   <YearsOfWeatherInformation>Years of Weather Information - from First to Second</YearsOfWeatherInformation>
+   <SimulatedPeriodMessage>The simulation period cannot be changed. Simulation Period from First to Second</SimulatedPeriodMessage>
+   <SimulationPeriod>Simulation Period from First to Second</SimulationPeriod>
+   <SoilError>No fields in this project or not Soils in this field. Please check and try again</SoilError>
+   <CroppingSystemMessage>Please Select Cropping System and Tillage and then click upload</CroppingSystemMessage>
+   <ValueParam>Value should be greater or equal to 0</ValueParam>
+   <WaitTimeMessage>You have been here for about First Minutes. If you are done click submit, if you are not done yet click OK button, if you want to continue without save the changes click cancel and selecte the next page from the menu tab</WaitTimeMessage>
+   <NoParmValues>No parm values returned</NoParmValues>
+   <NO3Message>NO3 should not be more than 1</NO3Message>
+   <NO4Message>PO4 should not be more than 1</NO4Message>
+   <OrgNMessage>OrgN should not be more than 1</OrgNMessage>
+   <OrgPMessage>OrgP should not be more than 1</OrgPMessage>
+  <TileDrainDepthMsg>Tile Drain Depth should be numeric between First-Second(%). Please change the value</TileDrainDepthMsg>
+  <PondFractionMsg>Pond Fraction should be numeric between First-Second. Please change the value</PondFractionMsg>
+  <LandLevelingMsg>Land leveling reduction should be numeric between First-Second(%). Please change the value</LandLevelingMsg>
+  <PadsPipesMsg>Pads and Pipes width should be numeric between First-Second. Please change the value</PadsPipesMsg>
+  <NConcentrationMsg>N concentration should be numeric between First-Second. Please change the value</NConcentrationMsg>
+  <BufferWidthMsg>Buffer Width should be numeric between First-Second. Please change the value</BufferWidthMsg>
+  <WaterWayMsg>Waterway width should be numeric between First-Second. Please change the value</WaterWayMsg>
+  <DeleteScenarioQuestion>Are you sure you want to delete scenario? </DeleteScenarioQuestion>
+  <DeleteScenarioMessage>Scenario has been deleted</DeleteScenarioMessage>
+  <SameCopyMessage>You are trying to copy operations from itself. Please select a different field/scenario than the current one</SameCopyMessage>
+  <OperationsCopiedMsg>Operations copied to field First and scenario Second</OperationsCopiedMsg>
+  <SafetyFactorMsg>Safety Factor should be between 0 and 1</SafetyFactorMsg>
+  <FilterStripMessage>You should add a filter strip when Fencing is selected</FilterStripMessage>
+  <IrrigationMessage>You should add irrigation when this BMP is selected</IrrigationMessage>
+  <TailWaterMessage>You have selected other Pads and Pipes options or Tailwater Autoirrigation. If you want to select this particular option, the other will be cleared. Are you sure you want to use this particular option?</TailWaterMessage>
+  <AutoIrrigationCleanMsg>Autoirrigation and Autofertigation are not allowed together, if you continue the autoirrigation information will be clean. Do you want to continue?</AutoIrrigationCleanMsg>
+  <AutoFertgationCleanMsg>Autoirrigation and Autofertigation are not allowed together, if you continue the autofertgation information will be clean. Do you want to continue?</AutoFertgationCleanMsg>
+  <FilterStripCleanMsg>Riparian Forest and Filter Strip BMPs are not allowed together, if you continue the filter strip information will be clean. Do you want to continue?</FilterStripCleanMsg>
+  <WaterwaysCleanMsg>Riparian Forest and Waterways BMPs are not allowed together, if you continue the waterways information will be clean. Do you want to continue?</WaterwaysCleanMsg>
+  <CountourBufferCleanMsg>Riparian Forest and Contour Buffer BMPs are not allowed together, if you continue the contour buffer information will be clean. Do you want to continue?</CountourBufferCleanMsg>
+  <FilterStripCleanMsg2>Contour Buffer and Filter Strip BMPs are not allowed together, if you continue the filter strip information will be clean. Do you want to continue?</FilterStripCleanMsg2>
+  <RiparianForestCleanMsg>Contour buffer and Riparian Forest  BMPs are not allowed together, if you continue the Riparian Forest information will be clean. Do you want to continue?</RiparianForestCleanMsg>
+  <RiparianForestCleanMsg2>Riparian Forest and filter strip BMPs are not allowed together, if you continue the riparian forest information will be clean. Do you want to continue?</RiparianForestCleanMsg2>
+  <WaterwaysCleanMsg2>Filter Strip and Waterways BMPs are not allowed together, if you continue the waterways information will be clean. Do you want to continue?</WaterwaysCleanMsg2>
+  <ContourBufferCleanMsg2>Filter Strip and Contour Buffer BMPs are not allowed together, if you continue the contour buffer information will be clean. Do you want to continue?</ContourBufferCleanMsg2>
+  <RiparianForestCleanMsg3>Riparian Forest and Waterways BMPs are not allowed together, if you continue the riparian forest information will be clean. Do you want to continue?</RiparianForestCleanMsg3>
+  <FilterStripCleanMsg3>Waterways and Filter Strip BMPs are not allowed together, if you continue the filter strip information will be clean. Do you want to continue?</FilterStripCleanMsg3>
+  <SubprojectError>There are not subprojects. Please create a subproject first to be able to include scenarios</SubprojectError>
+  <FieldError>The field selected is already included. You can not include the same field more than once in the same subproject.</FieldError>
+  <IncludeScenarioError>Error Including Scenario </IncludeScenarioError>
+  <DeleteSubprojectQuestion>Are you sure you want to delete subproject? </DeleteSubprojectQuestion>
+  <DeleteSubprojectMsg>Subproject has been deleted</DeleteSubprojectMsg>
+  <AddFieldError>Error adding field/scenario to simulate. Please correct any problem and try again --> </AddFieldError>
+  <NoScenarioSelected>No Scenarios Selected</NoScenarioSelected>
+  <TransferError>Error transfering control Files - </TransferError>
+  <SimulationWaitMsg>Please wait, Field --> First and scenario --> Second is being simulated.</SimulationWaitMsg>
+  <OperationFileError>Error creating operation file --> </OperationFileError>
+  <ControlError>Error transferring control Files - </ControlError>
+  <SoilFileError>Error transferring soils Files - </SoilFileError>
+  <CalcuateEconomicsMsg>Economic is being calculated for scenario First</CalcuateEconomicsMsg>
+  <ProcessFailError>An Error Occured and the process failed. Error --> </ProcessFailError>
+  <ErrorOccuredMsg>An Error Occured and the process failed. Please check the field and scenario to assure every thing is correct and try again</ErrorOccuredMsg>
+  <SimulationCompleteMsg>The field First and scenario Second was simulated successfully</SimulationCompleteMsg>
+  <SelectFieldMsg>Please select Field, First Scenario, and Second Scenario to be able to continue</SelectFieldMsg>
+  <SelectSubprojectMsg>Please select First Subproject, and Second Subproject to be able to continue</SelectSubprojectMsg>
+  <DnDcFilesError>Error creating DnDc Files - </DnDcFilesError>
+  <DownloadFolder>Folder First Downloaded</DownloadFolder>
+  <ZipFolder>Folder First No Ziped - Second</ZipFolder>
+  <ResultsError>Error Geting Results. Please correct any problem and try again --> </ResultsError>
+  <DeleteScenarioError>Error Deleting Scenario </DeleteScenarioError>
+  <WaterStressMessage>Water Stress Factor should be numeric between First - Second. Please change the value</WaterStressMessage>
+  <EfficiencyMessage>Efficiency should be numeric between First - Second. Please change the value.</EfficiencyMessage>
+  <FrequencyMessage>Frequency should be numeric between First - Second. Please change the value.</FrequencyMessage>
+  <ApplicationMessage>Maximum single application should be numeric between First - Second. Please change the value.</ApplicationMessage>
+  <DaysMessage>Days should be numeric between First - Second. Please change the value</DaysMessage>
+  <AnimalsMessage>Animals should be numeric between First - Second. Please change the value</AnimalsMessage>
+  <HoursMessage>Hours should be numeric between First - Second. Please change the value</HoursMessage>
+  <DryManureMessage>Dry Manure should be numeric between First - Second. Please change the value</DryManureMessage>
+  <NO3NumericMessage>NO3 should be numeric between First - Second. Please change the value</NO3NumericMessage>
+  <PO3NumericMessage>PO3 should be numeric between First - Second. Please change the value</PO3NumericMessage>
+  <OrgNNumericMessage>Org N should be numeric between First - Second. Please change the value</OrgNNumericMessage>
+  <OrgPNumericMessage>Org P should be numeric between First - Second. Please change the value</OrgPNumericMessage>
+  <WaterStressFactorMsg>Water Stress Factor should be numeric between 0-1. Please change the value</WaterStressFactorMsg>
+  <WLAreaMsg>Wetland Area </WLAreaMsg>
+  <FSAreaMsg>Area of the filtration area </FSAreaMsg>
+  <FSWidthMsg>The width of the area of filtration </FSWidthMsg>
+  <FSEffMsg>Efficiency of the filtration area </FSEffMsg>
+  <FSslopeRatioMsg>The proportion of the tilt of the filtration area </FSslopeRatioMsg>
+  <RFWidthMsg>Riparian forest width </RFWidthMsg>
+  <RFAreaMsg>The area of riparian forest </RFAreaMsg>
+  <RFEffMsg>The efficiancia of riparian forest </RFEffMsg>
+  <RFslopeRatioMsg>The proportion of the individual disposition of riparian forest </RFslopeRatioMsg>
+  <RFGrassFieldPortionMsg>The proportion of the area of grass in the coastal forest </RFGrassFieldPortionMsg>
+  <SoilAdded>Soil Added Successfully</SoilAdded>
+  <DeleteRow>Do you want to delete this row?</DeleteRow>
+  <NoSubmit>You are trying to save but you have not submitte yet. Please click submit and then click Save and Continue button</NoSubmit>
+  <LongitudeError>Longitude is not in the USA</LongitudeError>
+  <LatitudeError>Latitude is not in the USA</LatitudeError>
+  <!--ToolTip Hints-->
+  <ttWaterStressFactor>Water Stress Factor to Trigger automatic irrigation (0-1)</ttWaterStressFactor>
+  <ttEff>Fraction of each irrigation application that is not lost to runoff</ttEff>
+  <ttAIFreq>Number of days between automatic irrigation events</ttAIFreq>
+  <ttMaxSingleApp>Maximum amount of irrigation allowed for each auto irrigation application in in.</ttMaxSingleApp>
+  <ttSafetyFactor>Safety factor express as a fraction</ttSafetyFactor>
+  <ttAIResArea>Area of reseervoir in water tail irrigation in acres</ttAIResArea>
+  <ttNConc>Nitrogen concentration in fertigation (ppm)</ttNConc>
+  <ttDepth>Tile Drain Depth in ft</ttDepth>
+  <ttWidth>Pads and Pipes Width in ft</ttWidth>
+  <ttSides>Number of sides cover by pipes (1 side to 4 sides)</ttSides>
+  <ttResArea>Reservoir area in acres</ttResArea>
+  <ttWLArea>Wetland surface area in acres</ttWLArea>
+  <ttPNDF>Fraction of area controlled by pond from 0.01 to 1.00</ttPNDF>
+  <ttSFAnimals>Number of animals in the stream</ttSFAnimals>
+  <ttSFDays>Days of a year animals are in the stream (0, 365)</ttSFDays>
+  <ttSFHours>Hours of a day animals are in the stream (0-24)</ttSFHours>
+  <ttSFManure>Dry manure produce per day per animal unit in pounds</ttSFManure>
+  <ttSFNO3>NO3 fraction in manure</ttSFNO3>
+  <ttSFPO4>PO4 fraction in manure</ttSFPO4>
+  <ttSFOrgN>Organic N fraction in manure</ttSFOrgN>
+  <ttSFOrgP>Organic P fraction in manure</ttSFOrgP>
+  <ttRFEff>Buffer Efficiency 0 to 1</ttRFEff>
+  <ttRFArea>Area of the buffer in acres (optional). If area is not entered, it is calculated base on the field area and buffer width</ttRFArea>
+  <ttRFWidth>Buffer width in feet</ttRFWidth>
+  <ttRFGrassFieldPortion>Grass Buffer Fraction in the total buffer area</ttRFGrassFieldPortion>
+  <ttRFSlopeRatio>Buffer slope ratio to upland slope (0.25 to 1.00)</ttRFSlopeRatio>
+  <ttCBBWidth>Grass strip width in feet</ttCBBWidth>
+  <ttCBCWidth>Main Crop strip width in feet</ttCBCWidth>
+  <ttLLSlopeRed>% in which the slope is going to be reduced</ttLLSlopeRed>
+</root>

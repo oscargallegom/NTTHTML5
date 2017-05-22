@@ -1,0 +1,300 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="NTTDB" Class="NTTDBDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="WebSettings" ConnectionString="Data Source=T-NN\SQLEXPRESS;Initial Catalog=NTTDB;Persist Security Info=True;User ID=sa" SettingsObjectName="System.Configuration.ConfigurationManager.ConnectionStrings" SettingsPropertyName="NTTDBConnectionString" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.APEXCROPS" Member="APEXCROPs">
+    <Type Name="APEXCROP">
+      <Column Name="CropNumber" Type="System.Int16" DbType="SmallInt" CanBeNull="true" />
+      <Column Name="DNDC_Code" Type="System.Int16" DbType="SmallInt" CanBeNull="true" />
+      <Column Name="CropCode" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="CropName" Type="System.String" DbType="Char(30)" CanBeNull="true" />
+      <Column Name="PlantPopulation" Type="System.Int16" DbType="SmallInt" CanBeNull="true" />
+      <Column Name="PlantPopulationAcres" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />
+      <Column Name="HeatUnits" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="LUNumber" Type="System.Int16" DbType="SmallInt" CanBeNull="true" />
+      <Column Name="A" Type="System.String" DbType="NChar(2)" CanBeNull="true" />
+      <Column Name="B" Type="System.String" DbType="NChar(2)" CanBeNull="true" />
+      <Column Name="C" Type="System.String" DbType="NChar(2)" CanBeNull="true" />
+      <Column Name="D" Type="System.String" DbType="NChar(2)" CanBeNull="true" />
+      <Column Name="FilterStrip" Type="System.String" DbType="NChar(4)" CanBeNull="true" />
+      <Column Name="YieldUnit" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="BushelWeight" Type="System.Single" DbType="Real" CanBeNull="true" />
+      <Column Name="ConversionFactor" Type="System.Single" DbType="Real" CanBeNull="true" />
+      <Column Name="DryMatter" Type="System.Single" DbType="Real" CanBeNull="true" />
+      <Column Name="HarvestCode" Type="System.Int16" DbType="SmallInt" CanBeNull="true" />
+      <Column Name="PlantingCode" Type="System.Int16" DbType="SmallInt" CanBeNull="true" />
+      <Column Name="StateAbrev" Type="System.String" DbType="NChar(2)" CanBeNull="true" />
+      <Column Name="itil" Type="System.Single" DbType="Real" CanBeNull="true" />
+      <Column Name="to1" Type="System.Single" DbType="Real" CanBeNull="true" />
+      <Column Name="tb" Type="System.Single" DbType="Real" CanBeNull="true" />
+      <Column Name="dd" Type="System.Single" DbType="Real" CanBeNull="true" />
+      <Column Name="daym" Type="System.Single" DbType="Real" CanBeNull="true" />
+      <Column Name="cropNameSpanish" Type="System.String" DbType="Char(30)" CanBeNull="true" />
+      <Column Name="cropNamePortuguese" Type="System.String" DbType="NChar(30)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Operations" Member="Operations">
+    <Type Name="Operation">
+      <Column Name="Name" Type="System.String" DbType="NChar(20)" CanBeNull="true" />
+      <Column Name="Code" Type="System.Int16" DbType="SmallInt" CanBeNull="true" />
+      <Column Name="Abbreviation" Type="System.String" DbType="NChar(5)" CanBeNull="true" />
+      <Column Name="NameSpanish" Type="System.String" DbType="NChar(20)" CanBeNull="true" />
+      <Column Name="NamePortuguese" Type="System.String" DbType="NChar(20)" CanBeNull="true" />
+      <Column Name="ApexCode" Type="System.Int16" DbType="SmallInt" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.weatherCoor" Member="weatherCoors">
+    <Type Name="weatherCoor">
+      <Column Name="Lat" Type="System.Single" DbType="Real" CanBeNull="true" />
+      <Column Name="Lon" Type="System.Single" DbType="Real" CanBeNull="true" />
+      <Column Name="FileName" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="initialYear" Type="System.Int16" DbType="SmallInt" CanBeNull="true" />
+      <Column Name="finalYear" Type="System.Int16" DbType="SmallInt" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.County" Member="Counties">
+    <Type Name="County">
+      <Column Name="CountyID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Code" Type="System.String" DbType="NChar(5) NOT NULL" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="NChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="StateAbrev" Type="System.String" DbType="NChar(2) NOT NULL" CanBeNull="false" />
+      <Column Name="DStatus" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="DStatusSL" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Lat" Type="System.Single" DbType="Real" CanBeNull="true" />
+      <Column Name="Long" Type="System.Single" DbType="Real" CanBeNull="true" />
+      <Column Name="SysTime" Type="System.Data.Linq.Binary" DbType="rowversion" CanBeNull="true" IsVersion="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.AnimalUnit" Member="AnimalUnits">
+    <Type Name="AnimalUnit">
+      <Column Name="AnimalCode" Type="System.Int16" DbType="SmallInt NOT NULL" CanBeNull="false" />
+      <Column Name="AnimalType" Type="System.String" DbType="NChar(30) NOT NULL" CanBeNull="false" />
+      <Column Name="ConversionUnit" Type="System.Single" DbType="Real NOT NULL" CanBeNull="false" />
+      <Column Name="Status" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="DryManure" Type="System.Decimal" DbType="Decimal(5,2)" CanBeNull="true" />
+      <Column Name="NO3N" Type="System.Decimal" DbType="Decimal(7,4)" CanBeNull="true" />
+      <Column Name="PO4P" Type="System.Decimal" DbType="Decimal(7,4)" CanBeNull="true" />
+      <Column Name="OrgN" Type="System.Decimal" DbType="Decimal(7,4)" CanBeNull="true" />
+      <Column Name="OrgP" Type="System.Decimal" DbType="Decimal(7,4)" CanBeNull="true" />
+      <Column Name="AnimalSpanish" Type="System.String" DbType="NChar(30)" CanBeNull="true" />
+      <Column Name="AnimalPortuguese" Type="System.String" DbType="NChar(30)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.WStation" Member="WStations">
+    <Type Name="WStation">
+      <Column Name="WStationID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Code" Type="System.String" DbType="NChar(30) NOT NULL" CanBeNull="false" />
+      <Column Name="WSType" Type="System.String" DbType="NChar(25) NOT NULL" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="NChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="CountyCode" Type="System.String" DbType="NChar(15) NOT NULL" CanBeNull="false" />
+      <Column Name="StateAbrev" Type="System.String" DbType="NChar(2) NOT NULL" CanBeNull="false" />
+      <Column Name="DStatus" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="SysTime" Type="System.Data.Linq.Binary" DbType="rowversion" CanBeNull="true" IsVersion="true" />
+      <Column Name="windName" Type="System.String" DbType="NChar(25)" CanBeNull="true" />
+      <Column Name="wp1Name" Type="System.String" DbType="NChar(25)" CanBeNull="true" />
+      <Column Name="initialYear" Type="System.Int16" DbType="SmallInt" CanBeNull="true" />
+      <Column Name="finalYear" Type="System.Int16" DbType="SmallInt" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.SSArea" Member="SSAreas">
+    <Type Name="SSArea">
+      <Column Name="SSAreaID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Code" Type="System.String" DbType="NChar(5) NOT NULL" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="NChar(150) NOT NULL" CanBeNull="false" />
+      <Column Name="CountyCode" Type="System.String" DbType="NChar(15) NOT NULL" CanBeNull="false" />
+      <Column Name="DStatus" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="SysTime" Type="System.Data.Linq.Binary" DbType="rowversion" CanBeNull="true" IsVersion="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.APEXFert" Member="APEXFerts">
+    <Type Name="APEXFert">
+      <Column Name="Code" Type="System.Int16" DbType="SmallInt" CanBeNull="true" />
+      <Column Name="Name" Type="System.String" DbType="NChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="qn" Type="System.Single" DbType="Real" CanBeNull="true" />
+      <Column Name="qp" Type="System.Single" DbType="Real" CanBeNull="true" />
+      <Column Name="yn" Type="System.Single" DbType="Real" CanBeNull="true" />
+      <Column Name="yp" Type="System.Single" DbType="Real" CanBeNull="true" />
+      <Column Name="lbs" Type="System.Single" DbType="Real" CanBeNull="true" />
+      <Column Name="type" Type="System.Decimal" DbType="Decimal(2,0)" CanBeNull="true" />
+      <Column Name="DStatus" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Equipment" Member="Equipments">
+    <Type Name="Equipment">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="NChar(100)" CanBeNull="true" />
+      <Column Name="Codes" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Ownership" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="LeaseRate" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="NewPrice" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="NewHours" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="CurrentPrice" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="HoursRemaining" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Width" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="Speed" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="FieldEfficiency" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="HorsePower" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="RF1" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="RF2" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="IRLOAN" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="LLOAN" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="IREQUITY" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="PDEBT" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="Year" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="RV1" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="RV2" Type="System.Double" DbType="Float" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Feeds" Member="Feeds">
+    <Type Name="Feed">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="NChar(100)" CanBeNull="true" />
+      <Column Name="Codes" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="SellingPrice" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="PurchasePrice" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="Concentrate" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Forage" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Grain" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Hay" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Pasture" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Silage" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Suplement" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Structures" Member="Structures">
+    <Type Name="Structure">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="NChar(100)" CanBeNull="true" />
+      <Column Name="Codes" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Ownership" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="LeaseRate" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="NewPrice" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="NewLife" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="CurrentPrice" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="LifeRemaining" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="MaintenanceCoefficient" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="LoanInterestRate" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="LengthLoan" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="InterestRateEquity" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="ProportionDebt" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="Year" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.OtherInput" Member="OtherInputs">
+    <Type Name="OtherInput">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="NChar(100)" CanBeNull="true" />
+      <Column Name="Codes" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="[Values]" Member="Values" Type="System.Double" DbType="Float" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Crops_Events" Member="Crops_Events">
+    <Type Name="Crops_Event">
+      <Column Name="APEXCrop" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="CropName" Type="System.String" DbType="Char(30)" CanBeNull="true" />
+      <Column Name="TEStateCode" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.OpTypes" Member="OpTypes">
+    <Type Name="OpType">
+      <Column Name="Status" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="Code" Type="System.Int16" DbType="SmallInt" CanBeNull="true" />
+      <Column Name="DNDC_code" Type="System.Int16" DbType="SmallInt" CanBeNull="true" />
+      <Column Name="Name" Type="System.String" DbType="NChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="EQP" Type="System.String" DbType="NChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="Abbrevation" Type="System.String" DbType="NChar(4)" CanBeNull="true" />
+      <Column Name="SpanishName" Type="System.String" DbType="NChar(50)" CanBeNull="true" />
+      <Column Name="PortugueseName" Type="System.String" DbType="NChar(50)" CanBeNull="true" />
+      <Column Name="ConversionUnit" Type="System.Single" DbType="Real NOT NULL" CanBeNull="false" />
+      <Column Name="DryManure" Type="System.Decimal" DbType="Decimal(5,2) NOT NULL" CanBeNull="false" />
+      <Column Name="NO3N" Type="System.Decimal" DbType="Decimal(7,4) NOT NULL" CanBeNull="false" />
+      <Column Name="PO4P" Type="System.Decimal" DbType="Decimal(7,4) NOT NULL" CanBeNull="false" />
+      <Column Name="OrgN" Type="System.Decimal" DbType="Decimal(7,4) NOT NULL" CanBeNull="false" />
+      <Column Name="OrgP" Type="System.Decimal" DbType="Decimal(7,4) NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="dbo.EventsTypicalExtended" Member="EventsTypicalExtendeds">
+    <Type Name="EventsTypicalExtended">
+      <Column Name="TEID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="TEEventCode" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="TEStateCode" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="EVENTID" Type="System.Int16" DbType="SmallInt" CanBeNull="true" />
+      <Column Name="MUID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="MONTH" Type="System.Int16" DbType="SmallInt" CanBeNull="true" />
+      <Column Name="DAY" Type="System.Int16" DbType="SmallInt" CanBeNull="true" />
+      <Column Name="YEAR" Type="System.Int16" DbType="SmallInt" CanBeNull="true" />
+      <Column Name="EVENTTYPE" Type="System.String" DbType="NVarChar(4)" CanBeNull="true" />
+      <Column Name="VAR1" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="VAR2" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="VAR3" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="VAR4" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="VAR5" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="VAR6" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="VAR7" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="VAR8" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="VAR9" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="VAR10" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="VAR11" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="VAR12" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="VAR13" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="VAR14" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="VAR15" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="APEXOp" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="APEXCrop" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="APEXFert" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="APEXOpv1" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="APEXOpv2" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="APEXOpv5" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="APEXOpv7" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="APEXManure" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="CropName" Type="System.String" DbType="Char(30)" CanBeNull="true" />
+      <Column Name="OperationName" Type="System.String" DbType="NChar(20)" CanBeNull="true" />
+      <Column Name="TillCode" Type="System.Int16" DbType="SmallInt" CanBeNull="true" />
+      <Column Name="TillName" Type="System.String" DbType="NChar(100) NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="dbo.CropMatrixTypical" Member="CropMatrixTypicals">
+    <Type Name="CropMatrixTypical">
+      <Column Name="CropMatrixID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="CMCode" Type="System.String" DbType="NChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="CMCrop" Type="System.String" DbType="NVarChar(200) NOT NULL" CanBeNull="false" />
+      <Column Name="CMWater" Type="System.String" DbType="NVarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="CMFertilizer" Type="System.String" DbType="NVarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="CMTillage" Type="System.String" DbType="NVarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="CMVar12" Type="System.String" DbType="NVarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="CMRotationYears" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="StateAbrev" Type="System.String" DbType="NChar(2) NOT NULL" CanBeNull="false" />
+      <Column Name="Grazing" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="DStatus" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="SysTime" Type="System.Data.Linq.Binary" DbType="rowversion" CanBeNull="true" IsVersion="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.State" Member="States">
+    <Type Name="State">
+      <Column Name="StateID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="NChar(35) NOT NULL" CanBeNull="false" />
+      <Column Name="StateAbrev" Type="System.String" DbType="NChar(2) NOT NULL" CanBeNull="false" />
+      <Column Name="DStatus" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="DStatusSL" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="SysTime" Type="System.Data.Linq.Binary" DbType="rowversion" CanBeNull="true" IsVersion="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.ParmsDesc" Member="ParmsDescs">
+    <Type Name="ParmsDesc">
+      <Column Name="Code" Type="System.String" DbType="NChar(6)" CanBeNull="true" />
+      <Column Name="Value" Type="System.Decimal" DbType="Decimal(18,6)" CanBeNull="true" />
+      <Column Name="State" Type="System.String" DbType="NChar(2)" CanBeNull="true" />
+      <Column Name="Name" Type="System.String" DbType="Text" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="Range1" Type="System.Decimal" DbType="Decimal(18,6)" CanBeNull="true" />
+      <Column Name="Range2" Type="System.Decimal" DbType="Decimal(18,6)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.ControlsDesc" Member="ControlsDescs">
+    <Type Name="ControlsDesc">
+      <Column Name="Code" Type="System.String" DbType="NChar(6)" CanBeNull="true" />
+      <Column Name="Value" Type="System.Decimal" DbType="Decimal(18,6)" CanBeNull="true" />
+      <Column Name="State" Type="System.String" DbType="NChar(2)" CanBeNull="true" />
+      <Column Name="Name" Type="System.String" DbType="Text" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="Range1" Type="System.Decimal" DbType="Decimal(18,6)" CanBeNull="true" />
+      <Column Name="Range2" Type="System.Decimal" DbType="Decimal(18,6)" CanBeNull="true" />
+    </Type>
+  </Table>
+</Database>

@@ -1,0 +1,66 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ordesignerObjectsDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 11, 8.5" name="SoilDBTNN1">
+  <DataContextMoniker Name="/SoilDBTNN1DataContext" />
+  <nestedChildShapes>
+    <classShape Id="17c3f758-ec72-4e17-b497-e6cc23fafc40" absoluteBounds="0.5, 0.5, 2, 7.7322412109375005">
+      <DataClassMoniker Name="/SoilDBTNN1DataContext/MDSOIL" />
+      <nestedChildShapes>
+        <elementListCompartment Id="da6cb174-4c68-4a8a-a81c-63fa99e36ef5" absoluteBounds="0.51500000000000012, 0.96, 1.9700000000000002, 7.1722412109375" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="ed187015-8cbd-4eab-8970-edc1a25c5223" absoluteBounds="1, 0.5, 2, 7.7322412109375005">
+      <DataClassMoniker Name="/SoilDBTNN1DataContext/OHSOIL" />
+      <nestedChildShapes>
+        <elementListCompartment Id="b504b3ca-a82d-418c-a9b5-b2dcd82da5ed" absoluteBounds="1.0150000000000001, 0.96, 1.9700000000000002, 7.1722412109375" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="d2cd5ea2-13cf-4678-be2c-f2e1112a0fa8" absoluteBounds="1.5, 0.5, 2, 7.7322412109375005">
+      <DataClassMoniker Name="/SoilDBTNN1DataContext/INSOIL" />
+      <nestedChildShapes>
+        <elementListCompartment Id="c474442a-821a-4cb6-894d-54cff9f0dd82" absoluteBounds="1.5150000000000001, 0.96, 1.9700000000000002, 7.1722412109375" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="1f4babd4-143b-4e2b-b395-afdb6b81745b" absoluteBounds="1.875, 0.5, 2, 7.7322412109375005">
+      <DataClassMoniker Name="/SoilDBTNN1DataContext/KYSOIL" />
+      <nestedChildShapes>
+        <elementListCompartment Id="0d1b7be7-e560-4fdc-b9d0-8d4862dfc36d" absoluteBounds="1.8899999999999997, 0.96, 1.9700000000000002, 7.1722412109375" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="e99da0da-2a4d-41e4-b1bd-bcae5cc8ce16" absoluteBounds="2.25, 0.5, 2, 7.7322412109375005">
+      <DataClassMoniker Name="/SoilDBTNN1DataContext/TXSOIL" />
+      <nestedChildShapes>
+        <elementListCompartment Id="f24ff377-070a-4347-b3aa-984cf75b993a" absoluteBounds="2.2649999999999997, 0.96, 1.9700000000000002, 7.1722412109375" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="89035025-24d2-4c2d-a492-db4ccb963d36" absoluteBounds="2.625, 0.5, 2, 7.7322412109375005">
+      <DataClassMoniker Name="/SoilDBTNN1DataContext/CASOIL" />
+      <nestedChildShapes>
+        <elementListCompartment Id="f80a8a58-9933-4ec1-b514-bfe8ae3b9e54" absoluteBounds="2.6399999999999997, 0.96, 1.9700000000000002, 7.1722412109375" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="938c93e7-ee22-42ae-a0ab-609649e55f7a" absoluteBounds="3, 0.5, 2, 7.7322412109375005">
+      <DataClassMoniker Name="/SoilDBTNN1DataContext/KSSOIL" />
+      <nestedChildShapes>
+        <elementListCompartment Id="79253c60-441a-49e3-9e21-cda91efb5ede" absoluteBounds="3.0149999999999997, 0.96, 1.9700000000000002, 7.1722412109375" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="b3c62eb2-7b88-448c-b4c1-3c93ffaab63d" absoluteBounds="3.375, 0.5, 2, 7.7322412109375005">
+      <DataClassMoniker Name="/SoilDBTNN1DataContext/MSSOIL" />
+      <nestedChildShapes>
+        <elementListCompartment Id="a6a001c0-1ea4-45a2-ba80-00a1b2f29c01" absoluteBounds="3.3899999999999997, 0.96, 1.9700000000000002, 7.1722412109375" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="d1cb167f-f327-4046-86bc-f134b8afb3d5" absoluteBounds="3.75, 0.5, 2, 7.7322412109375005">
+      <DataClassMoniker Name="/SoilDBTNN1DataContext/OKSOIL" />
+      <nestedChildShapes>
+        <elementListCompartment Id="5b403bd0-31de-4d7c-a9b2-a6eda837b2aa" absoluteBounds="3.7649999999999997, 0.96, 1.9700000000000002, 7.1722412109375" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="7ed8795a-4194-4db7-a488-04fa04067a76" absoluteBounds="4.125, 0.5, 2, 7.7322412109375005">
+      <DataClassMoniker Name="/SoilDBTNN1DataContext/WASOIL" />
+      <nestedChildShapes>
+        <elementListCompartment Id="c97197b5-6c94-4ae5-9002-4fcbb1a0df07" absoluteBounds="4.14, 0.96, 1.9700000000000002, 7.1722412109375" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+  </nestedChildShapes>
+</ordesignerObjectsDiagram>

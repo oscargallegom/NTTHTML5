@@ -1,0 +1,202 @@
+﻿<%@ Master Language="VB" AutoEventWireup="false" CodeBehind="Site.master.vb" Inherits="NTTHTML5.Site" %>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head runat="server">
+    <title>NTT</title>
+    <meta name="description" content="Water Quality Model" />
+    <meta name="keywords" content="Water, Nutrients, Hydrology, Farm, Watershed" />
+    <link href="~/Styles/Site.css" rel="stylesheet" type="text/css" />
+    <asp:ContentPlaceHolder ID="HeadContent" runat="server"></asp:ContentPlaceHolder>
+    <script type="text/javascript">
+        var imgCol = "";
+        var imgExp = "";
+        var sessionTimeout = "180";
+
+        function ShowInsCon(show, hide) {
+            var dvShow = document.getElementById(show);
+            document.getElementById(hide).style.display="none";
+            if (dvShow.style.display == "") { dvShow.style.display = "none"; }
+            else { dvShow.style.display = ""; }
+        }
+
+        function DisplaySessionTimeout() {
+            //assigning minutes left to session timeout to Label
+            sessionTimeout = sessionTimeout - 1;
+
+            var currentTime = new Date()
+            var hours = currentTime.getHours()
+            var minutes = currentTime.getMinutes()
+
+            if (minutes < 10)
+                minutes = "0" + minutes
+
+            switch (sessionTimeout) {
+                case 0: alert("Your current Session is over.");
+                    break;
+                case 2: alert("Your current Session is going to be timeout in 2 minutes - Current time" + hours + ":" + minutes);
+                    break;
+            }
+            //if session is not less than 0
+            if (sessionTimeout >= 179)
+            //call the function again after 1 minute delay
+                window.setTimeout("DisplaySessionTimeout()", 10800000);
+            else {
+                //show message box
+                // alert("Your current Session is over.");
+            }
+        }
+
+        function Forzar(item, lan) {
+            var from = item.indexOf('tvMain');                                            
+            if (from == -1) { __doPostBack(item, lan); }
+        }
+
+        function initialize() {
+            DisplaySessionTimeout();
+            if (document.title == "Management" && imgCol == "") 
+            {
+                var element = document.getElementById("tdMain").getElementsByTagName("div")[0].getElementsByTagName("img")
+                for (i = 0; i <= element.length - 1; i++) {
+                    if (element[i].alt.indexOf('Collapse') != -1) { imgExp = element[i].src; }
+                    if (element[i].alt.indexOf('Expand') != -1) { imgCol = element[i].src; }
+                    if (imgCol != "" && imgExp != "") { break; }
+                }                 
+            }
+        }
+
+    </script>
+</head>
+
+<body onload="initialize()">
+    <form runat="server" id="MainPage">
+    <div class="page" >
+        <div class="header" >
+            <table style="width:100%; margin:0px, 0px, 0px, 0px;">
+                <tr>
+                    <td>
+                        <asp:Image ID="Image1" ImageUrl="~/Resources/NTTG2_LOgo.png" AlternateText="NTT Image" Width="100%" runat="server" Height="200px" ClientIDMode="Predictable" />
+                    </td>
+                </tr>
+                <tr id="trNavigationMenu" runat="server">
+                    <td>
+                        <asp:Menu ID="NavigationMenu" runat="server" CssClass="menu" EnableViewState="false" IncludeStyleBlock="false" Orientation="Horizontal" OnMenuItemClick="NavigationMenu_MenuItemClick"  >
+                            <Items>
+                                <asp:MenuItem NavigateUrl="~/Default.aspx" Text="Welcome" />
+                                <asp:MenuItem NavigateUrl="~/Views/Project.aspx" Text="Project" Enabled="false"/>
+                                <asp:MenuItem NavigateUrl="~/Views/Location.aspx" Text="Location" Enabled="false"/>
+                                <asp:MenuItem NavigateUrl="~/Views/Weather.aspx" Text="Weather" Enabled="false"/>
+                                <asp:MenuItem NavigateUrl="~/Views/Field.aspx" Text="Fields" Enabled="false"/>
+                                <asp:MenuItem NavigateUrl="~/Views/Soil.aspx" Text="Soils" Enabled="false"/>
+                                <asp:MenuItem NavigateUrl="~/Views/Management.aspx" Text="Management" Enabled="false"/>
+                                <asp:MenuItem NavigateUrl="~/Views/Subproject.aspx" Text="Subproject" Enabled="false"/>
+                                <asp:MenuItem NavigateUrl="~/Views/Economics.aspx" Text="Economics" Enabled="false" />
+                                <asp:MenuItem NavigateUrl="~/Views/Simulation.aspx" Text="Simulation" Enabled="false"/>
+                                <asp:MenuItem NavigateUrl="~/Views/Results.aspx" Text="Results" Enabled="false"/>
+                                <asp:MenuItem NavigateUrl="~/Views/Modifications.aspx" Text="Modifications" Enabled="false"/>
+                                <asp:MenuItem NavigateUrl="~/Default.aspx?signOff=Off" Text="Sign-off" Enabled="true" />
+                            </Items>
+                        </asp:Menu>
+                    </td>
+                </tr>
+                <tr id="trLoginMenu" runat="server">
+                    <td>
+                        <asp:Menu ID="LoginMenu" runat="server" CssClass="menu"  style="margin:0px, 0px, 0px, 0px" EnableViewState="false" IncludeStyleBlock="false" Orientation="Horizontal" OnMenuItemClick="NavigationMenu_MenuItemClick"  >
+                            <Items>
+                                <asp:MenuItem NavigateUrl="~/Account/Login.aspx" Text="Login" Enabled="true"/>
+                                <asp:MenuItem NavigateUrl="~/Account/Register.aspx" Text="Register" Enabled="true"/>
+                            </Items>
+                        </asp:Menu>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="message">
+                        <asp:Image runat="server" ID="imgIcon" ImageUrl="~/Resources/GoIcon.jpg" Width="20" Height="20" style="display:none; vertical-align:bottom"/>
+                        <asp:Label ID="lblMessage" runat="server"></asp:Label>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="message">
+                        <asp:Label id="lblStatus" runat="server" ></asp:Label>
+                    </td>
+                </tr>
+                <tr >
+                    <td >
+                        <h2 style="text-align: center; width:auto"><asp:Label id="lbltitle" runat="server" ></asp:Label></h2>
+                    </td>
+                </tr>               
+            </table>
+        </div>
+        <div class="main" >
+            <asp:ContentPlaceHolder ID="MainContent" runat="server"/>
+        </div>
+
+        <section id="sectionfooter" class="footer" >
+            <div id="divContactUs" style="display:none; color:White">
+<%--		            <a href="#close" title="Close" class="close">X</a>
+--%>		        <h3><label id="lblContactTitle" runat="server" style="color:White"></label></h3>
+                    <section>
+                        <table>
+                            <tr>
+                                <td>
+                                    <label id="lblContactName" runat="server"></label>
+                                </td>
+                                <td>
+                                    <asp:TextBox ID="txtContactName" runat="server" Text="Your Name"></asp:TextBox>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <label id="lblContactEmail" runat="server"></label>
+                                </td>
+                                <td>
+                                    <asp:TextBox ID="txtContactEmail" runat="server" Text="youremail@domain.com"></asp:TextBox>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <label id="lblContactSubject" runat="server"></label>
+                                </td>
+                                <td>
+                                    <asp:TextBox ID="txtContactSubject" runat="server" Text="Subject"></asp:TextBox>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <label id="lblContactMessage" runat="server"></label>
+                                </td>
+                                <td>
+                                    <asp:TextBox ID="txtContactMessage" runat="server" Height="74px" Text="Message"
+                                        TextMode="MultiLine" Width="494px"></asp:TextBox>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td rowspan=2>
+                                    <asp:Button ID="btnContactEnviar" runat="server" />
+                                </td>
+                            </tr>
+                        </table>
+                    </section>
+            </div>
+            <div id="divInstructions" style="display:none">
+		        <h3><label id="lblInstructions" runat="server" style="color:White" ></label></h3>
+            </div>
+            <div id='cssmenu' >
+                <ul id="mnuFooter" runat="server">
+                    <li><a id="itmInstructions" runat="server" onclick="ShowInsCon('divInstructions', 'divContactUs');"></a></li>
+                    <li><a id="itmContactUs" runat="server" onclick="ShowInsCon('divContactUs', 'divInstructions');"></a></li>
+                    <li><a href='' id="itmAboutNTT" runat="server"></a></li>
+                    <li><a href='' id="itmNTTHelp"  runat="server"></a></li>
+                    <li class='active has-sub'><a id="itmLanguage1" runat="server"></a>
+                        <ul  id="cssSubMenu" runat="server" >
+                            <li><a href="" id="itmEnglish" runat="server" onclick="Forzar('Language', 'English');"></a></li>
+                            <li><a href="" id="itmSpanish" runat="server" onclick="Forzar('Language', 'Español');"></a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </section>
+    </div>
+    </form>
+</body>
+</html>

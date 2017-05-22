@@ -1,0 +1,5065 @@
+﻿<?xml version="1.0"?>
+<doc>
+<assembly>
+<name>
+NTTHTML5
+</name>
+</assembly>
+<members>
+<member name="F:NTTHTML5.Login.lblEmail">
+	<summary>
+lblEmail control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.Login.lblPassword">
+	<summary>
+lblPassword control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.Login.btnForget">
+	<summary>
+btnForget control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.Login.btnChange">
+	<summary>
+btnChange control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.Login.lblNewPassword">
+	<summary>
+lblNewPassword control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.Login.lblConPasswowrd">
+	<summary>
+lblConPasswowrd control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.Login.btnLogin">
+	<summary>
+btnLogin control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.Login.sbmtChange">
+	<summary>
+sbmtChange control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="P:NTTHTML5.My.MyWebExtension.Application">
+	<summary>
+ Returns information about the current application.
+ </summary>
+</member><member name="P:NTTHTML5.My.MyWebExtension.Computer">
+	<summary>
+ Returns information about the host computer.
+ </summary>
+</member><member name="P:NTTHTML5.My.MyWebExtension.User">
+	<summary>
+ Returns information for the current Web user.
+ </summary>
+</member><member name="P:NTTHTML5.My.MyWebExtension.Request">
+	<summary>
+ Returns Request object.
+ </summary>
+</member><member name="P:NTTHTML5.My.MyWebExtension.Response">
+	<summary>
+ Returns Response object.
+ </summary>
+</member><member name="P:NTTHTML5.My.MyWebExtension.Log">
+	<summary>
+ Returns the Asp log object.
+ </summary>
+</member><member name="P:NTTHTML5.My.MyWebExtension.WebServices">
+	<summary>
+ Provides access to WebServices added to this project.
+ </summary>
+</member><member name="T:NTTHTML5.My.MyWebExtension">
+	<summary>
+ Module used to define the properties that are available in the My Namespace for Web projects.
+ </summary>
+	<remarks></remarks>
+</member><member name="F:NTTHTML5.Soil.btnSave">
+	<summary>
+btnSave control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.Soil.btnContinue">
+	<summary>
+btnContinue control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.Soil.tblSSA">
+	<summary>
+tblSSA control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.Soil.trSSA">
+	<summary>
+trSSA control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.Soil.lblSSA">
+	<summary>
+lblSSA control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.Soil.ddlSSA">
+	<summary>
+ddlSSA control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.Soil.lblSoils">
+	<summary>
+lblSoils control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.Soil.ddlSoils">
+	<summary>
+ddlSoils control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.Soil.btnAddSoil">
+	<summary>
+btnAddSoil control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.Soil.btnAddEmptySoil">
+	<summary>
+btnAddEmptySoil control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.Soil.trField">
+	<summary>
+trField control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.Soil.lblFields">
+	<summary>
+lblFields control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.Soil.ddlFields">
+	<summary>
+ddlFields control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.Soil.hdnField">
+	<summary>
+hdnField control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.Soil.lblNote">
+	<summary>
+lblNote control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.Soil.lblSoilsInfo">
+	<summary>
+lblSoilsInfo control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.Soil.gvSoils">
+	<summary>
+gvSoils control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.Soil.lblLayersTitle">
+	<summary>
+lblLayersTitle control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.Soil.lblSoilName">
+	<summary>
+lblSoilName control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.Soil.btnAddEmptyLayer">
+	<summary>
+btnAddEmptyLayer control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.Soil.btnSaveLayer">
+	<summary>
+btnSaveLayer control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.Soil.gvLayers">
+	<summary>
+gvLayers control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.Subproject.btnSaveContinue">
+	<summary>
+btnSaveContinue control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.Subproject.fsetSubproject">
+	<summary>
+fsetSubproject control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.Subproject.txtName">
+	<summary>
+txtName control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.Subproject.lblSubprojectName">
+	<summary>
+lblSubprojectName control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.Subproject.btnAddSubproject">
+	<summary>
+btnAddSubproject control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.Subproject.lblSubproject">
+	<summary>
+lblSubproject control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.Subproject.ddlSubproject">
+	<summary>
+ddlSubproject control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.Subproject.btnDeleteSubproject">
+	<summary>
+btnDeleteSubproject control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.Subproject.fsetSelect">
+	<summary>
+fsetSelect control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.Subproject.lblField">
+	<summary>
+lblField control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.Subproject.ddlFields">
+	<summary>
+ddlFields control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.Subproject.lblScenario">
+	<summary>
+lblScenario control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.Subproject.ddlScenario">
+	<summary>
+ddlScenario control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.Subproject.btnIncludeScenario">
+	<summary>
+btnIncludeScenario control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.Subproject.fsetGridView">
+	<summary>
+fsetGridView control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.Subproject.gvSubproject">
+	<summary>
+gvSubproject control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.Modifications.lblFile">
+	<summary>
+lblFile control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.Modifications.ddlFile">
+	<summary>
+ddlFile control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.Modifications.lblFields">
+	<summary>
+lblFields control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.Modifications.ddlFields">
+	<summary>
+ddlFields control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.Modifications.lblSoils">
+	<summary>
+lblSoils control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.Modifications.ddlSoils">
+	<summary>
+ddlSoils control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.Modifications.lblScenarios">
+	<summary>
+lblScenarios control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.Modifications.ddlScenarios">
+	<summary>
+ddlScenarios control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.Modifications.btnDownloadAPEX1">
+	<summary>
+btnDownloadAPEX1 control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.Modifications.btnSaveContinue">
+	<summary>
+btnSaveContinue control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.Modifications.fsetControlfile">
+	<summary>
+fsetControlfile control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.Modifications.lblControl">
+	<summary>
+lblControl control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.Modifications.btnDefaultControl">
+	<summary>
+btnDefaultControl control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.Modifications.gvControls">
+	<summary>
+gvControls control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.Modifications.fsetParamfile">
+	<summary>
+fsetParamfile control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.Modifications.lblParmFile">
+	<summary>
+lblParmFile control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.Modifications.btnDefaultParms">
+	<summary>
+btnDefaultParms control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.Modifications.gvParms">
+	<summary>
+gvParms control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.Modifications.fsetSubareafile">
+	<summary>
+fsetSubareafile control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.Modifications.lblSubarea">
+	<summary>
+lblSubarea control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.Modifications.gvSubarea">
+	<summary>
+gvSubarea control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.Modifications.fsetSoilfile">
+	<summary>
+fsetSoilfile control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.Modifications.lblSoil">
+	<summary>
+lblSoil control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.Modifications.gvSoils">
+	<summary>
+gvSoils control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.Modifications.fsetLayerfile">
+	<summary>
+fsetLayerfile control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.Modifications.lblLayerFile">
+	<summary>
+lblLayerFile control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.Modifications.gvLayer">
+	<summary>
+gvLayer control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.Modifications.fsetOperationfile">
+	<summary>
+fsetOperationfile control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.Modifications.lblOperation">
+	<summary>
+lblOperation control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.Modifications.gvOperation">
+	<summary>
+gvOperation control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.Site.HeadContent">
+	<summary>
+HeadContent control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.Site.MainPage">
+	<summary>
+MainPage control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.Site.Image1">
+	<summary>
+Image1 control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.Site.trNavigationMenu">
+	<summary>
+trNavigationMenu control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.Site.NavigationMenu">
+	<summary>
+NavigationMenu control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.Site.trLoginMenu">
+	<summary>
+trLoginMenu control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.Site.LoginMenu">
+	<summary>
+LoginMenu control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.Site.imgIcon">
+	<summary>
+imgIcon control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.Site.lblMessage">
+	<summary>
+lblMessage control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.Site.lblStatus">
+	<summary>
+lblStatus control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.Site.lbltitle">
+	<summary>
+lbltitle control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.Site.MainContent">
+	<summary>
+MainContent control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.Site.lblContactTitle">
+	<summary>
+lblContactTitle control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.Site.lblContactName">
+	<summary>
+lblContactName control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.Site.txtContactName">
+	<summary>
+txtContactName control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.Site.lblContactEmail">
+	<summary>
+lblContactEmail control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.Site.txtContactEmail">
+	<summary>
+txtContactEmail control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.Site.lblContactSubject">
+	<summary>
+lblContactSubject control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.Site.txtContactSubject">
+	<summary>
+txtContactSubject control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.Site.lblContactMessage">
+	<summary>
+lblContactMessage control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.Site.txtContactMessage">
+	<summary>
+txtContactMessage control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.Site.btnContactEnviar">
+	<summary>
+btnContactEnviar control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.Site.lblInstructions">
+	<summary>
+lblInstructions control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.Site.mnuFooter">
+	<summary>
+mnuFooter control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.Site.itmInstructions">
+	<summary>
+itmInstructions control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.Site.itmContactUs">
+	<summary>
+itmContactUs control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.Site.itmAboutNTT">
+	<summary>
+itmAboutNTT control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.Site.itmNTTHelp">
+	<summary>
+itmNTTHelp control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.Site.itmLanguage1">
+	<summary>
+itmLanguage1 control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.Site.cssSubMenu">
+	<summary>
+cssSubMenu control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.Site.itmEnglish">
+	<summary>
+itmEnglish control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.Site.itmSpanish">
+	<summary>
+itmSpanish control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.Economics1.btnSave">
+	<summary>
+btnSave control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.Economics1.btnContinue">
+	<summary>
+btnContinue control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.Economics1.hdnSave">
+	<summary>
+hdnSave control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.Economics1.hdnEdit">
+	<summary>
+hdnEdit control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.Economics1.tblSKI">
+	<summary>
+tblSKI control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.Economics1.trSKI">
+	<summary>
+trSKI control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.Economics1.lblSKI">
+	<summary>
+lblSKI control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.Economics1.ddlkindOfInfo">
+	<summary>
+ddlkindOfInfo control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.Economics1.lblSOS">
+	<summary>
+lblSOS control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.Economics1.gvFeeds">
+	<summary>
+gvFeeds control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.Economics1.gvEquipment1">
+	<summary>
+gvEquipment1 control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.Economics1.gvStructure">
+	<summary>
+gvStructure control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.Economics1.gvOtherInputs">
+	<summary>
+gvOtherInputs control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.Results.lblType">
+	<summary>
+lblType control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.Results.ddlType">
+	<summary>
+ddlType control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.Results.sctFields">
+	<summary>
+sctFields control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.Results.lblField">
+	<summary>
+lblField control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.Results.ddlField">
+	<summary>
+ddlField control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.Results.lblScenario1">
+	<summary>
+lblScenario1 control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.Results.ddlScenarios1">
+	<summary>
+ddlScenarios1 control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.Results.lblScenario2">
+	<summary>
+lblScenario2 control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.Results.ddlScenarios2">
+	<summary>
+ddlScenarios2 control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.Results.lblScenario3">
+	<summary>
+lblScenario3 control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.Results.ddlScenarios3">
+	<summary>
+ddlScenarios3 control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.Results.sctSubprojects">
+	<summary>
+sctSubprojects control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.Results.lblSubproject1">
+	<summary>
+lblSubproject1 control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.Results.ddlSubproject1">
+	<summary>
+ddlSubproject1 control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.Results.lblSubproject2">
+	<summary>
+lblSubproject2 control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.Results.ddlSubproject2">
+	<summary>
+ddlSubproject2 control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.Results.lblSubproject3">
+	<summary>
+lblSubproject3 control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.Results.ddlSubproject3">
+	<summary>
+ddlSubproject3 control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.Results.btnSummary">
+	<summary>
+btnSummary control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.Results.btnBySoil">
+	<summary>
+btnBySoil control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.Results.btnGraphs">
+	<summary>
+btnGraphs control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.Results.btnEconomics">
+	<summary>
+btnEconomics control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.Results.btnCreatePDF">
+	<summary>
+btnCreatePDF control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.Results.DownloadDnDc">
+	<summary>
+DownloadDnDc control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.Results.lblDownload">
+	<summary>
+lblDownload control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.Results.fsetSoils">
+	<summary>
+fsetSoils control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.Results.lblSoils">
+	<summary>
+lblSoils control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.Results.ddlSoils">
+	<summary>
+ddlSoils control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.Results.sctSummary">
+	<summary>
+sctSummary control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.Results.gvResults">
+	<summary>
+gvResults control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.Results.lblCI">
+	<summary>
+lblCI control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.Results.sctGraphs">
+	<summary>
+sctGraphs control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.Results.lblGraphs">
+	<summary>
+lblGraphs control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.Results.ddlAverage">
+	<summary>
+ddlAverage control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.Results.ddlInfo">
+	<summary>
+ddlInfo control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.Results.ddlCrop">
+	<summary>
+ddlCrop control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.Results.fsetChart">
+	<summary>
+fsetChart control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.Results.lblChart">
+	<summary>
+lblChart control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.Results.Chart1">
+	<summary>
+Chart1 control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.Simulation.btnSaveContinue">
+	<summary>
+btnSaveContinue control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.Simulation.lblTypes">
+	<summary>
+lblTypes control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.Simulation.lblType">
+	<summary>
+lblType control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.Simulation.ddlType">
+	<summary>
+ddlType control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.Simulation.lblScenarios">
+	<summary>
+lblScenarios control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.Simulation.divScenario">
+	<summary>
+divScenario control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.Simulation.lblField">
+	<summary>
+lblField control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.Simulation.ddlField">
+	<summary>
+ddlField control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.Simulation.lblScenario">
+	<summary>
+lblScenario control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.Simulation.ddlScenario">
+	<summary>
+ddlScenario control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.Simulation.btnAddSimulations">
+	<summary>
+btnAddSimulations control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.Simulation.divSubproject">
+	<summary>
+divSubproject control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.Simulation.lblSubproject">
+	<summary>
+lblSubproject control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.Simulation.ddlSubproject">
+	<summary>
+ddlSubproject control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.Simulation.btnAddSubproject">
+	<summary>
+btnAddSubproject control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.Simulation.lblAll">
+	<summary>
+lblAll control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.Simulation.btnAddAll">
+	<summary>
+btnAddAll control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.Simulation.btnRemoveAll">
+	<summary>
+btnRemoveAll control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.Simulation.fsetSimulation">
+	<summary>
+fsetSimulation control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.Simulation.lblSimuation">
+	<summary>
+lblSimuation control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.Simulation.txtSimulation">
+	<summary>
+txtSimulation control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.Simulation.fsetListSimulations">
+	<summary>
+fsetListSimulations control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.Simulation.lblRunSimulation">
+	<summary>
+lblRunSimulation control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.Simulation.btnRunEnvironment">
+	<summary>
+btnRunEnvironment control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.Simulation.btnRunEconomic">
+	<summary>
+btnRunEconomic control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.Simulation.gvSimulations">
+	<summary>
+gvSimulations control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.Simulation.Legend1">
+	<summary>
+Legend1 control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.Project.btnSave">
+	<summary>
+btnSave control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.Project.btnContinue">
+	<summary>
+btnContinue control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.Project.fsetControls">
+	<summary>
+fsetControls control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.Project.btnCreateProject">
+	<summary>
+btnCreateProject control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.Project.btnOpenProject">
+	<summary>
+btnOpenProject control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.Project.btnSaveProject">
+	<summary>
+btnSaveProject control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.Project.btnOpenExample">
+	<summary>
+btnOpenExample control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.Project.btnCloseProject">
+	<summary>
+btnCloseProject control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.Project.sctOpen">
+	<summary>
+sctOpen control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.Project.fsetOpen">
+	<summary>
+fsetOpen control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.Project.btnUploader">
+	<summary>
+btnUploader control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.Project.Uploader">
+	<summary>
+Uploader control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.Project.sctExample">
+	<summary>
+sctExample control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.Project.fsetExample">
+	<summary>
+fsetExample control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.Project.lblExample">
+	<summary>
+lblExample control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.Project.ddlExamples">
+	<summary>
+ddlExamples control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.Project.sctNew">
+	<summary>
+sctNew control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.Project.fsetNew">
+	<summary>
+fsetNew control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.Project.lblProjectName">
+	<summary>
+lblProjectName control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.Project.txtProjectName">
+	<summary>
+txtProjectName control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.Project.lblProjectDate">
+	<summary>
+lblProjectDate control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.Project.txtDate1">
+	<summary>
+txtDate1 control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.Project.lblProjectDescription">
+	<summary>
+lblProjectDescription control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.Project.txtProjectDescription">
+	<summary>
+txtProjectDescription control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="P:NTTHTML5.My.Resources.Resources.ResourceManager">
+	<summary>
+  Returns the cached ResourceManager instance used by this class.
+</summary>
+</member><member name="P:NTTHTML5.My.Resources.Resources.Culture">
+	<summary>
+  Overrides the current thread's CurrentUICulture property for all
+  resource lookups using this strongly typed resource class.
+</summary>
+</member><member name="T:NTTHTML5.My.Resources.Resources">
+	<summary>
+  A strongly-typed resource class, for looking up localized strings, etc.
+</summary>
+</member><member name="F:NTTHTML5.Register.lblEmail">
+	<summary>
+lblEmail control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.Register.lblPassword">
+	<summary>
+lblPassword control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.Register.lblConPassword">
+	<summary>
+lblConPassword control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.Register.lblName">
+	<summary>
+lblName control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.Register.lblInstitution">
+	<summary>
+lblInstitution control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.Register.btnLogin">
+	<summary>
+btnLogin control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.Location.btnSave">
+	<summary>
+btnSave control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.Location.btnContinue">
+	<summary>
+btnContinue control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.Location.btnMapSystem">
+	<summary>
+btnMapSystem control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.Location.btnStateCounty">
+	<summary>
+btnStateCounty control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.Location.btnUserInput">
+	<summary>
+btnUserInput control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.Location.sctMap">
+	<summary>
+sctMap control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.Location.tdGoogleMap">
+	<summary>
+tdGoogleMap control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.Location.embededframeBas">
+	<summary>
+embededframeBas control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.Location.sctStateCounty">
+	<summary>
+sctStateCounty control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.Location.lgdStateCounty">
+	<summary>
+lgdStateCounty control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.Location.lblState">
+	<summary>
+lblState control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.Location.ddlStates">
+	<summary>
+ddlStates control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.Location.lblCounties">
+	<summary>
+lblCounties control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.Location.ddlCounties">
+	<summary>
+ddlCounties control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.Location.ddlAllCounties">
+	<summary>
+ddlAllCounties control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.Location.txtCounty">
+	<summary>
+txtCounty control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.Location.sctInput">
+	<summary>
+sctInput control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.Location.lgdUserInput">
+	<summary>
+lgdUserInput control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.Location.lblGeneralLocation">
+	<summary>
+lblGeneralLocation control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.Location.lblSpecificLocation">
+	<summary>
+lblSpecificLocation control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.Location.lblLatitude">
+	<summary>
+lblLatitude control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.Location.lblLLongitude">
+	<summary>
+lblLLongitude control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.Location.txtGeneralLocation">
+	<summary>
+txtGeneralLocation control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.Location.txtspecificLocation">
+	<summary>
+txtspecificLocation control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.Location.txtLatitude">
+	<summary>
+txtLatitude control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.Location.txtLongitude">
+	<summary>
+txtLongitude control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.Weather.btnSave">
+	<summary>
+btnSave control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.Weather.btnContinue">
+	<summary>
+btnContinue control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.Weather.lblWeatherTitle">
+	<summary>
+lblWeatherTitle control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.Weather.rbtnStation">
+	<summary>
+rbtnStation control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.Weather.lblStation">
+	<summary>
+lblStation control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.Weather.rbtnOwn">
+	<summary>
+rbtnOwn control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.Weather.lblOwn">
+	<summary>
+lblOwn control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.Weather.rbtnCoordinates">
+	<summary>
+rbtnCoordinates control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.Weather.lblCoordinates">
+	<summary>
+lblCoordinates control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.Weather.tdWeather">
+	<summary>
+tdWeather control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.Weather.fsetStations">
+	<summary>
+fsetStations control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.Weather.lblStations">
+	<summary>
+lblStations control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.Weather.ddlStations">
+	<summary>
+ddlStations control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.Weather.fsetUploadWeatherFile">
+	<summary>
+fsetUploadWeatherFile control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.Weather.lblUploadWeatherFile">
+	<summary>
+lblUploadWeatherFile control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.Weather.flUpload">
+	<summary>
+flUpload control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.Weather.fsetCoordinates">
+	<summary>
+fsetCoordinates control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.Weather.lblCoordinates1">
+	<summary>
+lblCoordinates1 control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.Weather.lblLong">
+	<summary>
+lblLong control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.Weather.txtLong">
+	<summary>
+txtLong control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.Weather.lblLat">
+	<summary>
+lblLat control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.Weather.txtLat">
+	<summary>
+txtLat control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.Weather.btnSaveCoordinates">
+	<summary>
+btnSaveCoordinates control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.Weather.lblYearsOfInfo">
+	<summary>
+lblYearsOfInfo control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.Weather.lblWeatherYears">
+	<summary>
+lblWeatherYears control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.Weather.lblSimulationNote">
+	<summary>
+lblSimulationNote control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.Weather.lblPeriodToSimulate">
+	<summary>
+lblPeriodToSimulate control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.Weather.txtPeriodFromSimulate">
+	<summary>
+txtPeriodFromSimulate control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.Weather.lblTo">
+	<summary>
+lblTo control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.Weather.txtPeriodToSimulate">
+	<summary>
+txtPeriodToSimulate control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.Weather.lblSimulationPeriod">
+	<summary>
+lblSimulationPeriod control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.GoogleMap.dvPanel">
+	<summary>
+dvPanel control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.GoogleMap.Form1">
+	<summary>
+Form1 control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.GoogleMap.dvForm">
+	<summary>
+dvForm control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.GoogleMap.lblShapeFile">
+	<summary>
+lblShapeFile control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.GoogleMap.FarmName">
+	<summary>
+FarmName control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.GoogleMap.FarmXY">
+	<summary>
+FarmXY control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.GoogleMap.FieldsName">
+	<summary>
+FieldsName control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.GoogleMap.FieldsArea">
+	<summary>
+FieldsArea control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.GoogleMap.FieldsXY">
+	<summary>
+FieldsXY control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.GoogleMap.StateName">
+	<summary>
+StateName control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.GoogleMap.StateAbbr">
+	<summary>
+StateAbbr control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.GoogleMap.CountyName">
+	<summary>
+CountyName control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.GoogleMap.savedata">
+	<summary>
+savedata control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.GoogleMap.TextAddress">
+	<summary>
+TextAddress control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.GoogleMap.Textlatlng">
+	<summary>
+Textlatlng control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.GoogleMap.lblFarmShp">
+	<summary>
+lblFarmShp control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.GoogleMap.fileUploadFarmShapefile">
+	<summary>
+fileUploadFarmShapefile control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.GoogleMap.lblFieldShp">
+	<summary>
+lblFieldShp control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.GoogleMap.fileUploadFieldShapefile">
+	<summary>
+fileUploadFieldShapefile control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.GoogleMap.bntUpload">
+	<summary>
+bntUpload control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.GoogleMap._lblNote1">
+	<summary>
+_lblNote1 control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.GoogleMap.lblNote2">
+	<summary>
+lblNote2 control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.GoogleMap.lblNavigation">
+	<summary>
+lblNavigation control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.GoogleMap.trNavigation">
+	<summary>
+trNavigation control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.GoogleMap.lblNoteNavigation">
+	<summary>
+lblNoteNavigation control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.GoogleMap.txtAddress">
+	<summary>
+txtAddress control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.GoogleMap.imgAddress">
+	<summary>
+imgAddress control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.GoogleMap.lblLatLon">
+	<summary>
+lblLatLon control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.GoogleMap.imgLatlng">
+	<summary>
+imgLatlng control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.GoogleMap.lblZoomState">
+	<summary>
+lblZoomState control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.GoogleMap.lblZoomCounty">
+	<summary>
+lblZoomCounty control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.GoogleMap.stateselect">
+	<summary>
+stateselect control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.GoogleMap.countyAll">
+	<summary>
+countyAll control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.GoogleMap.lblTools">
+	<summary>
+lblTools control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.GoogleMap.trTools">
+	<summary>
+trTools control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.GoogleMap.lblToolsNote1">
+	<summary>
+lblToolsNote1 control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.GoogleMap.lblToolsNote2">
+	<summary>
+lblToolsNote2 control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.GoogleMap.lblToolsNote4">
+	<summary>
+lblToolsNote4 control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.GoogleMap.lblToolsNote3">
+	<summary>
+lblToolsNote3 control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.GoogleMap.lblEditingOptions">
+	<summary>
+lblEditingOptions control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.GoogleMap.lblFarm">
+	<summary>
+lblFarm control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.GoogleMap.lblField">
+	<summary>
+lblField control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.GoogleMap.lblDelete">
+	<summary>
+lblDelete control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.GoogleMap.savebutton">
+	<summary>
+savebutton control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.GoogleMap.submit">
+	<summary>
+submit control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.GoogleMap.lblNote5">
+	<summary>
+lblNote5 control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.GoogleMap.lblFieldName">
+	<summary>
+lblFieldName control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.GoogleMap.txtFieldName">
+	<summary>
+txtFieldName control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.GoogleMap.btnCopyFarm">
+	<summary>
+btnCopyFarm control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.GoogleMap.lblCopyFarm">
+	<summary>
+lblCopyFarm control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.GoogleMap.map">
+	<summary>
+map control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.GoogleMap.MsgBox1">
+	<summary>
+MsgBox1 control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.GoogleMap.dvWait">
+	<summary>
+dvWait control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.Field.btnSave">
+	<summary>
+btnSave control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.Field.btnContinue">
+	<summary>
+btnContinue control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.Field.lblFieldsInfo">
+	<summary>
+lblFieldsInfo control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.Field.btnAddField">
+	<summary>
+btnAddField control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.Field.gvFields">
+	<summary>
+gvFields control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5._Default.lblDescription">
+	<summary>
+lblDescription control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.Management.btnSave">
+	<summary>
+btnSave control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.Management.btnContinue">
+	<summary>
+btnContinue control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.Management.tblGeneralInfo">
+	<summary>
+tblGeneralInfo control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.Management.trGemeralInfo">
+	<summary>
+trGemeralInfo control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.Management.lblFields">
+	<summary>
+lblFields control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.Management.ddlFields">
+	<summary>
+ddlFields control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.Management.hdnField">
+	<summary>
+hdnField control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.Management.lblScenarios">
+	<summary>
+lblScenarios control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.Management.ddlScenarios">
+	<summary>
+ddlScenarios control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.Management.hdnScenario">
+	<summary>
+hdnScenario control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.Management.btnDeleteScenario">
+	<summary>
+btnDeleteScenario control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.Management.txtScenarioName">
+	<summary>
+txtScenarioName control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.Management.btnAddNewScenario">
+	<summary>
+btnAddNewScenario control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.Management.btnRenameScenario">
+	<summary>
+btnRenameScenario control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.Management.txtScenarioRenamed">
+	<summary>
+txtScenarioRenamed control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.Management.aTvMain">
+	<summary>
+aTvMain control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.Management.tvMain">
+	<summary>
+tvMain control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.Management.tdCurrentScenario">
+	<summary>
+tdCurrentScenario control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.Management.fsetCroppingSystem">
+	<summary>
+fsetCroppingSystem control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.Management.lblCroppingSystem">
+	<summary>
+lblCroppingSystem control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.Management.lblSelectCroppingSystem">
+	<summary>
+lblSelectCroppingSystem control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.Management.ddlCroppingSystems">
+	<summary>
+ddlCroppingSystems control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.Management.ddlCroppingSystemsAll">
+	<summary>
+ddlCroppingSystemsAll control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.Management.lblTillage">
+	<summary>
+lblTillage control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.Management.ddlTillageAll">
+	<summary>
+ddlTillageAll control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.Management.btnUpload">
+	<summary>
+btnUpload control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.Management.fsetLoadCropping">
+	<summary>
+fsetLoadCropping control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.Management.lblLoadCropping">
+	<summary>
+lblLoadCropping control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.Management.btnUploader">
+	<summary>
+btnUploader control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.Management.flUpload">
+	<summary>
+flUpload control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.Management.btnOpenCropping">
+	<summary>
+btnOpenCropping control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.Management.fsetCopyCropping">
+	<summary>
+fsetCopyCropping control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.Management.lblCopyCropping">
+	<summary>
+lblCopyCropping control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.Management.lblFromField">
+	<summary>
+lblFromField control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.Management.ddlFromField">
+	<summary>
+ddlFromField control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.Management.lblFromScenario">
+	<summary>
+lblFromScenario control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.Management.ddlFromScenario">
+	<summary>
+ddlFromScenario control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.Management.ddlAllScenario">
+	<summary>
+ddlAllScenario control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.Management.btnCopyCropping">
+	<summary>
+btnCopyCropping control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.Management.fsetOperations">
+	<summary>
+fsetOperations control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.Management.lblOperation">
+	<summary>
+lblOperation control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.Management.btnAddOperation">
+	<summary>
+btnAddOperation control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.Management.btnDeleteOperation">
+	<summary>
+btnDeleteOperation control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.Management.btnMixePasture">
+	<summary>
+btnMixePasture control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.Management.ddlCrops">
+	<summary>
+ddlCrops control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.Management.ddlOpers">
+	<summary>
+ddlOpers control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.Management.ddlYears">
+	<summary>
+ddlYears control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.Management.ddlMonths">
+	<summary>
+ddlMonths control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.Management.ddlDays">
+	<summary>
+ddlDays control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.Management.ddlTypes">
+	<summary>
+ddlTypes control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.Management.ctlSave">
+	<summary>
+ctlSave control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.Management.gvOperations">
+	<summary>
+gvOperations control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.Management.aOpReadHide">
+	<summary>
+aOpReadHide control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.Management.fsetAI">
+	<summary>
+fsetAI control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.Management.lblAI">
+	<summary>
+lblAI control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.Management.lblAIIrrigationType">
+	<summary>
+lblAIIrrigationType control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.Management.lblAIWaterStress">
+	<summary>
+lblAIWaterStress control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.Management.lblAIEfficiancy">
+	<summary>
+lblAIEfficiancy control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.Management.lblAIFrequency">
+	<summary>
+lblAIFrequency control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.Management.lblAIMaxSingleAppl">
+	<summary>
+lblAIMaxSingleAppl control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.Management.lblAIResArea">
+	<summary>
+lblAIResArea control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.Management.lblAISafetyFactor">
+	<summary>
+lblAISafetyFactor control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.Management.ddlAIIrrigationType">
+	<summary>
+ddlAIIrrigationType control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.Management.txtAIWaterStress">
+	<summary>
+txtAIWaterStress control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.Management.txtAIIrrigationEfficiancy">
+	<summary>
+txtAIIrrigationEfficiancy control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.Management.txtAIFrequency">
+	<summary>
+txtAIFrequency control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.Management.txtAIMaxSingleAppl">
+	<summary>
+txtAIMaxSingleAppl control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.Management.txtAIResArea">
+	<summary>
+txtAIResArea control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.Management.txtAISafetyFactor">
+	<summary>
+txtAISafetyFactor control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.Management.btnAIClear">
+	<summary>
+btnAIClear control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.Management.aAIHide">
+	<summary>
+aAIHide control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.Management.fsetAF">
+	<summary>
+fsetAF control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.Management.lblAF">
+	<summary>
+lblAF control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.Management.lblAFIrrigationType">
+	<summary>
+lblAFIrrigationType control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.Management.lblAFWaterStress">
+	<summary>
+lblAFWaterStress control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.Management.lblAFEfficiancy">
+	<summary>
+lblAFEfficiancy control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.Management.lblAFFrequency">
+	<summary>
+lblAFFrequency control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.Management.lblAFMaxSingleAppl">
+	<summary>
+lblAFMaxSingleAppl control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.Management.lblAFNConc">
+	<summary>
+lblAFNConc control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.Management.lblAFSafetyFactor">
+	<summary>
+lblAFSafetyFactor control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.Management.ddlAFIrrigationType">
+	<summary>
+ddlAFIrrigationType control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.Management.txtAFWaterStress">
+	<summary>
+txtAFWaterStress control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.Management.txtAFIrrigationEfficiancy">
+	<summary>
+txtAFIrrigationEfficiancy control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.Management.txtAFFrequency">
+	<summary>
+txtAFFrequency control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.Management.txtAFMaxSingleAppl">
+	<summary>
+txtAFMaxSingleAppl control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.Management.txtAFNConc">
+	<summary>
+txtAFNConc control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.Management.txtAFSafetyFactor">
+	<summary>
+txtAFSafetyFactor control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.Management.btnAFClear">
+	<summary>
+btnAFClear control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.Management.aAFHide">
+	<summary>
+aAFHide control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.Management.fsetTD">
+	<summary>
+fsetTD control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.Management.lblTD">
+	<summary>
+lblTD control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.Management.lblTDDepth">
+	<summary>
+lblTDDepth control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.Management.txtTDDepth">
+	<summary>
+txtTDDepth control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.Management.btnTDClear">
+	<summary>
+btnTDClear control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.Management.aTDHide">
+	<summary>
+aTDHide control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.Management.fsetPPND">
+	<summary>
+fsetPPND control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.Management.lblPPND">
+	<summary>
+lblPPND control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.Management.lblPPNDWidth">
+	<summary>
+lblPPNDWidth control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.Management.txtPPNDWidth">
+	<summary>
+txtPPNDWidth control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.Management.lblPPNDSides">
+	<summary>
+lblPPNDSides control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.Management.txtPPNDSides">
+	<summary>
+txtPPNDSides control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.Management.btnPPNDClear">
+	<summary>
+btnPPNDClear control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.Management.aPPNDHide">
+	<summary>
+aPPNDHide control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.Management.fsetPPDS">
+	<summary>
+fsetPPDS control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.Management.lblPPDS">
+	<summary>
+lblPPDS control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.Management.lblPPDSWidth">
+	<summary>
+lblPPDSWidth control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.Management.txtPPDSWidth">
+	<summary>
+txtPPDSWidth control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.Management.lblPPDSSides">
+	<summary>
+lblPPDSSides control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.Management.txtPPDSSides">
+	<summary>
+txtPPDSSides control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.Management.btnPPDSClear">
+	<summary>
+btnPPDSClear control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.Management.aPPDSHide">
+	<summary>
+aPPDSHide control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.Management.fsetPPDE">
+	<summary>
+fsetPPDE control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.Management.lblPPDE">
+	<summary>
+lblPPDE control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.Management.lblPPDEResArea">
+	<summary>
+lblPPDEResArea control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.Management.txtPPDEResArea">
+	<summary>
+txtPPDEResArea control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.Management.lblPPDEWidth">
+	<summary>
+lblPPDEWidth control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.Management.txtPPDEWidth">
+	<summary>
+txtPPDEWidth control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.Management.lblPPDESides">
+	<summary>
+lblPPDESides control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.Management.txtPPDESides">
+	<summary>
+txtPPDESides control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.Management.btnPPDEClear">
+	<summary>
+btnPPDEClear control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.Management.aPPDEHide">
+	<summary>
+aPPDEHide control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.Management.fsetPPTW">
+	<summary>
+fsetPPTW control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.Management.lblPPTW">
+	<summary>
+lblPPTW control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.Management.lblPPTWResArea">
+	<summary>
+lblPPTWResArea control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.Management.txtPPTWResArea">
+	<summary>
+txtPPTWResArea control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.Management.lblPPTWWidth">
+	<summary>
+lblPPTWWidth control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.Management.txtPPTWWidth">
+	<summary>
+txtPPTWWidth control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.Management.lblPPTWSides">
+	<summary>
+lblPPTWSides control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.Management.txtPPTWSides">
+	<summary>
+txtPPTWSides control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.Management.btnPPTWClear">
+	<summary>
+btnPPTWClear control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.Management.aPPTWHide">
+	<summary>
+aPPTWHide control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.Management.fsetWL">
+	<summary>
+fsetWL control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.Management.lblWL">
+	<summary>
+lblWL control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.Management.lblWLArea">
+	<summary>
+lblWLArea control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.Management.txtWLArea">
+	<summary>
+txtWLArea control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.Management.btnWLClear">
+	<summary>
+btnWLClear control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.Management.aWLHide">
+	<summary>
+aWLHide control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.Management.fsetPND">
+	<summary>
+fsetPND control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.Management.lblPND">
+	<summary>
+lblPND control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.Management.lblPNDFraction">
+	<summary>
+lblPNDFraction control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.Management.txtPNDFraction">
+	<summary>
+txtPNDFraction control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.Management.btnPNDClear">
+	<summary>
+btnPNDClear control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.Management.aPNDHide">
+	<summary>
+aPNDHide control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.Management.fsetSF">
+	<summary>
+fsetSF control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.Management.lblSF">
+	<summary>
+lblSF control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.Management.lblSFAimals">
+	<summary>
+lblSFAimals control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.Management.lblSFDays">
+	<summary>
+lblSFDays control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.Management.lblSFHours">
+	<summary>
+lblSFHours control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.Management.lblSFType">
+	<summary>
+lblSFType control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.Management.lblSFManure">
+	<summary>
+lblSFManure control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.Management.txtSFAnimals">
+	<summary>
+txtSFAnimals control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.Management.txtSFDays">
+	<summary>
+txtSFDays control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.Management.txtSFHours">
+	<summary>
+txtSFHours control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.Management.ddlSFType">
+	<summary>
+ddlSFType control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.Management.txtSFManure">
+	<summary>
+txtSFManure control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.Management.lblSFNutrients">
+	<summary>
+lblSFNutrients control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.Management.lblSFNO3">
+	<summary>
+lblSFNO3 control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.Management.lblSFPO4">
+	<summary>
+lblSFPO4 control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.Management.lblSFOrgN">
+	<summary>
+lblSFOrgN control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.Management.lblSFOrgP">
+	<summary>
+lblSFOrgP control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.Management.lblSFMH3">
+	<summary>
+lblSFMH3 control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.Management.txtSFNO3">
+	<summary>
+txtSFNO3 control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.Management.txtSFPO4">
+	<summary>
+txtSFPO4 control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.Management.txtSFOrgN">
+	<summary>
+txtSFOrgN control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.Management.txtSFOrgP">
+	<summary>
+txtSFOrgP control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.Management.txtSFNH3">
+	<summary>
+txtSFNH3 control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.Management.btnSFClear">
+	<summary>
+btnSFClear control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.Management.aSFHide">
+	<summary>
+aSFHide control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.Management.fsetSBS">
+	<summary>
+fsetSBS control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.Management.lblSBS">
+	<summary>
+lblSBS control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.Management.chkSBS">
+	<summary>
+chkSBS control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.Management.btnSBSClear">
+	<summary>
+btnSBSClear control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.Management.aSBSHide">
+	<summary>
+aSBSHide control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.Management.fsetRF">
+	<summary>
+fsetRF control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.Management.lblRF">
+	<summary>
+lblRF control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.Management.lblRFArea">
+	<summary>
+lblRFArea control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.Management.lblRFWidth">
+	<summary>
+lblRFWidth control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.Management.lblRFGrass">
+	<summary>
+lblRFGrass control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.Management.lblRFRatio">
+	<summary>
+lblRFRatio control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.Management.txtRFArea">
+	<summary>
+txtRFArea control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.Management.txtRFWidth">
+	<summary>
+txtRFWidth control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.Management.txtRFGrass">
+	<summary>
+txtRFGrass control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.Management.txtRFRatio">
+	<summary>
+txtRFRatio control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.Management.btnRFClear">
+	<summary>
+btnRFClear control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.Management.aRFHide">
+	<summary>
+aRFHide control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.Management.fsetFS">
+	<summary>
+fsetFS control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.Management.lblFS">
+	<summary>
+lblFS control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.Management.lblFSType">
+	<summary>
+lblFSType control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.Management.lblFSArea">
+	<summary>
+lblFSArea control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.Management.lblFSWidth">
+	<summary>
+lblFSWidth control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.Management.lblFSRatio">
+	<summary>
+lblFSRatio control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.Management.ddlFSType">
+	<summary>
+ddlFSType control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.Management.txtFSArea">
+	<summary>
+txtFSArea control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.Management.txtFSWidth">
+	<summary>
+txtFSWidth control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.Management.txtFSRatio">
+	<summary>
+txtFSRatio control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.Management.btnFSClear">
+	<summary>
+btnFSClear control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.Management.aFSHide">
+	<summary>
+aFSHide control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.Management.fsetWW">
+	<summary>
+fsetWW control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.Management.lblWW">
+	<summary>
+lblWW control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.Management.lblWWType">
+	<summary>
+lblWWType control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.Management.lblWWWidth">
+	<summary>
+lblWWWidth control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.Management.ddlWWType">
+	<summary>
+ddlWWType control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.Management.txtWWWidth">
+	<summary>
+txtWWWidth control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.Management.btnWWClear">
+	<summary>
+btnWWClear control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.Management.aWWHide">
+	<summary>
+aWWHide control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.Management.fsetCB">
+	<summary>
+fsetCB control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.Management.lblCB">
+	<summary>
+lblCB control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.Management.lblCBType">
+	<summary>
+lblCBType control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.Management.lblCBBufferWith">
+	<summary>
+lblCBBufferWith control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.Management.lblCBCropWidth">
+	<summary>
+lblCBCropWidth control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.Management.ddlCBType">
+	<summary>
+ddlCBType control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.Management.txtCBBufferWidth">
+	<summary>
+txtCBBufferWidth control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.Management.txtCBCropWidth">
+	<summary>
+txtCBCropWidth control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.Management.btnCBClear">
+	<summary>
+btnCBClear control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.Management.aCBHide">
+	<summary>
+aCBHide control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.Management.fsetLL">
+	<summary>
+fsetLL control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.Management.lblLL">
+	<summary>
+lblLL control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.Management.lblReduction">
+	<summary>
+lblReduction control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.Management.txtLLReduction">
+	<summary>
+txtLLReduction control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.Management.btnLLClear">
+	<summary>
+btnLLClear control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.Management.aLLHide">
+	<summary>
+aLLHide control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.Management.fsetTS">
+	<summary>
+fsetTS control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.Management.lblTS">
+	<summary>
+lblTS control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.Management.chkTS">
+	<summary>
+chkTS control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.Management.btnTSClear">
+	<summary>
+btnTSClear control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.Management.aTSHide">
+	<summary>
+aTSHide control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.Management.fsetMC">
+	<summary>
+fsetMC control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.Management.lblMC">
+	<summary>
+lblMC control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.Management.tblMC">
+	<summary>
+tblMC control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.Management.lblMCType">
+	<summary>
+lblMCType control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.Management.ddlMCType">
+	<summary>
+ddlMCType control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.Management.lblNutrientsAdj">
+	<summary>
+lblNutrientsAdj control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.Management.lblNO3NAdj">
+	<summary>
+lblNO3NAdj control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.Management.txtmcNO3N">
+	<summary>
+txtmcNO3N control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.Management.lblmcOrgN">
+	<summary>
+lblmcOrgN control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.Management.txtmcOrgN">
+	<summary>
+txtmcOrgN control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.Management.lblmcPO4P">
+	<summary>
+lblmcPO4P control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.Management.txtmcPO4P">
+	<summary>
+txtmcPO4P control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.Management.lblmcOrgP">
+	<summary>
+lblmcOrgP control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.Management.txtmcOrgP">
+	<summary>
+txtmcOrgP control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.Management.lblmcOM">
+	<summary>
+lblmcOM control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.Management.txtmcOM">
+	<summary>
+txtmcOM control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.Management.btnMCClear">
+	<summary>
+btnMCClear control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.Management.aMCHide">
+	<summary>
+aMCHide control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.Management.tblNoMC">
+	<summary>
+tblNoMC control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.Management.lblNoMC">
+	<summary>
+lblNoMC control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.Management.a2">
+	<summary>
+a2 control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.Management.fsetLM">
+	<summary>
+fsetLM control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.Management.lblLM">
+	<summary>
+lblLM control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.Management.chkLM">
+	<summary>
+chkLM control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.Management.btnLMClear">
+	<summary>
+btnLMClear control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.Management.aLMHide">
+	<summary>
+aLMHide control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.Management.fsetCC">
+	<summary>
+fsetCC control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.Management.lblCC">
+	<summary>
+lblCC control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.Management.lblCCMinTmp">
+	<summary>
+lblCCMinTmp control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.Management.txtCCMinTmp">
+	<summary>
+txtCCMinTmp control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.Management.lblCCMaxTmp">
+	<summary>
+lblCCMaxTmp control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.Management.txtCCMaxTmp">
+	<summary>
+txtCCMaxTmp control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.Management.lblCCPcp">
+	<summary>
+lblCCPcp control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.Management.txtCCPcp">
+	<summary>
+txtCCPcp control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.Management.btnCCClear">
+	<summary>
+btnCCClear control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.Management.a1">
+	<summary>
+a1 control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.Management.fsetAoC">
+	<summary>
+fsetAoC control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.Management.lblAoC">
+	<summary>
+lblAoC control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.Management.chkAoC">
+	<summary>
+chkAoC control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.Management.btnAoCClear">
+	<summary>
+btnAoCClear control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.Management.aAoCHide">
+	<summary>
+aAoCHide control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.Management.fsetGC">
+	<summary>
+fsetGC control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.Management.lblGC">
+	<summary>
+lblGC control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.Management.chkGC">
+	<summary>
+chkGC control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.Management.btnGCClear">
+	<summary>
+btnGCClear control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.Management.aGCHide">
+	<summary>
+aGCHide control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.Management.fsetSA">
+	<summary>
+fsetSA control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.Management.lblSA">
+	<summary>
+lblSA control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.Management.chkSA">
+	<summary>
+chkSA control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.Management.btnSAClear">
+	<summary>
+btnSAClear control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.Management.aSAHide">
+	<summary>
+aSAHide control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.Management.fsetSdg">
+	<summary>
+fsetSdg control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.Management.lblSdg">
+	<summary>
+lblSdg control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.Management.lblSdgCrop">
+	<summary>
+lblSdgCrop control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.Management.lblSdgArea">
+	<summary>
+lblSdgArea control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.Management.lblSdgWidth">
+	<summary>
+lblSdgWidth control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.Management.lblSdgSlopeRatio">
+	<summary>
+lblSdgSlopeRatio control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.Management.ddlSdgCrop">
+	<summary>
+ddlSdgCrop control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.Management.txtSdgArea">
+	<summary>
+txtSdgArea control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.Management.txtSdgWidth">
+	<summary>
+txtSdgWidth control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.Management.txtSdgSlopeRatio">
+	<summary>
+txtSdgSlopeRatio control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.Management.btnSdgClear">
+	<summary>
+btnSdgClear control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.Management.aSdgHide">
+	<summary>
+aSdgHide control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.Management.lblFerts">
+	<summary>
+lblFerts control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.Management.btnSaveMixedCrops">
+	<summary>
+btnSaveMixedCrops control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.Management.gvCrops">
+	<summary>
+gvCrops control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NTTHTML5.Management.hdnOperationNumber">
+	<summary>
+hdnOperationNumber control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member>
+</members>
+</doc>

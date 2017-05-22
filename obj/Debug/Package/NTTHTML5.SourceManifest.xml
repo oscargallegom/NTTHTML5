@@ -1,0 +1,8 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<sitemanifest>
+  <IisApp path="E:\Borrar\NTTHTML5_02222016\obj\Debug\Package\PackageTmp" managedRuntimeVersion="v4.0" />
+  <setAcl path="E:\Borrar\NTTHTML5_02222016\obj\Debug\Package\PackageTmp" setAclResourceType="Directory" />
+  <setAcl path="E:\Borrar\NTTHTML5_02222016\obj\Debug\Package\PackageTmp" setAclUser="anonymousAuthenticationUser" setAclResourceType="Directory" />
+  <setAcl path="E:\Borrar\NTTHTML5_02222016\obj\Debug\Package\PackageTmp\App_Data" setAclResourceType="Directory" setAclAccess="Write" />
+  <dbFullSql path="E:\Borrar\NTTHTML5_02222016\obj\Debug\AutoScripts\SSURGO_SOILDBConnectionString-Deployment_SchemaOnly.sql" Transacted="True" />
+</sitemanifest>

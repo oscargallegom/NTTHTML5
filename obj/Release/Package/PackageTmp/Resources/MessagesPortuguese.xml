@@ -1,0 +1,182 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<root>
+   <Errors>Ocorreu um erro! Por favor corrija o problema e tente novamente. erro--></Errors>
+   <FieldArea>Área da parcela inferior ou igual a 0</FieldArea>
+   <FieldName>Parcela sem nome</FieldName>
+   <ProjectOpened>o projeto foi aberto com sucesso</ProjectOpened>
+   <ProjectSaved>o projeto foi salvado com sucesso</ProjectSaved>
+   <OptionCanceled>Opção Cancelada</OptionCanceled>
+   <ProjectClosed>O projeto foi cerrado com sucesso</ProjectClosed>
+   <FieldNoFields>Não tem parcelas neste projeto. você deve adicionar pelo menos uma parcela. Por favor adicione una parcela para continuar</FieldNoFields>
+   <InformationBeingSaved>Por favor espere até que a informação é salvada . . . . . .!</InformationBeingSaved>  
+   <InformationSaved>A informação foi salvada</InformationSaved>
+   <InformationNoSaved>Informação não Salvada</InformationNoSaved>
+   <LayerNoLayers>O solo selecionado não tem capas</LayerNoLayers>
+   <LocationMedthodSelected>Método de localização selecionando</LocationMedthodSelected>
+   <LocationNoMethod>Por favor selecione o método de localização e entre a informação precisada para salvar e continuar.</LocationNoMethod>
+   <LocationUserInput>Por favor entre uma descrição de localização para identificar a localização do projeto.</LocationUserInput>
+   <ManagementNoScenarios>Por favor crie um cenário antes de adicionar um sistema de cultivo ou bmp</ManagementNoScenarios>
+   <ProjectBeingCreated>O projeto está sendo criado. Por favor espere . . . . .!</ProjectBeingCreated>
+   <ProjectCreated>O projeto foi criado com sucesso</ProjectCreated>
+   <ProjectCreationCanceled>A criação do projeto foi cancelada</ProjectCreationCanceled>
+   <ProjectNotCreated>Por favor crie ou abra um projeto para salvarlo e continuar a página de localização</ProjectNotCreated>
+   <ProjectNotSaved>O projeto não foi criado ou salvado</ProjectNotSaved>
+   <RecordAdded>O registro foi adicionado</RecordAdded>
+   <RecordDeleted>Os registros selecionados foram excluídos com sucesso</RecordDeleted>
+   <SoilAdding>O solo está sendo adicionado. Por favor espere . . . .!</SoilAdding>
+   <SoilFieldSelected>Nenhuma parcela foi selecionada da lista. Por favor selecione a parcela e precione o botão "Adicionar"</SoilFieldSelected>
+   <SoilNoSoils>Não existen solos para este parcela. Você deve adicionar pelo menos um solo a cada parcela para continuar</SoilNoSoils>  
+   <SoilPercentages>O percentagem total dos solos é 0% o mais do que 100%. Por favor revise os percentagems e corrija os problemas para continuar</SoilPercentages>
+   <SoilSelected>Não tem um solo selecionado da lista. Por favor selecione um solo e precione o botão "Adicionar Solo" para continuar</SoilSelected>
+   <SoilSSA>Os solos do área de estudio están sendo presentados</SoilSSA>    
+   <SoilSurveyAreaSelected>O área de estudio selecionada não tem solos</SoilSurveyAreaSelected>
+   <WeatherMethodNoSelected>Por favor selecione a forma em que a informação do clima será carregado</WeatherMethodNoSelected>
+   <WeatherMethodSelected>Método selecionado para a informação del clima</WeatherMethodSelected>
+   <WeatherNotSaved>O clima não foi selecionado/salvado. Por favor regresse a página do clima e selecione ou suba a informação do clima, depois selecione salvar e continuar.</WeatherNotSaved> 
+   <WeatherUploadCanceled>A carragada do clima foi cancelada</WeatherUploadCanceled>
+   <WeatherUploaded>a informação do clima foi carragada com sucesso</WeatherUploaded>
+   <WrongValue>O valor está incorreto</WrongValue>
+   <ProjectNoName>Por favor entre o nome do projeto</ProjectNoName>
+   <SimulationNoFieldNoScenario>não tem nenhum parcela ou cenário selecionado</SimulationNoFieldNoScenario>  
+   <SimulationNoSubproject>Não tem nenhum subprojeto selecionado</SimulationNoSubproject>
+   <EmailMessage>Correio Electrónico foi enviado com sucesso</EmailMessage>
+   <ScenarioExist>Este cenário já foi criado</ScenarioExist>
+   <ScenarioName>Please enter scenario name</ScenarioName>
+   <SubprojectExist>Este subprojecto já foi criado</SubprojectExist>
+   <TryAgain>Por favor revice a informação entrada, corriga o problema e tente novamente</TryAgain> 
+   <NumericValue>O valor deve ser numérico</NumericValue>
+   <InitialYear>Ano inicial deve ser menor ou igual ao valor inicial da informação do clima mais 5 anos e menor que o Ano final</InitialYear>
+   <FinalYear>Ano final deve ser menor ou igual ao ano final de la informação do clima e mayor que o ano inicial</FinalYear>
+   <ChangeValue>Por favor cambie o valor</ChangeValue>
+   <Warning>Advertência</Warning>
+   <FilesCreation>Ocorreu um erro criando o projeto. Por favor cerre e tente novamente.</FilesCreation>
+   <StateNoAvailable>O estado selecionado não está ativo neste momento.</StateNoAvailable>
+   <Field_ScenarioSelected>A Parcela/cenário já foi selecionada</Field_ScenarioSelected>
+   <SubprojectSelected>O subprojeto já foi selecionado</SubprojectSelected>
+   <SaveCoordinatesError>erro salvando as coordenadas. Por favor tente novamente</SaveCoordinatesError>
+   <!--New Messages-->
+   <YearsOfWeatherInformation>Anos de informação do Clima - Desde First até Second</YearsOfWeatherInformation>
+   <SimulatedPeriodMessage>O período de simulação não pode ser cambiado. Período de simulação desde First até Second</SimulatedPeriodMessage>
+   <SimulationPeriod>Período de simulação desde First até Second</SimulationPeriod>
+   <SoilError>Não tem parcelas neste projeto ou não tem solos nesta parcela. Por favor revise e tente novamente</SoilError>
+   <CroppingSystemMessage>Por favor selecione o sistema de cultivo e o arado e depois precione botão carragar</CroppingSystemMessage>
+   <ValueParam>O valor deve ser mayor ou igual a 0</ValueParam> 
+   <WaitTimeMessage>Você há estado aqui por cerca de First minutos. Se há terminado, precione enviar, se não, precione Aceptar se quer continuar sin salvar os cambios, precione cancelar e selecione a siguinte página da pestaña do menu</WaitTimeMessage>
+   <NoParmValues>Não tem valores o parâmetros devolvido</NoParmValues>
+   <NO3Message>NO3 não deve ser mayor que 1</NO3Message>
+   <NO4Message>PO4 não deve ser mayor que 1</NO4Message>
+   <OrgNMessage>N Orgânico não deve ser mayor que 1</OrgNMessage>
+   <OrgPMessage>P Orgânico não deve ser mayor que 1</OrgPMessage>
+  <TileDrainDepthMsg>A profundidade do tubo de drenagem deve ser numérico enter First-Second(%). Por favor cambie o valor</TileDrainDepthMsg>
+  <PondFractionMsg>A fração do lago deve ser numérico entre First-Second. Por favor cambie o valor</PondFractionMsg>
+  <LandLevelingMsg>nívelamento do terreno deve ser numérico entre First-Second(%). Por favor cambie o valor</LandLevelingMsg>
+  <PadsPipesMsg>A largura da Almuadillas e tubos deve ser numérico entre First-Second. Por favor cambie o valor</PadsPipesMsg>
+  <NConcentrationMsg>A concentração de N debe ser numérico entre First-Second. Por favor cambie o valor</NConcentrationMsg>
+  <BufferWidthMsg>A largura da zona deve ser entre First-Second. Por favor cambie o valor</BufferWidthMsg>
+  <WaterWayMsg>A largura do canal de água debe ser numérico entre First-Second. Por favor cambie o valor</WaterWayMsg>
+  <DeleteScenarioQuestion>Esta seguro de excluir o cenário? </DeleteScenarioQuestion>
+  <DeleteScenarioMessage>O cenário foi excluido</DeleteScenarioMessage>
+  <SameCopyMessage>Você esta tentando de copiar operações desde o mesmo cenário. Por favor selecione um cenário diferente</SameCopyMessage>
+  <OperationsCopiedMsg>Operação copiada a parcela First e cenário Second</OperationsCopiedMsg>
+  <SafetyFactorMsg>o fator de segurança deve estar entre 0 e 1</SafetyFactorMsg>
+  
+  
+  <FilterStripMessage>deve ser adicionada uma zona de fitro quando cerramento é selecionado</FilterStripMessage>
+  <IrrigationMessage>A irrigação deve ser adicionado quando esta BPA é Selecionada</IrrigationMessage>
+  <TailWaterMessage>Você há selecionado otra Opção de almuadillas y tuberias ou el autoirrigação de tailwater. Se quer selecionar esta Opção em particular, la outra Opção será excluida. Está seguro de querr usar esta Opção?</TailWaterMessage> 
+  <AutoIrrigationCleanMsg>Autoirrigação and Autofertirrigação não são permitidas juntas, se continua a Opção Autoirrigação será excluida. quer continuar?</AutoIrrigationCleanMsg>
+  <AutoFertgationCleanMsg>Autoirrigação and Autofertirrigação não são permitidas juntas, se continua a Opção Autofertirrigação será excluida. quer continuar?</AutoFertgationCleanMsg>  
+  <FilterStripCleanMsg>Os BPA floresta ribeirinho e zona de filtro não são permitidos juntas, se continua a Opção de zona de filtro será excluida. quer continuar?</FilterStripCleanMsg>
+  <WaterwaysCleanMsg>Los BPA floresta ribeirinho e os canales de água não são permitidos juntas, se continua a Opção de canales de água será excluida. quer continuar?</WaterwaysCleanMsg>
+  <CountourBufferCleanMsg>Os BPA floresta ribeirinho y faixas de nível não são permitidos juntas, se continua a Opção de faixas de nível será excluida. quer continuar?</CountourBufferCleanMsg>
+  <FilterStripCleanMsg2>As faixas de nível e zona de filtro não são permitidos juntas, si continua a Opção de zona de filtro será excluida. quer continuar?</FilterStripCleanMsg2>
+  <RiparianForestCleanMsg>As faixas de nível and floresta ribeirinho BPAs não são permitidos juntas, se continua a Opção de floresta ribeirinho será excluida. quer continuar?</RiparianForestCleanMsg>
+  <RiparianForestCleanMsg2>As zona de filtro e floresta ribeirinho não são permitidos juntas. Se continua a Opção de floresta ribeirinho será excluida. quer continuar?</RiparianForestCleanMsg2>
+  <WaterwaysCleanMsg2>La zona de filtro y los Canales de água não são permitidos juntas. Se continua la Opção de Canales de água será excluida. quer continuar?</WaterwaysCleanMsg2>
+  <ContourBufferCleanMsg2>La zona de filtro y las Curvas de nível não são permitidos juntas. Se continua la Opção de curvas de nível será excluida. quer continuar?</ContourBufferCleanMsg2>
+  <RiparianForestCleanMsg3>floresta ribeirinho y Canales de água não são permitidos juntas. Se continua la Opção de floresta ribeirinho será excluida. quer continuar?</RiparianForestCleanMsg3>
+  <FilterStripCleanMsg3>Os canales de água e la zona de filtro não são permitidos juntas. Se continua la Opção zona de filtro será excluida. quer continuar?</FilterStripCleanMsg3>
+  <SubprojectError>Não tem subprojetos. Por favor crie um subprojeto y depois pode incluir os cenários.</SubprojectError>
+  <FieldError>A parcela selecionada já foi incluida. Não pode incluir a mesma parcela mais do que uma vez em o mesmo subprojeto</FieldError>  
+  <IncludeScenarioError>Erro incluindo o cenário </IncludeScenarioError>
+  
+  
+  <DeleteSubprojectQuestion>Esta seguro/a de querr borrar el subproyecto? </DeleteSubprojectQuestion>
+  <DeleteSubprojectMsg>El subproyecto foi borrado</DeleteSubprojectMsg>
+  <AddFieldError>erro adicionando parcela/cenário para simular. Por favor corrija cualquier problema que encuentre e intentelo de nuevo --> </AddFieldError>
+  <NoScenarioSelected>não Escenarios selecionados</NoScenarioSelected>
+  <TransferError>erro transfiriendo el archivo de control - </TransferError>
+  <SimulationWaitMsg>Por favor espere, Parcela -> First y cenário -> Second se está simulando</SimulationWaitMsg>
+  <OperationFileError>erro al crear el archivo de Operação --> </OperationFileError>
+  <ControlError>erro al transferir archivos de control - </ControlError>
+  <SoilFileError>erro al transferir archivos los solos - </SoilFileError>
+  <CalcuateEconomicsMsg>El modelo Económico esta sendo ejecutado para el escenarioEconomic is being calculated for scenario First</CalcuateEconomicsMsg>
+  <ProcessFailError>Um erro Ocurrío y el Proceso fallo. erro --> </ProcessFailError>
+  <ErrorOccuredMsg>Um erro Ocurrío y el Proceso fallo. Por favor revise la parcel y el cenário y asegurese que todo esta correcto, luego intentelo de nuevo.</ErrorOccuredMsg>
+  <SimulationCompleteMsg>La Parcela First y el cenário Second fueron ejecutados satisfactóriamente</SimulationCompleteMsg>
+  <SelectFieldMsg>Por favor selecione la parcela, el primer cenário, y el segundo cenário para poder continuar.</SelectFieldMsg>
+  <SelectSubprojectMsg>Por favor selecione el primer projeto, y el segundo projeto para poder continuar.</SelectSubprojectMsg>
+  <DnDcFilesError>erro al crear archivos DnDc - </DnDcFilesError>
+  <DownloadFolder>Folder First Descargados</DownloadFolder>
+  <ZipFolder>Folder First não Comprimido - Second</ZipFolder>
+  <ResultsError>erro ejecutando APEX o el modelo Económico. Por favor corrija cualquier problema que encuentre e intentelo de nuevo --> </ResultsError>
+  <DeleteScenarioError>erro al eliminar cenário </DeleteScenarioError>
+  <WaterStressMessage>água Factor de estrés debe ser un valor numérico entre la First - Second. Cambie el valor</WaterStressMessage>
+  <EfficiencyMessage>Eficiencia debe ser un valor numérico entre la First - Second. Cambie el valor.</EfficiencyMessage>
+  <FrequencyMessage>Frecuencia debe ser un valor numérico entre First - Second. Cambie el valor.</FrequencyMessage>
+  <ApplicationMessage>Máximo para una aplicación debe ser un valor numérico entre First - Second. Cambie el valor.</ApplicationMessage>
+  <DaysMessage>Días debe ser un valor numérico entre First - Second. Cambie el valor.</DaysMessage>
+  <AnimalsMessage>Los animales deben ser numérico entre la First - Second. Cambie el valor.</AnimalsMessage>
+  <HoursMessage>Horas debe ser numérico entre First - Second. Cambie el valor.</HoursMessage>
+  <DryManureMessage>Estiércol seco debe ser un valor numérico entre First - Second. Cambie el valor.</DryManureMessage>
+  <NO3NumericMessage>NO3 debe ser un valor numérico entre First - Second. Cambie el valor.</NO3NumericMessage>
+  <PO3NumericMessage>PO3 debe ser un valor numérico entre First - Second. Cambie el valor.</PO3NumericMessage>
+  <OrgNNumericMessage>Org debe ser un valor numérico entre First - Second. Cambie el valor.</OrgNNumericMessage>
+  <OrgPNumericMessage>Org P debe ser un valor numérico entre First - Second. Cambie el valor.</OrgPNumericMessage>
+  <WaterStressFactorMsg>água Factor de estrés debe ser un valor numérico entre 0-1. Cambie el valor.</WaterStressFactorMsg>
+  <WLAreaMsg>Área del humedal </WLAreaMsg>
+  <FSAreaMsg>Área de la zona de filtración </FSAreaMsg>
+  <FSWidthMsg>El ancho de la zona de filtración </FSWidthMsg>
+  <FSEffMsg>Eficiancia de la zona de filtración </FSEffMsg>
+  <FSslopeRatioMsg>La proporción de la inclinación de la zona de filtración </FSslopeRatioMsg>
+  <RFWidthMsg>floresta ripario ancho</RFWidthMsg>
+  <RFAreaMsg>El Área del floresta ribereño </RFAreaMsg>
+  <RFEffMsg>La efficiancia del floresta ribereño </RFEffMsg>
+  <RFslopeRatioMsg>La proporción de la inclinació del floresta ribereño </RFslopeRatioMsg>
+  <RFGrassFieldPortionMsg>La proporción de la zona del pasto del floresta ribereño </RFGrassFieldPortionMsg>
+  <SoilAdded>Soil Added Successfully</SoilAdded>
+  <DeleteRow>Do you want to delete this row?</DeleteRow>
+  <NoSubmit>Esta tratando de salver pero no a dado presionado el butón enviar. Por favor selecciones el botón enviar y luego presione el botón Salvar y Continuar.</NoSubmit>
+  <LongitudeError>Longitude is not in the USA</LongitudeError>
+  <LatitudeError>Longitude is not in the USA</LatitudeError>
+  <!--ToolTip hints-->
+  <ttWaterStressFactor>Factor de Estrés Agua riego automático para activar (0-1)</ttWaterStressFactor>
+  <ttEff>Fracción de cada riego aplicación que no se pierdan a la escorrentía</ttEff>
+  <ttAIFreq>Número de días entre eventos de riego automático</ttAIFreq>
+  <ttMaxSingleApp>Cantidad máxima de riego para cada aplicación riego automático en pulgadas</ttMaxSingleApp>
+  <ttSafetyFactor>Factor de Seguridad expresar como fracción</ttSafetyFactor>
+  <ttAIResArea>Zona de reseervoir en el agua de riego en acres</ttAIResArea>
+  <ttNConc>Concentración de Nitrógeno en fertirrigación (ppm)</ttNConc>
+  <ttDepth>Mosaico de drenaje en profundidad pies</ttDepth>
+  <ttWidth>Las pastillas y Ancho en pies Tubos</ttWidth>
+  <ttSides>Número de caras de tubos (1 cara a 4 caras)</ttSides>
+  <ttResArea>Área del embalse en acres</ttResArea>
+  <ttWLArea>Superficie de los humedales en acres</ttWLArea>
+  <ttPNDF>Fracción de zona controlada por estanque de 0.01 a 1.00</ttPNDF>
+  <ttSFAnimals>Número de animales en el flujo</ttSFAnimals>
+  <ttSFDays>Días de un año los animales están en la secuencia (0, 365)</ttSFDays>
+  <ttSFHours>Horas de un día, los animales se encuentran en la secuencia (0-24)</ttSFHours>
+  <ttSFManure>Producir estiércol seco por día por unidad animal en libras</ttSFManure>
+  <ttSFNO3>NO3 fracción en el estiércol</ttSFNO3>
+  <ttSFPO4>PO4 fracción en el estiércol</ttSFPO4>
+  <ttSFOrgN>N fracción orgánica en el estiércol</ttSFOrgN>
+  <ttSFOrgP>p fracción orgánica en el estiércol</ttSFOrgP>
+  <ttRFEff>Eficiencia de amortiguación en la fracción 0 a 1</ttRFEff>
+  <ttRFArea>Área de la influencia en acres (opcional).  Si el área no se ha introducido, se calculó a partir de la superficie del campo y ancho del área de influencia</ttRFArea>
+  <ttRFWidth>Ancho del área de influencia de los pies</ttRFWidth>
+  <ttRFGrassFieldPortion>Fracción de césped en la zona de amortiguamiento total</ttRFGrassFieldPortion>
+  <ttRFSlopeRatio>Búfer relación pendiente pendiente de las tierras altas (0,25 a 1,00 )</ttRFSlopeRatio>
+  <ttCBBWidth>La anchura de la banda de los pies</ttCBBWidth>
+  <ttCBCWidth>Anchura de la banda principal de cultivo en pies</ttCBCWidth>
+  <ttLLSlopeRed>% en que la pendiente se va a reducir</ttLLSlopeRed>  
+</root>

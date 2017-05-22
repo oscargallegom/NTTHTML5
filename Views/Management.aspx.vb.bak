@@ -1,0 +1,2198 @@
+﻿
+Public Class Management
+    Inherits System.Web.UI.Page
+    Private dc As New NTTDBDataContext
+    'Controls used in sitemaster page
+    Private lblMessage As Label
+    Private imgIcon As Image
+    Private _crops1 As New List(Of CropsData)
+    Private msgs As String = String.Empty
+
+    Protected Sub Page_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
+        lblMessage = New Label
+        lblMessage = CType(Master.FindControl("lblMessage"), Label)
+        imgIcon = New Image
+        imgIcon = CType(Master.FindControl("imgIcon"), Image)
+
+        Select Case Page.Request.Params("__EVENTARGUMENT")
+            Case "English"
+                strLanguage = "English"
+            Case "Español"
+                strLanguage = "Español"
+        End Select
+
+        openXMLLanguagesFile()
+
+        ChangeLanguageContent()
+
+        Select Case True
+            Case Not Page.Request.Params("__EVENTTARGET") Is Nothing AndAlso Page.Request.Params("__EVENTTARGET").Contains("btnSaveCropRotation") AndAlso ctlSave.Value = "Yes"
+                SaveOperations()        'save operations before save whole rotation
+                btnSaveCropRotation_Click(btnSaveCropRotation, New System.EventArgs) 'Save whole rotation to a file
+            Case Not Page.Request.Params("__EVENTTARGET") Is Nothing AndAlso Page.Request.Params("__EVENTTARGET").Contains("btnSaveOperations") AndAlso ctlSave.Value = "Yes"
+                SaveOperations() 'Save Operations
+            Case Not Page.Request.Params("__EVENTTARGET") Is Nothing AndAlso Page.Request.Params("__EVENTTARGET").Contains("Continue")
+                btnSaveContinue_Click() 'Save BMPs
+            Case Not Page.Request.Params("__EVENTTARGET") Is Nothing AndAlso Page.Request.Params("__EVENTTARGET").Contains("btnAddNewScenario")
+                btnAddNewScenario_Click()
+            Case Not Page.Request.Params("__EVENTTARGET") Is Nothing AndAlso Page.Request.Params("__EVENTTARGET").Contains("btnDeleteScenario")
+                btnDeleteScenario_Click()
+        End Select
+
+
+        If Not IsPostBack Then
+            LoadCroppingSystem()
+            LoadFields(ddlFields)
+            LoadFields(ddlFromField)
+            LoadOper()
+            LoadCrops(True)
+            LoadAnimalUnits()
+            LoadOpTypes()
+            LoadDays()
+            ddlDays.DataTextField = "name"
+            ddlDays.DataValueField = "code"
+            ddlDays.DataSource = _days
+            ddlDays.DataBind()
+            LoadMonths()
+            ddlMonths.DataTextField = "code"
+            ddlMonths.DataValueField = "code"
+            ddlMonths.DataSource = _months
+            ddlMonths.DataBind()
+            LoadYears()
+            ddlYears.DataTextField = "name"
+            ddlYears.DataValueField = "code"
+            ddlYears.DataSource = _years
+            ddlYears.DataBind()
+            InitializeDDLs()
+            ExpandTreeView(999)
+            'LoadScenarios(ddlScenarios)
+            'LoadScenarios(ddlFromScenario)
+            'LoadAllScenarios(ddlAllScenario)
+            ddlFields_SelectedIndexChanged(ddlFields, New EventArgs)
+        Else
+            currentFieldNumber = ddlFields.SelectedIndex
+            currentScenarioNumber = ddlScenarios.SelectedIndex
+        End If
+        LoadCrops1()
+        If _fieldsInfo1(currentFieldNumber)._scenariosInfo.Count <= 0 Then
+            tvMain.Style.Item("display") = "none"
+        Else
+            tvMain.Style.Item("display") = ""
+        End If
+    End Sub
+
+    Private Sub ExpandTreeView(bmpNode As UShort)
+        If bmpNode = 999 Then        'initial status fo tree view
+            tvMain.Nodes(0).ExpandAll()
+            tvMain.Nodes(1).CollapseAll()
+        Else
+            tvMain.Nodes(1).Expand() : tvMain.Nodes(1).ChildNodes(bmpNode).Expanded = True
+        End If
+    End Sub
+
+    Private Sub LoadCroppingSystem()
+        If _croppingSystem.Count <= 0 Then
+            Dim cs = (From CropMatrixTypical In dc.CropMatrixTypicals Where CropMatrixTypical.StateAbrev = _startInfo.StateAbrev Order By CropMatrixTypical.CMCrop Select CropMatrixTypical)
+            _croppingSystem.Clear()
+            For Each c In cs
+                _croppingSystem.Add(New CroppingSystem With {.Name = c.CMCrop, .Code = c.CMVar12, .Till = c.CMTillage})
+            Next
+        End If
+
+        If ddlCroppingSystemsAll.Items.Count <= 0 Then
+            ddlCroppingSystemsAll.DataTextField = "name"
+            ddlCroppingSystemsAll.DataValueField = "code"
+            ddlCroppingSystemsAll.DataSource = _croppingSystem
+            ddlCroppingSystemsAll.DataBind()
+            ddlCroppingSystemsAll.SelectedIndex = 0
+            ddlTillageAll.DataTextField = "till"
+            ddlTillageAll.DataValueField = "name"
+            ddlTillageAll.DataSource = _croppingSystem
+            ddlTillageAll.DataBind()
+            ddlTillageAll.SelectedIndex = 0
+        End If
+    End Sub
+
+    Private Sub LoadOpTypes()
+        Dim tills = (From OpType In dc.OpTypes Where OpType.Status = True Order By OpType.Name Select OpType)
+        Dim codeName As String = String.Empty
+        'clear list
+        _opTypes.Clear()
+
+        For Each c In tills
+            Select Case strLanguage
+                Case english
+                    codeName = c.EQP.Trim
+                Case spanish
+                    codeName = c.SpanishName
+                Case portuguese
+                    codeName = c.PortugueseName
+            End Select
+            _opTypes.Add(New AnimalUnitsData With {.Number = c.Code & "," & c.Abbrevation, .DndcCode = c.DNDC_code, .Name = codeName, .Abbreviation = c.Abbrevation, .ConversionUnit = c.ConversionUnit, .DryManure = c.DryManure, .No3 = c.NO3N, .Po4 = c.PO4P, .OrgN = c.OrgN, .OrgP = c.OrgP})
+        Next
+        _opTypes.Sort(New sortByCodeName())  'sort by name all of the codes before adding operations that should be as they are in the database.
+        _opTypes.Insert(0, New AnimalUnitsData With {.Number = 0 & ",*", .Name = selectOne, .Abbreviation = "*"})
+
+        ddlTypes.DataValueField = "number"
+        ddlTypes.DataTextField = "name"
+        ddlTypes.DataSource = _opTypes
+        ddlTypes.DataBind()
+    End Sub
+
+    Private Sub LoadOper()
+        Dim opers = (From APEXOper In dc.Operations Order By APEXOper.Code Select APEXOper)
+        Dim itemName As String = String.Empty
+        _operations.Clear()
+
+        _operations.Add(New CodeAndName With {.Code = 0, .Name = "Select One", .Abbreviation = "Opers"})
+        For Each c In opers
+            Select Case strLanguage
+                Case english
+                    itemName = c.Name
+                Case spanish
+                    itemName = c.NameSpanish
+                Case portuguese
+                    itemName = c.NamePortuguese
+            End Select
+            _operations.Add(New CodeAndName With {.Code = c.Code, .Name = itemName, .Abbreviation = c.Abbreviation})
+        Next
+
+        ddlOpers.DataValueField = "code"
+        ddlOpers.DataTextField = "name"
+        ddlOpers.DataSource = _operations
+        ddlOpers.DataBind()
+
+    End Sub
+
+    Private Sub LoadAnimalUnits()
+        Dim animalUnits = (From AnimalUnit In dc.AnimalUnits Select AnimalUnit Where AnimalUnit.Status = True)
+        'clear animalunits list
+        _animals.Clear()
+
+        Dim animalName As String = String.Empty
+        For Each c In animalUnits
+            Select Case strLanguage
+                Case english
+                    animalName = c.AnimalType.Trim
+                Case spanish
+                    animalName = c.AnimalSpanish.Trim()
+                Case portuguese
+                    animalName = c.AnimalPortuguese.Trim()
+            End Select
+
+            _animals.Add(New AnimalUnitsData With {.Number = c.AnimalCode, .Name = animalName, .ConversionUnit = c.ConversionUnit, .No3 = c.NO3N, .OrgN = c.OrgN, .OrgP = c.OrgP, .Po4 = c.PO4P, .DryManure = c.DryManure})
+        Next
+
+        _animals.Sort(New sortByCodeName())
+        _animals.Insert(0, New AnimalUnitsData With {.Name = selectOne, .Number = 0, .ConversionUnit = 0, .No3 = 0, .OrgN = 0, .OrgP = 0, .Po4 = 0, .DryManure = 0})
+    End Sub
+
+    Public Sub LoadCrops(loadDDL As Boolean)
+        Dim crops = (From APEXCrop In dc.APEXCROPs Join Crop_Event In dc.Crops_Events On Crop_Event.APEXCrop Equals APEXCrop.CropNumber Order By APEXCrop.CropName Where APEXCrop.StateAbrev = "**" And Crop_Event.TEStateCode = _startInfo.StateAbrev Select APEXCrop)
+        'clear crops
+        _crops.Clear()
+        _bufferCrops.Clear()
+
+        If Not crops.Any Then
+            crops = (From APEXCrop In dc.APEXCROPs Join Crop_Event In dc.Crops_Events On Crop_Event.APEXCrop Equals APEXCrop.CropNumber Order By APEXCrop.CropName Where APEXCrop.StateAbrev = "**" And Crop_Event.TEStateCode = "ALL" Select APEXCrop)
+        End If
+
+        If _startInfo.StateAbrev = "User" Then
+            crops = (From APEXCrop In dc.APEXCROPs Order By APEXCrop.CropName Where APEXCrop.StateAbrev = "**" Select APEXCrop)
+        End If
+        Dim cropName As String = String.Empty
+        For Each c In crops
+            Select Case strLanguage
+                Case english
+                    cropName = c.CropName.Trim
+                Case spanish
+                    cropName = c.cropNameSpanish.Trim()
+                Case portuguese
+                    cropName = c.cropNamePortuguese.Trim()
+            End Select
+
+            _crops.Add(New CropsData With {.Number = c.CropNumber, .dndc_Code = c.DNDC_Code, .Name = cropName, .Code = c.CropCode.Trim, .LuNumber = c.LUNumber, .HarvestCode = c.HarvestCode, .PlantPopulation = c.PlantPopulationAcres, .CN_A = c.A, .CN_B = c.B, .CN_C = c.C, .CN_D = c.D, .FilterStrip = c.FilterStrip, .Itil = c.itil, .To1 = c.to1, .Tb = c.tb, .Dd = c.dd, .Daym = c.daym, _
+                                          .YieldUnit = c.YieldUnit, .ConversionFactor = c.ConversionFactor, .DryMatter = c.DryMatter, .additional = False})
+        Next
+
+        crops = (From APEXCrop In dc.APEXCROPs Order By APEXCrop.CropName Where (APEXCrop.StateAbrev = "**" And APEXCrop.FilterStrip Like "*FS*") Or APEXCrop.CropNumber = cropRoad Or (APEXCrop.StateAbrev = "**" And APEXCrop.LUNumber = 28) Select APEXCrop)  'select all of the grass for buffers regardless of the state. 
+
+        For Each c In crops
+            Select Case strLanguage
+                Case english
+                    cropName = c.CropName.Trim
+                Case spanish
+                    cropName = c.cropNameSpanish.Trim()
+                Case portuguese
+                    cropName = c.cropNamePortuguese.Trim()
+            End Select
+
+            'If c.CropNumber = cropRoad Then
+            _crops.Add(New CropsData With {.Number = c.CropNumber, .dndc_Code = c.DNDC_Code, .Name = cropName, .Code = c.CropCode.Trim, .LuNumber = c.LUNumber, .HarvestCode = c.HarvestCode, .PlantPopulation = c.PlantPopulationAcres, .CN_A = c.A, .CN_B = c.B, .CN_C = c.C, .CN_D = c.D, .FilterStrip = c.FilterStrip, .Itil = c.itil, .To1 = c.to1, .Tb = c.tb, .Dd = c.dd, .Daym = c.daym, _
+                                          .YieldUnit = c.YieldUnit, .ConversionFactor = c.ConversionFactor, .DryMatter = c.DryMatter, .additional = True})
+            'Else
+            '    _crops.Add(New CropsData With {.Number = c.CropNumber, .dndc_Code = c.DNDC_Code, .Name = cropName, .Code = c.CropCode.Trim, .LuNumber = c.LUNumber, .HarvestCode = c.HarvestCode, .PlantPopulation = c.PlantPopulationAcres, .CN_A = c.A, .CN_B = c.B, .CN_C = c.C, .CN_D = c.D, .FilterStrip = "XX", .Itil = c.itil, .To1 = c.to1, .Tb = c.tb, .Dd = c.dd, .Daym = c.daym, _
+            '                                  .YieldUnit = c.YieldUnit, .ConversionFactor = c.ConversionFactor, .DryMatter = c.DryMatter, .additional = True})
+            'End If
+            If Not c.FilterStrip Is Nothing AndAlso c.FilterStrip.Contains("FS") Then _bufferCrops.Add(New CropsData With {.Number = c.CropNumber, .dndc_Code = c.DNDC_Code, .Name = cropName, .Code = c.CropCode.Trim, .LuNumber = c.LUNumber, .HarvestCode = c.HarvestCode, .PlantPopulation = c.PlantPopulationAcres, .CN_A = c.A, .CN_B = c.B, .CN_C = c.C, .CN_D = c.D, .FilterStrip = c.FilterStrip, .Itil = c.itil, .To1 = c.to1, .Tb = c.tb, .Dd = c.dd, .Daym = c.daym, _
+                                              .YieldUnit = c.YieldUnit, .ConversionFactor = c.ConversionFactor, .DryMatter = c.DryMatter, .additional = True})
+
+        Next
+        _bufferCrops.Sort(New sortByName())
+        _bufferCrops.Insert(0, New CropsData With {.Name = selectOne, .Number = 0})
+        _crops.Sort(New sortByName())
+    End Sub
+
+    Private Sub ChangeLanguageContent()
+        tvMain.Nodes.Item(0).Text = cntDoc.Descendants("BMPCroppingSystemHeading").Value
+        tvMain.Nodes.Item(0).ChildNodes.Item(0).Text = cntDoc.Descendants("SelectCroppingSystemHeading").Value
+        tvMain.Nodes.Item(0).ChildNodes.Item(1).Text = cntDoc.Descendants("UploadSavedCropRotation").Value
+        tvMain.Nodes.Item(0).ChildNodes.Item(2).Text = cntDoc.Descendants("CopyCropRotation").Value
+        tvMain.Nodes.Item(0).ChildNodes.Item(3).Text = cntDoc.Descendants("SaveCurrentCropRotation").Value
+        tvMain.Nodes.Item(0).ChildNodes.Item(4).Text = cntDoc.Descendants("ManagementOperation").Value
+        tvMain.Nodes.Item(1).Text = cntDoc.Descendants("BestManagementPracticesHeading").Value
+        tvMain.Nodes.Item(1).ChildNodes.Item(0).Text = cntDoc.Descendants("IrrigacionFertigationHeading").Value
+        tvMain.Nodes.Item(1).ChildNodes.Item(0).ChildNodes.Item(0).Text = cntDoc.Descendants("AutoIrrigationHeading").Value
+        tvMain.Nodes.Item(1).ChildNodes.Item(0).ChildNodes.Item(1).Text = cntDoc.Descendants("AutoFertigationHeading").Value
+        tvMain.Nodes.Item(1).ChildNodes.Item(1).Text = cntDoc.Descendants("DrainageHeading").Value
+        tvMain.Nodes.Item(1).ChildNodes.Item(1).ChildNodes.Item(0).Text = cntDoc.Descendants("TileDrainHeading").Value
+        tvMain.Nodes.Item(1).ChildNodes.Item(1).ChildNodes.Item(1).Text = cntDoc.Descendants("PPNoImprovementHeading").Value
+        tvMain.Nodes.Item(1).ChildNodes.Item(1).ChildNodes.Item(2).Text = cntDoc.Descendants("PPTwoStageDitchHeading").Value
+        tvMain.Nodes.Item(1).ChildNodes.Item(1).ChildNodes.Item(3).Text = cntDoc.Descendants("PPDitchReservoirHeading").Value
+        tvMain.Nodes.Item(1).ChildNodes.Item(1).ChildNodes.Item(4).Text = cntDoc.Descendants("PPTailwaterHeading").Value
+        tvMain.Nodes.Item(1).ChildNodes.Item(2).Text = cntDoc.Descendants("WetlandsPondsHeading").Value
+        tvMain.Nodes.Item(1).ChildNodes.Item(2).ChildNodes.Item(0).Text = cntDoc.Descendants("WetlandsHeading").Value
+        tvMain.Nodes.Item(1).ChildNodes.Item(2).ChildNodes.Item(1).Text = cntDoc.Descendants("PondsHeading").Value
+        tvMain.Nodes.Item(1).ChildNodes.Item(3).Text = cntDoc.Descendants("StreamAndRiparianHeading").Value
+        tvMain.Nodes.Item(1).ChildNodes.Item(3).ChildNodes.Item(0).Text = cntDoc.Descendants("StreamFencingHeading").Value
+        tvMain.Nodes.Item(1).ChildNodes.Item(3).ChildNodes.Item(1).Text = cntDoc.Descendants("StreambankStabilizationHeading").Value
+        tvMain.Nodes.Item(1).ChildNodes.Item(3).ChildNodes.Item(2).Text = cntDoc.Descendants("RiparianForestHeading").Value
+        tvMain.Nodes.Item(1).ChildNodes.Item(3).ChildNodes.Item(3).Text = cntDoc.Descendants("FilterStripHeading").Value
+        tvMain.Nodes.Item(1).ChildNodes.Item(3).ChildNodes.Item(4).Text = cntDoc.Descendants("WaterwayHeading").Value
+        tvMain.Nodes.Item(1).ChildNodes.Item(4).Text = cntDoc.Descendants("ContourBufferHeading").Value
+        tvMain.Nodes.Item(1).ChildNodes.Item(4).ChildNodes.Item(0).Text = cntDoc.Descendants("ContourBufferHeading2").Value
+        tvMain.Nodes.Item(1).ChildNodes.Item(5).Text = cntDoc.Descendants("LandGradingManagementHeading").Value
+        tvMain.Nodes.Item(1).ChildNodes.Item(5).ChildNodes.Item(0).Text = cntDoc.Descendants("LandLevelingHeading").Value
+        tvMain.Nodes.Item(1).ChildNodes.Item(5).ChildNodes.Item(1).Text = cntDoc.Descendants("TerraceSystemHeading").Value
+        tvMain.Nodes.Item(1).ChildNodes.Item(5).ChildNodes.Item(2).Text = cntDoc.Descendants("LimingHeading").Value
+        tvMain.Nodes.Item(1).ChildNodes.Item(6).Text = cntDoc.Descendants("Roads").Value
+        tvMain.Nodes.Item(1).ChildNodes.Item(6).ChildNodes.Item(0).Text = cntDoc.Descendants("AsfaltOrConcret").Value
+        tvMain.Nodes.Item(1).ChildNodes.Item(6).ChildNodes.Item(1).Text = cntDoc.Descendants("GrassCover").Value
+        tvMain.Nodes.Item(1).ChildNodes.Item(6).ChildNodes.Item(2).Text = cntDoc.Descendants("SlopeAdjustment").Value
+        tvMain.Nodes.Item(1).ChildNodes.Item(6).ChildNodes.Item(3).Text = cntDoc.Descendants("Shading").Value
+
+        btnSaveOperations.Text = cntDoc.Descendants("SaveAndClose").Value
+        lblFields.Value = cntDoc.Descendants("SelectFieldHeading").Value
+        lblScenarios.Value = cntDoc.Descendants("SelectScenarioHeading").Value
+        btnDeleteScenario.Text = cntDoc.Descendants("DeleteScenario").Value
+        btnAddNewScenario.Text = cntDoc.Descendants("AddNewScenario").Value
+        btnUpload.Text = cntDoc.Descendants("SelectScenarioHeading").Value
+        lblTillage.Value = cntDoc.Descendants("SelectTillageHeading").Value
+        lblCroppingSystem.InnerText = cntDoc.Descendants("SelectCroppingSystemHeading").Value
+        btnUpload.Text = cntDoc.Descendants("Upload").Value
+        btnAIClear.Text = cntDoc.Descendants("Clear").Value
+        btnAFClear.Text = cntDoc.Descendants("Clear").Value
+        btnTDClear.Text = cntDoc.Descendants("Clear").Value
+        btnPPDEClear.Text = cntDoc.Descendants("Clear").Value
+        btnPPDSClear.Text = cntDoc.Descendants("Clear").Value
+        btnPPDSClear.Text = cntDoc.Descendants("Clear").Value
+        btnPPTWClear.Text = cntDoc.Descendants("Clear").Value
+        btnWLClear.Text = cntDoc.Descendants("Clear").Value
+        btnPNDClear.Text = cntDoc.Descendants("Clear").Value
+        btnSFClear.Text = cntDoc.Descendants("Clear").Value
+        btnSBSClear.Text = cntDoc.Descendants("Clear").Value
+        btnRFClear.Text = cntDoc.Descendants("Clear").Value
+        btnFSClear.Text = cntDoc.Descendants("Clear").Value
+        btnWWClear.Text = cntDoc.Descendants("Clear").Value
+        btnCBClear.Text = cntDoc.Descendants("Clear").Value
+        btnLLClear.Text = cntDoc.Descendants("Clear").Value
+        btnTSClear.Text = cntDoc.Descendants("Clear").Value
+        btnLMClear.Text = cntDoc.Descendants("Clear").Value
+        btnAoCClear.Text = cntDoc.Descendants("Clear").Value
+        btnGCClear.Text = cntDoc.Descendants("Clear").Value
+        btnSAClear.Text = cntDoc.Descendants("Clear").Value
+        btnSdgClear.Text = cntDoc.Descendants("Clear").Value
+        aAIHide.InnerText = cntDoc.Descendants("Hide").Value
+        aAFHide.InnerText = cntDoc.Descendants("Hide").Value
+        aTDHide.InnerText = cntDoc.Descendants("Hide").Value
+        aPPNDHide.InnerText = cntDoc.Descendants("Hide").Value
+        aPPDSHide.InnerText = cntDoc.Descendants("Hide").Value
+        aPPDEHide.InnerText = cntDoc.Descendants("Hide").Value
+        aPPTWHide.InnerText = cntDoc.Descendants("Hide").Value
+        aWLHide.InnerText = cntDoc.Descendants("Hide").Value
+        aPNDHide.InnerText = cntDoc.Descendants("Hide").Value
+        aSFHide.InnerText = cntDoc.Descendants("Hide").Value
+        aSBSHide.InnerText = cntDoc.Descendants("Hide").Value
+        aRFHide.InnerText = cntDoc.Descendants("Hide").Value
+        aFSHide.InnerText = cntDoc.Descendants("Hide").Value
+        aWWHide.InnerText = cntDoc.Descendants("Hide").Value
+        aCBHide.InnerText = cntDoc.Descendants("Hide").Value
+        aLLHide.InnerText = cntDoc.Descendants("Hide").Value
+        aTSHide.InnerText = cntDoc.Descendants("Hide").Value
+        aLMHide.InnerText = cntDoc.Descendants("Hide").Value
+        aAoCHide.InnerText = cntDoc.Descendants("Hide").Value
+        aGCHide.InnerText = cntDoc.Descendants("Hide").Value
+        aSAHide.InnerText = cntDoc.Descendants("Hide").Value
+        aSdgHide.InnerText = cntDoc.Descendants("Hide").Value
+    End Sub
+
+    'Protected Sub ddlFields_onclick()
+    '    currentFieldNumber = ddlFields.SelectedIndex
+    '    If _fieldsInfo1(currentFieldNumber)._scenariosInfo.Count > 0 Then
+    '        currentScenarioNumber = 0
+    '    Else
+    '        currentScenarioNumber = -1
+    '    End If
+    '    LoadDataScenarios()
+    '    ddlScenarios_SelectedIndexChanged(ddlScenarios, New System.EventArgs)
+    'End Sub
+
+    'Private Sub LoadDataScenarios()
+    '    LoadOperations()
+    '    LoadBMPs()
+    '    If ddlScenarios.Items.Count <= 0 Then
+    '        tvMain.Style.Item("display") = "none"
+    '    Else
+    '        tvMain.Style.Item("display") = ""
+    '    End If
+    'End Sub
+
+    Protected Sub InitializeDDLs()
+        'If _fertilizers.Count <= 0 Then mService.GetFertsAsync()
+
+        If _irrigationType.Count <= 0 Then
+            Dim irrigationType As IrrigationTypes
+            irrigationType = New IrrigationTypes
+            irrigationType.Name = cntDoc.Descendants("SelectOne").Value
+            irrigationType.Code = 0
+            _irrigationType.Add(irrigationType)
+            _irrigationType1.Add(irrigationType)
+
+            irrigationType = New IrrigationTypes
+            irrigationType.Name = cntDoc.Descendants("Sprinkle").Value
+            irrigationType.Code = 1
+            _irrigationType.Add(irrigationType)
+            _irrigationType1.Add(irrigationType)
+
+            irrigationType = New IrrigationTypes
+            irrigationType.Name = cntDoc.Descendants("FurrowFlood").Value
+            irrigationType.Code = 2
+            _irrigationType.Add(irrigationType)
+            _irrigationType1.Add(irrigationType)
+
+            irrigationType = New IrrigationTypes
+            irrigationType.Name = cntDoc.Descendants("Drip").Value
+            irrigationType.Code = 3
+            _irrigationType.Add(irrigationType)
+            _irrigationType1.Add(irrigationType)
+
+            irrigationType = New IrrigationTypes
+            irrigationType.Name = cntDoc.Descendants("FurrowDiking").Value
+            irrigationType.Code = 7
+            _irrigationType.Add(irrigationType)
+            _irrigationType1.Add(irrigationType)
+
+            irrigationType = New IrrigationTypes
+            irrigationType.Name = cntDoc.Descendants("PPTailwaterHeading").Value
+            irrigationType.Code = 8
+            _irrigationType.Add(irrigationType)
+        End If
+
+        If ddlAIIrrigationType.Items.Count <= 0 Then
+            ddlAIIrrigationType.DataSource = _irrigationType
+            ddlAIIrrigationType.DataValueField = "Code"
+            ddlAIIrrigationType.DataTextField = "Name"
+            ddlAIIrrigationType.DataBind()
+        End If
+
+        If ddlAFIrrigationType.Items.Count <= 0 Then
+            ddlAFIrrigationType.DataSource = _irrigationType
+            ddlAFIrrigationType.DataValueField = "Code"
+            ddlAFIrrigationType.DataTextField = "Name"
+            ddlAFIrrigationType.DataBind()
+        End If
+
+        If ddlSdgCrop.Items.Count <= 0 Then
+            ddlSdgCrop.DataSource = _bufferCrops
+            ddlSdgCrop.DataValueField = "Number"
+            ddlSdgCrop.DataTextField = "Name"
+            ddlSdgCrop.DataBind()
+        End If
+
+        If ddlWWType.Items.Count <= 0 Then
+            ddlWWType.DataSource = _bufferCrops
+            ddlWWType.DataValueField = "Number"
+            ddlWWType.DataTextField = "Name"
+            ddlWWType.DataBind()
+        End If
+        If ddlCBType.Items.Count <= 0 Then
+            ddlCBType.DataSource = _bufferCrops
+            ddlCBType.DataValueField = "Number"
+            ddlCBType.DataTextField = "Name"
+            ddlCBType.DataBind()
+        End If
+        If ddlFSType.Items.Count <= 0 Then
+            ddlFSType.DataSource = _bufferCrops
+            ddlFSType.DataValueField = "Number"
+            ddlFSType.DataTextField = "Name"
+            ddlFSType.DataBind()
+        End If
+        If ddlSFType.Items.Count <= 0 Then
+            ddlSFType.DataSource = _animals
+            ddlSFType.DataValueField = "Number"
+            ddlSFType.DataTextField = "Name"
+            ddlSFType.DataBind()
+        End If
+
+    End Sub
+
+    Protected Sub LoadBMPs()
+        If _fieldsInfo1(currentFieldNumber)._scenariosInfo.Count <= 0 Then
+            fsetAI.Style.Item("display") = "none"
+            fsetAF.Style.Item("display") = "none"
+            fsetTD.Style.Item("display") = "none"
+            fsetWL.Style.Item("display") = "none"
+            fsetSF.Style.Item("display") = "none"
+            fsetSBS.Style.Item("display") = "none"
+            fsetRF.Style.Item("display") = "none"
+            fsetFS.Style.Item("display") = "none"
+            fsetWW.Style.Item("display") = "none"
+            fsetCB.Style.Item("display") = "none"
+            fsetLL.Style.Item("display") = "none"
+            fsetTS.Style.Item("display") = "none"
+            fsetLM.Style.Item("display") = "none"
+            Exit Sub
+        End If
+        LoadAI()
+        LoadAF()
+        LoadTD()
+        LoadPPND()
+        LoadPPDS()
+        LoadPPDE()
+        LoadPPTW()
+        LoadWL()
+        LoadPND()
+        LoadSF()
+        LoadSBS()
+        LoadRF()
+        LoadFS()
+        LoadWW()
+        LoadCB()
+        LoadLL()
+        LoadTS()
+        LoadLM()
+        LoadSdg()
+        LoadAoC()
+        LoadGC()
+        LoadSA()
+    End Sub
+
+    Private Sub LoadSA()
+        'Land leveling
+        chkSA.Checked = False
+        With _fieldsInfo1(currentFieldNumber)._scenariosInfo(ddlScenarios.SelectedIndex)._bmpsInfo
+            chkSA.Checked = .Sa
+            If .Sa Then fsetSA.Style.Item("display") = "" : ExpandTreeView(6)
+        End With
+    End Sub
+
+    Private Sub LoadGC()
+        'Land leveling
+        chkGC.Checked = False
+        With _fieldsInfo1(currentFieldNumber)._scenariosInfo(ddlScenarios.SelectedIndex)._bmpsInfo
+            chkGC.Checked = .Gc
+            If .Gc Then fsetGC.Style.Item("display") = "" : ExpandTreeView(6)
+        End With
+    End Sub
+
+    Private Sub LoadAoC()
+        'Land leveling
+        chkAoC.Checked = False
+        With _fieldsInfo1(currentFieldNumber)._scenariosInfo(ddlScenarios.SelectedIndex)._bmpsInfo
+            chkAoC.Checked = .AoC
+            If .AoC Then fsetAoC.Style.Item("display") = "" : ExpandTreeView(6)
+        End With
+    End Sub
+
+    Private Sub LoadSdg()
+        'shading
+        txtSdgArea.Text = "0.00"
+        txtSdgSlopeRatio.Text = "0.00"
+        txtSdgWidth.Text = "0.00"
+        ddlSdgCrop.SelectedIndex = 0
+        With _fieldsInfo1(currentFieldNumber)._scenariosInfo(ddlScenarios.SelectedIndex)._bmpsInfo
+            txtSdgArea.Text = .SdgArea
+            txtSdgSlopeRatio.Text = .SdgslopeRatio
+            txtSdgWidth.Text = .SdgWidth
+            If .SdgCrop > 0 Then ddlSdgCrop.SelectedValue = .SdgCrop
+            If .SdgArea > 0 Or .SdgslopeRatio > 0 Or .SdgWidth > 0 Or .SdgCrop > 0 Then fsetSdg.Style.Item("display") = "" : ExpandTreeView(6)
+        End With
+    End Sub
+
+    Private Sub LoadLM()
+        'Land leveling
+        chkLM.Checked = False
+        With _fieldsInfo1(currentFieldNumber)._scenariosInfo(ddlScenarios.SelectedIndex)._bmpsInfo
+            chkLM.Checked = .Lm
+            If .Lm Then fsetLM.Style.Item("display") = "" : tvMain.Nodes(1).Expand() : tvMain.Nodes(1).ChildNodes(5).Expanded = True : ExpandTreeView(5)
+        End With
+    End Sub
+
+    Private Sub LoadTS()
+        'Land leveling
+        chkTS.Checked = False
+        With _fieldsInfo1(currentFieldNumber)._scenariosInfo(ddlScenarios.SelectedIndex)._bmpsInfo
+            chkTS.Checked = .Ts
+            If .Ts Then fsetTS.Style.Item("display") = "" : ExpandTreeView(5)
+        End With
+    End Sub
+
+    Private Sub LoadLL()
+        'Land leveling
+        txtLLReduction.Text = "0.00"
+        With _fieldsInfo1(currentFieldNumber)._scenariosInfo(ddlScenarios.SelectedIndex)._bmpsInfo
+            txtLLReduction.Text = .SlopeRed
+            If .SlopeRed > 0 Then fsetLL.Style.Item("display") = "" : ExpandTreeView(5)
+        End With
+    End Sub
+
+    Private Sub LoadCB()
+        'Contour Buffer
+        txtCBBufferWidth.Text = "0.00"
+        txtCBCropWidth.Text = "0.00"
+        ddlCBType.SelectedIndex = 0
+        With _fieldsInfo1(currentFieldNumber)._scenariosInfo(ddlScenarios.SelectedIndex)._bmpsInfo
+            txtCBBufferWidth.Text = .CBBWidth
+            txtCBCropWidth.Text = .CBCWidth
+            ddlCBType.SelectedValue = .CBCrop
+            If .CBBWidth > 0 Or .CBCWidth > 0 Then fsetCB.Style.Item("display") = "" : ExpandTreeView(4)
+        End With
+    End Sub
+
+    Private Sub LoadWW()
+        'water way
+        txtWWWidth.Text = "0.00"
+        ddlWWType.SelectedIndex = 0
+        With _fieldsInfo1(currentFieldNumber)._scenariosInfo(ddlScenarios.SelectedIndex)._bmpsInfo
+            txtWWWidth.Text = .WWWidth
+            ddlWWType.SelectedValue = .WWCrop
+            If .WWWidth > 0 Then fsetWW.Style.Item("display") = "" : ExpandTreeView(3)
+        End With
+    End Sub
+
+    Private Sub LoadFS()
+        'filter strip
+        txtFSArea.Text = "0.00"
+        'txtFSEff.Text = "0.50"
+        txtFSRatio.Text = "0.00"
+        txtFSWidth.Text = "0.00"
+        ddlFSType.SelectedIndex = 0
+        With _fieldsInfo1(currentFieldNumber)._scenariosInfo(ddlScenarios.SelectedIndex)._bmpsInfo
+            txtFSArea.Text = .FSArea
+            txtFSRatio.Text = .FSslopeRatio
+            txtFSWidth.Text = .FSWidth
+            If .FSCrop > 0 Then ddlFSType.SelectedValue = .FSCrop
+            If .FSArea > 0 Or .FSslopeRatio > 0 Or .FSWidth > 0 Then fsetFS.Style.Item("display") = "" : ExpandTreeView(3)
+        End With
+    End Sub
+
+    Private Sub LoadRF()
+        'Riparian forest
+        txtRFArea.Text = "0.00"
+        txtRFGrass.Text = "0.00"
+        txtRFRatio.Text = "0.00"
+        txtRFWidth.Text = "0.00"
+        With _fieldsInfo1(currentFieldNumber)._scenariosInfo(ddlScenarios.SelectedIndex)._bmpsInfo
+            txtRFArea.Text = .RFArea
+            txtRFGrass.Text = .RFGrassFieldPortion
+            txtRFRatio.Text = .RFslopeRatio
+            txtRFWidth.Text = .RFWidth
+            If .RFArea > 0 Or .RFGrassFieldPortion > 0 Or .RFslopeRatio > 0 Or .RFWidth > 0 Then fsetRF.Style.Item("display") = "" : ExpandTreeView(3)
+        End With
+    End Sub
+
+    Private Sub LoadSBS()
+        'auto irrigation
+        chkSBS.Checked = False
+        With _fieldsInfo1(currentFieldNumber)._scenariosInfo(ddlScenarios.SelectedIndex)._bmpsInfo
+            chkSBS.Checked = .Sbs
+            If chkSBS.Checked Then fsetSBS.Style.Item("display") = "" : ExpandTreeView(3)
+        End With
+    End Sub
+
+    Private Sub LoadSF()
+        'stream fencing
+        ddlSFType.SelectedIndex = -1
+        txtSFAnimals.Text = "0"
+        txtSFDays.Text = "0"
+        txtSFHours.Text = "0.00"
+        txtSFManure.Text = "0.00"
+        txtSFNO3.Text = "0.00"
+        txtSFPO4.Text = "0.00"
+        txtSFOrgN.Text = "0.00"
+        txtSFOrgP.Text = "0.00"
+        With _fieldsInfo1(currentFieldNumber)._scenariosInfo(ddlScenarios.SelectedIndex)._bmpsInfo
+            txtSFAnimals.Text = .SFAnimals
+            txtSFDays.Text = .SFDays
+            txtSFHours.Text = .SFHours
+            txtSFManure.Text = .SFDryManure
+            txtSFNO3.Text = .SFNo3
+            txtSFPO4.Text = .SFPo4
+            txtSFOrgN.Text = .SFOrgN
+            txtSFOrgP.Text = .SFOrgP
+            If .SFAnimals > 0 Or .SFDays > 0 Or .SFHours > 0 Then fsetSF.Style.Item("display") = "" : ExpandTreeView(3)
+        End With
+    End Sub
+
+    Private Sub LoadPND()
+        'Ponds
+        txtPNDFraction.Text = "0.00"
+        With _fieldsInfo1(currentFieldNumber)._scenariosInfo(ddlScenarios.SelectedIndex)._bmpsInfo
+            txtPNDFraction.Text = .PndF
+            If .PndF > 0 Then fsetPND.Style.Item("display") = "" : ExpandTreeView(2)
+        End With
+    End Sub
+
+    Private Sub LoadWL()
+        'Wetland
+        txtWLArea.Text = "0.00" : txtWLArea.Attributes("min") = ValueMin : txtWLArea.Attributes("max") = ValueMax
+        With _fieldsInfo1(currentFieldNumber)._scenariosInfo(ddlScenarios.SelectedIndex)._bmpsInfo
+            txtWLArea.Text = .WLArea
+            If .WLArea > 0 Then fsetWL.Style.Item("display") = "" : ExpandTreeView(2)
+        End With
+    End Sub
+
+    Private Sub LoadPPTW()
+        txtPPTWWidth.Text = "0.00" : txtPPTWWidth.Attributes("min") = ValueMin : txtPPTWWidth.Attributes("max") = ValueMax
+        txtPPTWSides.Text = "0.00" : txtPPTWSides.Attributes("min") = sidesMin : txtPPTWSides.Attributes("max") = sidesMax
+        txtPPTWResArea.Text = "0.00" : txtPPTWResArea.Attributes("min") = ValueMin : txtPPTWResArea.Attributes("max") = ValueMax
+        With _fieldsInfo1(currentFieldNumber)._scenariosInfo(ddlScenarios.SelectedIndex)._bmpsInfo
+            txtPPTWWidth.Text = .PPTWWidth
+            txtPPTWSides.Text = .PPTWSides
+            txtPPTWResArea.Text = .PPTWResArea
+            If .PPTWWidth > 0 And .PPTWSides > 0 And .PPTWResArea > 0 Then fsetPPTW.Style.Item("display") = "" : ExpandTreeView(1)
+        End With
+    End Sub
+
+    Private Sub LoadPPDE()
+        txtPPDEWidth.Text = "0.00" : txtPPDEWidth.Attributes("min") = ValueMin : txtPPDEWidth.Attributes("max") = ValueMax
+        txtPPDESides.Text = "0.00" : txtPPDESides.Attributes("min") = sidesMin : txtPPDESides.Attributes("max") = sidesMax
+        txtPPDEResArea.Text = "0.00" : txtPPDEResArea.Attributes("min") = ValueMin : txtPPDEResArea.Attributes("max") = ValueMax
+        With _fieldsInfo1(currentFieldNumber)._scenariosInfo(ddlScenarios.SelectedIndex)._bmpsInfo
+            txtPPDEWidth.Text = .PPDEWidth
+            txtPPDESides.Text = .PPDESides
+            txtPPDEResArea.Text = .PPDEResArea
+            If .PPDEWidth > 0 And .PPDESides > 0 And .PPDEResArea > 0 Then fsetPPDE.Style.Item("display") = "" : ExpandTreeView(1)
+        End With
+    End Sub
+
+    Private Sub LoadPPDS()
+        txtPPDSWidth.Text = "0.00" : txtPPDSWidth.Attributes("min") = ValueMin : txtPPDSWidth.Attributes("max") = ValueMax
+        txtPPDSSides.Text = "0.00" : txtPPDSSides.Attributes("min") = sidesMin : txtPPDSSides.Attributes("max") = sidesMax
+        With _fieldsInfo1(currentFieldNumber)._scenariosInfo(ddlScenarios.SelectedIndex)._bmpsInfo
+            txtPPDSWidth.Text = .PPDSWidth
+            txtPPDSSides.Text = .PPDSSides
+            If .PPDSWidth > 0 And .PPDSSides > 0 Then fsetPPDS.Style.Item("display") = "" : ExpandTreeView(1)
+        End With
+    End Sub
+
+    Private Sub LoadPPND()
+        txtPPNDWidth.Text = "0.00" : txtPPNDWidth.Attributes("min") = ValueMin : txtPPNDWidth.Attributes("max") = ValueMax
+        txtPPNDSides.Text = "0.00" : txtPPNDSides.Attributes("min") = sidesMin : txtPPNDSides.Attributes("max") = sidesMax
+        With _fieldsInfo1(currentFieldNumber)._scenariosInfo(ddlScenarios.SelectedIndex)._bmpsInfo
+            txtPPNDWidth.Text = .PPNDWidth
+            txtPPNDSides.Text = .PPNDSides
+            If .PPNDWidth > 0 And .PPNDSides > 0 Then fsetPPND.Style.Item("display") = "" : ExpandTreeView(1)
+        End With
+    End Sub
+
+    Private Sub LoadTD()
+        'auto irrigation
+        txtTDDepth.Text = "0.00" : txtTDDepth.Attributes("min") = ValueMin : txtTDDepth.Attributes("max") = ValueMax
+        With _fieldsInfo1(currentFieldNumber)._scenariosInfo(ddlScenarios.SelectedIndex)._bmpsInfo
+            txtTDDepth.Text = .TileDrainDepth
+            If .TileDrainDepth <> 0 Then fsetTD.Style.Item("display") = "" : ExpandTreeView(1)
+        End With
+    End Sub
+
+    Private Sub LoadAF()
+        'auto fertigation
+        txtAFWaterStress.Text = "0.80" : txtAFWaterStress.Attributes("min") = FractionMin : txtAFWaterStress.Attributes("max") = FractionMax
+        txtAFIrrigationEfficiancy.Text = "0.00" : txtAFIrrigationEfficiancy.Attributes("min") = FractionMin : txtAFIrrigationEfficiancy.Attributes("max") = FractionMax
+        txtAFFrequency.Text = "0.00" : txtAFFrequency.Attributes("min") = SFDaysMin : txtAFFrequency.Attributes("max") = SFDaysMax
+        txtAFMaxSingleAppl.Text = armxDefault : txtAFMaxSingleAppl.Attributes("min") = ValueMin : txtAFMaxSingleAppl.Attributes("max") = ValueMax
+        txtAFSafetyFactor.Text = "0.00" : txtAFSafetyFactor.Attributes("min") = FractionMin : txtAFSafetyFactor.Attributes("max") = FractionMax
+        txtAFNConc.Text = "0.00"
+        With _fieldsInfo1(currentFieldNumber)._scenariosInfo(ddlScenarios.SelectedIndex)._bmpsInfo
+            txtAFWaterStress.Text = .AFWaterStressFactor
+            txtAFIrrigationEfficiancy.Text = .AFEff
+            txtAFFrequency.Text = .AFFreq
+            txtAFMaxSingleAppl.Text = .AFMaxSingleApp
+            txtAFSafetyFactor.Text = .AFSafetyFactor
+            txtAFNConc.Text = .AFNConc
+            If .AFType > 0 Then ddlAFIrrigationType.SelectedValue = .AFType
+            Select Case ddlAFIrrigationType.SelectedValue
+                Case 7
+                    txtAFSafetyFactor.Style.Item("display") = ""
+                    lblAFSafetyFactor.Style.Item("display") = ""
+                    'todo control exclusions
+                Case Else
+                    txtAFSafetyFactor.Style.Item("display") = "none"
+                    lblAFSafetyFactor.Style.Item("display") = "none"
+            End Select
+            If .AFEff > 0 Or .AFFreq > 0 Then fsetAF.Style.Item("display") = "" : ExpandTreeView(0)
+        End With
+    End Sub
+
+    Private Sub LoadAI()
+        'auto irrigation
+        txtAIWaterStress.Text = "0.80" : txtAIWaterStress.Attributes("min") = FractionMin : txtAIWaterStress.Attributes("max") = FractionMax
+        txtAIIrrigationEfficiancy.Text = "0.00" : txtAIIrrigationEfficiancy.Attributes("min") = FractionMin : txtAIIrrigationEfficiancy.Attributes("max") = FractionMax
+        txtAIFrequency.Text = "0.00" : txtAIFrequency.Attributes("min") = SFDaysMin : txtAIFrequency.Attributes("max") = SFDaysMax
+        txtAIMaxSingleAppl.Text = armxDefault : txtAIMaxSingleAppl.Attributes("min") = ValueMin : txtAIMaxSingleAppl.Attributes("max") = ValueMax
+        txtAIResArea.Text = "0.00" : txtAIResArea.Attributes("min") = ValueMin : txtAIResArea.Attributes("max") = ValueMax
+        txtAISafetyFactor.Text = "0.00" : txtAISafetyFactor.Attributes("min") = FractionMin : txtAISafetyFactor.Attributes("max") = FractionMax
+        With _fieldsInfo1(currentFieldNumber)._scenariosInfo(ddlScenarios.SelectedIndex)._bmpsInfo
+            txtAIWaterStress.Text = .AIWaterStressFactor
+            txtAIIrrigationEfficiancy.Text = .AIEff
+            txtAIFrequency.Text = .AIFreq
+            txtAIMaxSingleAppl.Text = .AIMaxSingleApp
+            txtAIMaxSingleAppl.Text = .AIMaxSingleApp
+            txtAIResArea.Text = .AIResArea
+            txtAISafetyFactor.Text = .AISafetyFactor
+            If .AIType > 0 Then ddlAIIrrigationType.SelectedValue = .AIType
+
+            Select Case ddlAIIrrigationType.SelectedValue
+                Case 7
+                    txtAISafetyFactor.Style.Item("display") = ""
+                    lblAISafetyFactor.Style.Item("display") = ""
+                Case 8
+                    txtAIResArea.Style.Item("display") = ""
+                    lblAIResArea.Style.Item("display") = ""
+                    .AIEff = 0.9
+                    'todo control exclusions
+                Case Else
+                    txtAIResArea.Style.Item("display") = "none"
+                    lblAIResArea.Style.Item("display") = "none"
+                    txtAISafetyFactor.Style.Item("display") = "none"
+                    lblAISafetyFactor.Style.Item("display") = "none"
+            End Select
+            If .AIFreq > 0 Or .AIType > 0 Or .AIEff > 0 Then fsetAI.Style.Item("display") = "" : ExpandTreeView(0)
+        End With
+    End Sub
+    Protected Sub LoadOperations()
+        If ddlScenarios.SelectedIndex < 0 Then Exit Sub
+        currentScenarioNumber = ddlScenarios.SelectedIndex
+        _fieldsInfo1(currentFieldNumber)._scenariosInfo(currentScenarioNumber)._operationsInfo.Sort(New sortByDate())
+        gvOperations.DataSource = _fieldsInfo1(currentFieldNumber)._scenariosInfo(currentScenarioNumber)._operationsInfo
+        gvOperations.DataBind()
+        txtFieldScen.Value = _fieldsInfo1(currentFieldNumber).Name & " / " & _fieldsInfo1(currentFieldNumber)._scenariosInfo(currentScenarioNumber).Name
+    End Sub
+
+    Protected Sub btnDeleteScenario_Click()
+        Dim answer As UShort = 0
+        answer = MsgBox(msgDoc.Descendants("DeleteRow").Value, MsgBoxStyle.OkCancel, "Delete")
+        If answer = 1 Then
+            _fieldsInfo1(currentFieldNumber).DeleteScenario(ddlScenarios.SelectedIndex)
+            currentScenarioNumber = ddlScenarios.SelectedIndex - 1
+
+            'scenario needs to be deleted from soils
+            For Each Soil In _fieldsInfo1(currentFieldNumber)._soilsInfo
+                Soil.DeleteScenario(ddlScenarios.SelectedIndex)
+            Next
+
+            Select Case ddlScenarios.SelectedIndex
+                Case Is > 0
+                    currentScenarioNumber = ddlScenarios.SelectedIndex - 1
+                Case 0
+                    currentScenarioNumber = 0
+                Case Else
+                    currentScenarioNumber = -1
+            End Select
+
+            'LoadDataScenarios()
+            ddlScenarios_SelectedIndexChanged(ddlScenarios, New System.EventArgs)
+        End If
+    End Sub
+
+    Protected Sub btnAddNewScenario_Click()
+        Try
+            If txtScenarioName.Text = "" Or txtScenarioName.Text = String.Empty Then Throw New Global.System.Exception(msgDoc.Descendants("ScenarioName").Value & vbCrLf)
+            For i = 0 To _fieldsInfo1(currentFieldNumber)._scenariosInfo.Count - 1
+                If txtScenarioName.Text.Trim = _fieldsInfo1(currentFieldNumber)._scenariosInfo(i).Name Then
+                    showMessage(lblMessage, imgIcon, "Red", "StopIcon.jpg", msgDoc.Descendants("ScenarioExist").Value)
+                    Exit Sub
+                End If
+            Next
+
+            _fieldsInfo1(currentFieldNumber).AddScenario(txtScenarioName.Text)
+            currentScenarioNumber = _fieldsInfo1(currentFieldNumber)._scenariosInfo.Count - 1
+            'LoadScenarios(ddlScenarios)
+            'LoadScenarios(ddlFromScenario)
+            'LoadAllScenarios(ddlAllScenario)
+            ddlScenarios_SelectedIndexChanged(ddlScenarios, New System.EventArgs)
+            'currentScenarioNumber = ddlScenarios.SelectedIndex
+            txtScenarioName.Text = String.Empty
+        Catch ex As Exception
+            showMessage(lblMessage, imgIcon, "Red", "StopIcon.jpg", msgDoc.Descendants("ScenarioName").Value)
+        End Try
+    End Sub
+
+    Protected Sub ddlFields_SelectedIndexChanged(ByVal sender As Object, ByVal e As EventArgs) Handles ddlFields.SelectedIndexChanged
+        currentFieldNumber = ddlFields.SelectedIndex
+        If _fieldsInfo1(currentFieldNumber)._scenariosInfo.Count > 0 Then
+            currentScenarioNumber = 0
+        Else
+            currentScenarioNumber = -1
+        End If
+        ddlScenarios_SelectedIndexChanged(ddlScenarios, New EventArgs)
+    End Sub
+
+    Private Sub LoadCrops1()
+        Dim newCrop As CropsData
+        _crops1.Clear()
+        Select Case True
+            'Forest land
+            Case _fieldsInfo1(ddlFields.SelectedIndex).Forestry And Not (_fieldsInfo1(ddlFields.SelectedIndex).Name.Contains(smz) Or _fieldsInfo1(ddlFields.SelectedIndex).Name.Contains(road))
+                For i = 0 To _crops.Count - 1
+                    If (_crops(i).LuNumber = 28 And _crops(i).additional = True) Or _crops(i).Number = 0 Or (_crops(i).FilterStrip.Contains("FS") And _crops(i).additional = True) Then
+                        newCrop = New CropsData
+                        newCrop = _crops(i)
+                        _crops1.Add(newCrop)
+                    End If
+                Next
+                'Lands different that forestry
+            Case Not _fieldsInfo1(ddlFields.SelectedIndex).Forestry
+                For i = 0 To _crops.Count - 1
+                    If _crops(i).additional = False Or _crops(i).Number = cropRoad Or _crops(i).Number = 0 Then
+                        newCrop = New CropsData
+                        newCrop = _crops(i)
+                        _crops1.Add(newCrop)
+                    End If
+                Next
+                'SMZ land
+            Case _fieldsInfo1(ddlFields.SelectedIndex).Forestry And _fieldsInfo1(ddlFields.SelectedIndex).Name.Contains(smz)
+                For i = 0 To _crops.Count - 1
+                    If Not _crops(i).FilterStrip Is Nothing AndAlso (_crops(i).FilterStrip.Contains("FS") And _crops(i).additional = True) Or _crops(i).Number = 0 Or (_crops(i).LuNumber = 28 And _crops(i).additional = True) Then
+                        newCrop = New CropsData
+                        newCrop = _crops(i)
+                        _crops1.Add(newCrop)
+                    End If
+                Next
+                'Road land
+            Case _fieldsInfo1(ddlFields.SelectedIndex).Forestry And _fieldsInfo1(ddlFields.SelectedIndex).Name.Contains(road)
+                For i = 0 To _crops.Count - 1
+                    If _crops(i).Number = cropRoad Or _crops(i).Number = 0 Then
+                        newCrop = New CropsData
+                        newCrop = _crops(i)
+                        _crops1.Add(newCrop)
+                    End If
+                Next
+        End Select
+
+        ddlCrops.DataTextField = "Name"
+        ddlCrops.DataValueField = "Number"
+        ddlCrops.DataSource = _crops1
+        ddlCrops.DataBind()
+        For i = 0 To _crops1.Count - 1
+            ddlCrops.Items(i).Attributes.Add("PP", _crops1(i).PlantPopulation)
+        Next
+
+    End Sub
+
+    Protected Sub ddlScenarios_SelectedIndexChanged(ByVal sender As Object, ByVal e As EventArgs) Handles ddlScenarios.SelectedIndexChanged
+        LoadScenarios(ddlScenarios)
+        LoadScenarios(ddlFromScenario)
+        LoadAllScenarios(ddlAllScenario)
+        Select Case ddlScenarios.SelectedIndex
+            Case 0
+                tdCurrentScenario.Style.Item("background-color") = Drawing.Color.White.Name
+            Case 1
+                tdCurrentScenario.Style.Item("background-color") = Drawing.Color.LightGreen.Name
+            Case 2
+                tdCurrentScenario.Style.Item("background-color") = Drawing.Color.Goldenrod.Name
+            Case 3
+                tdCurrentScenario.Style.Item("background-color") = Drawing.Color.GreenYellow.Name
+            Case 4
+                tdCurrentScenario.Style.Item("background-color") = Drawing.Color.LawnGreen.Name
+            Case 5
+                tdCurrentScenario.Style.Item("background-color") = Drawing.Color.LightGoldenrodYellow.Name
+            Case 6
+                tdCurrentScenario.Style.Item("background-color") = Drawing.Color.LightSteelBlue.Name
+            Case 7
+                tdCurrentScenario.Style.Item("background-color") = Drawing.Color.LightGray.Name
+            Case 8
+                tdCurrentScenario.Style.Item("background-color") = Drawing.Color.SlateGray.Name
+            Case 9
+                tdCurrentScenario.Style.Item("background-color") = Drawing.Color.LightCoral.Name
+        End Select
+        currentScenarioNumber = ddlScenarios.SelectedIndex
+        LoadOperations()
+        LoadBMPs()
+    End Sub
+
+    Protected Sub btnSaveContinue_Click()
+        lblMessage.Text = ""      'clean messages   
+        If ddlAIIrrigationType.SelectedIndex > 0 Then
+            SaveAutoFertigation()
+            SaveAutoIrrigation()
+        Else
+            SaveAutoIrrigation()
+            SaveAutoFertigation()
+        End If
+        SaveTileDrain()
+        SavePadsAndPipesNoDitch()
+        SavePadsAndPipesDitchSystem()
+        SavePadsAndPipesDitchEnlargement()
+        SavePadsAndPipesTailWater()
+        SaveWetland()
+        SavePond()
+        SaveStreamFencing()
+        SaveStreamBankStabilization()
+        SaveRiparianForest()
+        SaveFilterStrip()
+        SaveWaterWay()
+        SaveContourBuffer()
+        SaveLandLeveling()
+        If chkSA.Checked Then
+            SaveTerraceSystem()
+            SaveSlopeAdjustment()
+        Else
+            SaveSlopeAdjustment()
+            SaveTerraceSystem()
+        End If
+        SaveLiming()
+        SaveAsfaltOrConcret()
+        SaveGrassCover()
+        SaveShading()
+        If lblMessage.Text = "" Then
+            Response.Redirect("Simulation.aspx", False)
+        Else
+            showMessage(lblMessage, imgIcon, "Red", "StopIcon.jpg", lblMessage.Text)
+        End If
+    End Sub
+
+    Private Sub GetCropCode(cropName As String, ByRef cropCode As UShort, ByRef convUnit As Single, ByRef luNumber As UShort)
+        convUnit = 0
+        cropCode = 0
+        luNumber = 0
+        For Each crop In _crops
+            If crop.Name.Trim = cropName.Trim Then
+                convUnit = crop.ConversionFactor
+                cropCode = crop.Number
+                luNumber = crop.LuNumber
+                Exit For
+            End If
+        Next
+    End Sub
+
+    Private Sub GetTillCode(tillName As String, ByRef typeCode As UShort, ByRef tillCode As UShort)
+        typeCode = 0
+        tillCode = 0
+        For Each till In _opTypes
+            If till.Name.Trim = tillName.Trim Then
+                typeCode = till.Number.Split(",")(0)
+                tillCode = typeCode
+            End If
+        Next
+    End Sub
+
+    Private Sub SaveOperations()
+        ctlSave.Value = "No"
+        'if there is delete ask to be sure the user pretended to delete those records
+        If Not Page.Request.Params("__EVENTTARGET") Is Nothing AndAlso Page.Request.Params("__EVENTTARGET").Contains("Delete") Then
+            'Dim answer As UShort = 0
+            'answer = MsgBox(msgDoc.Descendants("DeleteRow").Value, MsgBoxStyle.OkCancel, "Delete")
+            'If answer = 2 Then
+            'Exit Sub
+            'End If
+        End If
+        'save just operations either because of save and continue, reorder, delete, or save crop rotation.
+        Dim txtSelected As HtmlInputHidden
+        Dim txtCrop As HtmlInputText
+        Dim txtOper As HtmlInputText
+        Dim txtYear As HtmlInputText
+        Dim txtMonth As HtmlInputText
+        Dim txtDay As HtmlInputText
+        Dim txtType As HtmlInputText
+        Dim txtAmount As HtmlInputText
+        Dim txtDepth As HtmlInputText
+        Dim txtNo3 As HtmlInputText
+        Dim txtPo4 As HtmlInputText
+        Dim txtOrgN As HtmlInputText
+        Dim txtOrgP As HtmlInputText
+        Dim operation As OperationsData
+        Dim j As UShort = 0
+
+        currentSoilNumber = 0
+        'clear previous operations
+        _fieldsInfo1(currentFieldNumber)._scenariosInfo(currentScenarioNumber)._operationsInfo.Clear()
+        For Each Soil In _fieldsInfo1(currentFieldNumber)._soilsInfo
+            Soil._scenariosInfo(currentScenarioNumber)._operationsInfo.Clear()
+        Next
+        For i = 0 To gvOperations.Rows.Count - 1
+            operation = New OperationsData
+            'update operations information
+            operation.Index = i
+            operation.EventId = i + 1
+            operation.Scenario = ddlScenarios.SelectedItem.Text
+            txtSelected = gvOperations.Rows(i).FindControl("txtSelected")
+            If txtSelected.Value = "True" Then
+                Continue For
+            End If
+            txtCrop = gvOperations.Rows(i).FindControl("txtCrop")
+            operation.ApexCropName = txtCrop.Value
+            txtOper = gvOperations.Rows(i).FindControl("txtOper")
+            operation.ApexOpName = txtOper.Value
+            Select Case operation.ApexOpName
+                Case "Planting"
+                    operation.ApexOpAbbreviation = planting
+                    operation.ApexOp = 1
+                Case "Fertilizer"
+                    operation.ApexOpAbbreviation = fertilizer
+                    operation.ApexOp = 2
+                Case "Tillage"
+                    operation.ApexOpAbbreviation = tillage
+                    operation.ApexOp = 3
+                Case "Harvest"
+                    operation.ApexOpAbbreviation = harvest
+                    operation.ApexOp = 4
+                Case "Kill"
+                    operation.ApexOpAbbreviation = kill
+                    operation.ApexOp = 5
+                Case "Irrigation"
+                    operation.ApexOpAbbreviation = irrigation
+                    operation.ApexOp = 6
+                Case "Grazing"
+                    operation.ApexOpAbbreviation = grazing
+                    operation.ApexOp = 7
+                Case "Stop Grazing"
+                    operation.ApexOpAbbreviation = stopGrazing
+                    operation.ApexOp = 8
+                Case "Burn"
+                    operation.ApexOpAbbreviation = burn
+                    operation.ApexOp = 9
+            End Select
+            GetCropCode(operation.ApexCropName, operation.ApexCrop, operation.ConvertionUnit, operation.LuNumber)
+            'operation.ApexCrop = txtCrop.Attributes("CropValue")    'this is not working
+            txtYear = gvOperations.Rows(i).FindControl("txtYear")
+            operation.Year = txtYear.Value
+            txtMonth = gvOperations.Rows(i).FindControl("txtMonth")
+            operation.Month = txtMonth.Value
+            txtDay = gvOperations.Rows(i).FindControl("txtDay")
+            operation.Day = txtDay.Value
+            txtType = gvOperations.Rows(i).FindControl("txtType")
+            If txtType.Value = selectOne Then txtType.Value = ddlTypes.Items(0).Text
+            operation.ApexTillName = txtType.Value
+            operation.ApexOpTypeName = operation.ApexTillName
+            GetTillCode(operation.ApexTillName, operation.ApexOpType, operation.ApexTillCode)
+            'operation.ApexOpType = txtType.Attributes("TypeValue")  'THIS IS not working
+            Select Case txtOper.Value
+                Case "Fertilizer"
+                    operation.ApexTillCode = 580
+                Case "Grazing"
+                    operation.ApexTillCode = 426
+                Case Else
+                    operation.ApexTillCode = operation.ApexOpType
+            End Select
+            txtAmount = gvOperations.Rows(i).FindControl("txtAmount")
+            operation.ApexOpv1 = txtAmount.Value
+            txtDepth = gvOperations.Rows(i).FindControl("txtDepth")
+            operation.ApexOpv2 = txtDepth.Value
+            txtNo3 = gvOperations.Rows(i).FindControl("txtNo3")
+            operation.NO3 = txtNo3.Value
+            txtPo4 = gvOperations.Rows(i).FindControl("txtPO4")
+            operation.PO4 = txtPo4.Value
+            txtOrgN = gvOperations.Rows(i).FindControl("txtOrgN")
+            operation.OrgN = txtOrgN.Value
+            txtOrgP = gvOperations.Rows(i).FindControl("txtOrgP")
+            operation.OrgP = txtOrgP.Value
+            _fieldsInfo1(currentFieldNumber)._scenariosInfo(ddlScenarios.SelectedIndex).AddOperation(operation)
+            For Each Soil In _fieldsInfo1(currentFieldNumber)._soilsInfo
+                currentSoilNumber = j
+                Soil._scenariosInfo(currentScenarioNumber).AddOperation(operation)
+            Next
+        Next
+
+        LoadOperations()
+
+    End Sub
+
+    Private Sub btnUpload_Click(sender As Object, e As System.EventArgs) Handles btnUpload.Click
+        Dim croppingOperations = (From EventsTypicalExtended In dc.EventsTypicalExtendeds Where EventsTypicalExtended.VAR12 = ddlCroppingSystemsAll.Items(ddlCroppingSystemsAll.SelectedIndex).Value And EventsTypicalExtended.TEStateCode = _startInfo.StateAbrev Order By EventsTypicalExtended.YEAR, EventsTypicalExtended.MONTH, EventsTypicalExtended.DAY, EventsTypicalExtended.EVENTID Select EventsTypicalExtended)
+        Dim list As New List(Of OperationsData)
+        Dim opVal1 As Single
+        Dim cropNumber As Short = 0
+        'Dim fertNumber As Short
+        Dim orgN As Single = 0 : Dim no3 As Single = 0 : Dim orgP As Single = 0 : Dim po4 As Single = 0
+        Dim opval2 As Single
+        Dim period As UShort
+        'Dim operations As OperationsData
+        Dim apexOpType As Short
+        Dim oper As UShort
+
+        _fieldsInfo1(currentFieldNumber)._scenariosInfo(currentScenarioNumber)._operationsInfo.Clear()
+        For Each soil In _fieldsInfo1(currentFieldNumber)._soilsInfo
+            soil._scenariosInfo(currentScenarioNumber)._operationsInfo.Clear()
+        Next
+
+        For Each c In croppingOperations
+            opVal1 = 0
+            opval2 = 0
+            cropNumber = c.APEXCrop
+            If c.APEXOpv2 <> String.Empty Then opval2 = c.APEXOpv2
+            Select Case c.EVENTTYPE
+                Case planting
+                    apexOpType = c.APEXOp
+                    oper = 1
+                    Dim crops = (From APEXCrop In dc.APEXCROPs Where APEXCrop.CropNumber = cropNumber Order By APEXCrop.CropName Select APEXCrop.PlantPopulationAcres)
+                    For Each Val1 In crops
+                        opVal1 = Val1
+                        Exit For
+                    Next
+                Case fertilizer
+                    oper = 2
+                    apexOpType = c.APEXFert
+                    opVal1 = c.VAR9
+                    Dim ferts = (From APEXFert In dc.APEXFerts Where APEXFert.Code = apexOpType Order By APEXFert.Code Select APEXFert)
+                    For Each val1 In ferts
+                        orgN = val1.yn
+                        no3 = val1.qn
+                        orgP = val1.yp
+                        po4 = val1.qp
+                    Next
+                    'todo check this change
+                    If apexOpType = 2 Then apexOpType = 1
+                Case irrigation
+                    oper = 6
+                    opVal1 = c.APEXOpv1
+                    opval2 = c.APEXOpv2
+                Case tillage
+                    oper = 3
+                    apexOpType = c.APEXOp
+                Case harvest
+                    oper = 4
+                    apexOpType = c.APEXOp
+                Case kill
+                    oper = 5
+                    apexOpType = c.APEXOp
+                Case grazing
+                    oper = 7
+                    'todo get the animal type here.
+                    'apexOpType = c.APEXOp
+                    'todo check what goes here in apexopv1 for grazing
+                    opVal1 *= c.APEXOpv1
+                Case stopGrazing
+                    oper = 8
+                    apexOpType = c.APEXOp
+                Case burn
+                    apexOpType = c.APEXOp
+                    oper = 9
+            End Select
+            Select Case c.DAY
+                Case Is > 15
+                    period = 2
+                Case Is = 0
+                    period = 0
+                Case Is <= 15
+                    period = 1
+            End Select
+            list.Add(New OperationsData With {.EventId = c.EVENTID, .ApexCropName = c.CropName.Trim, .ApexOp = oper, .ApexOpAbbreviation = c.EVENTTYPE, .ApexCrop = c.APEXCrop, .ApexOpName = c.OperationName.Trim, .Year = c.YEAR, .Month = c.MONTH, .Day = c.DAY, .Period = period, .ApexTillCode = c.APEXOp, .ApexTillName = c.TillName.Trim, .ApexOpType = apexOpType, .ApexOpv1 = opVal1, .ApexOpv2 = opval2, .OrgN = orgN, .NO3 = no3, .OrgP = orgP, .PO4 = po4})
+            If list(list.Count - 1).ApexOpAbbreviation = grazing Then list(list.Count - 1).setAnimalRate(c.APEXOp, _fieldsInfo1(currentFieldNumber).Area)
+            orgN = 0
+            orgP = 0
+            no3 = 0
+            po4 = 0
+        Next
+
+        _fieldsInfo1(currentFieldNumber)._scenariosInfo(currentScenarioNumber).AddOperations(list, currentScenarioNumber)
+
+        For Each Soil In _fieldsInfo1(currentFieldNumber)._soilsInfo
+            Soil._scenariosInfo(currentScenarioNumber).AddOperations(list, currentScenarioNumber)
+        Next
+
+        'For Each operation In list
+        '    operations = New OperationsData
+        '    operations = GetOperation(operation, ddlScenarios.SelectedItem.Text, operation.ApexOpv1 * 100, _fieldsInfo1(currentFieldNumber).Area)
+        '    _fieldsInfo1(currentFieldNumber)._scenariosInfo(currentScenarioNumber)._operationsInfo.Add(operations)
+        '    For i = 0 To _fieldsInfo1(currentFieldNumber)._soilsInfo.Count - 1
+        '        _fieldsInfo1(currentFieldNumber).AddAdditionalInfoToSoils(i, currentFieldNumber)
+        '        'Dim lastSoilNumber As UShort = currentSoilNumber
+        '        'operations = New OperationsData
+        '        'currentSoilNumber = i
+        '        'operations = GetOperation(operation, ddlScenarios.SelectedItem.Text, _fieldsInfo1(currentFieldNumber)._soilsInfo(i).Percentage * 100, _fieldsInfo1(currentFieldNumber).Area)
+        '        '_fieldsInfo1(currentFieldNumber)._soilsInfo(i)._scenariosInfo(currentScenarioNumber)._operationsInfo.Add(operations)
+        '        'currentSoilNumber = lastSoilNumber
+        '    Next
+        'Next
+
+        LoadOperations()
+        ShowModal()
+    End Sub
+
+    Protected Sub btnOpenCropping_Click(sender As Object, e As System.EventArgs) Handles btnOpenCropping.Click
+        Dim doc As System.Xml.Linq.XDocument = Nothing
+
+        Try
+            Me.Uploader.PostedFile.SaveAs(folder & "\App_xml\" & userGuid & ".xml")
+            doc = System.Xml.Linq.XDocument.Load(folder & "\App_xml\" & userGuid & ".xml")
+            Dim project As New Project
+
+            _fieldsInfo1(currentFieldNumber)._scenariosInfo(currentScenarioNumber)._operationsInfo.Clear()
+            For Each soil In _fieldsInfo1(currentFieldNumber)._soilsInfo
+                soil._scenariosInfo(currentScenarioNumber)._operationsInfo.Clear()
+            Next
+
+            For Each operation In doc.Descendants("ScenarioInfo").Descendants("Operations")
+                project.loadOperationInfo(operation, _fieldsInfo1(currentFieldNumber)._scenariosInfo(currentScenarioNumber), 0)
+
+                For Each Soil In _fieldsInfo1(currentFieldNumber)._soilsInfo
+                    project.loadOperationInfo(operation, Soil._scenariosInfo(currentScenarioNumber), Soil.Percentage)
+                Next
+            Next
+
+            LoadOperations()
+            ShowModal()
+        Catch ex As Exception
+            showMessage(lblMessage, imgIcon, "Red", "StopIcon.jpg", msgDoc.Descendants("Errors").Value & ex.Message)
+        End Try
+    End Sub
+
+    Protected Sub btnCopyCropping_Click(sender As Object, e As System.EventArgs) Handles btnCopyCropping.Click
+        Try
+            If ddlFromField.SelectedIndex = ddlFields.SelectedIndex And ddlFromScenario.SelectedIndex = ddlScenarios.SelectedIndex Then
+                showMessage(lblMessage, imgIcon, "Red", "StopIcon.jpg", msgDoc.Descendants("SameCopyMessage").Value)
+                Exit Sub
+            End If
+            _fieldsInfo1(currentFieldNumber)._scenariosInfo(currentScenarioNumber)._operationsInfo.Clear()
+
+            For Each scenario In _fieldsInfo1(ddlFromField.SelectedIndex)._scenariosInfo
+                If scenario.Name = ddlFromScenario.Items(ddlFromScenario.SelectedIndex).Text Then
+                    _fieldsInfo1(currentFieldNumber)._scenariosInfo(currentScenarioNumber).AddOperations(scenario._operationsInfo, currentScenarioNumber)
+
+                    For Each Soil In _fieldsInfo1(currentFieldNumber)._soilsInfo
+                        Soil._scenariosInfo(currentScenarioNumber)._operationsInfo.Clear()
+                        Soil._scenariosInfo(currentScenarioNumber).AddOperations(scenario._operationsInfo, currentScenarioNumber)
+                    Next
+                    Exit For
+                End If
+            Next
+
+            LoadOperations()
+            ShowModal()
+        Catch ex As Exception
+            showMessage(lblMessage, imgIcon, "Red", "StopIcon.jpg", msgDoc.Descendants("Errors").Value & ex.Message)
+        End Try
+    End Sub
+
+    Protected Sub btnSaveCropRotation_Click(sender As Object, e As System.EventArgs) Handles btnSaveCropRotation.Click
+        Dim sFile As String = String.Empty
+        Dim swFile As IO.StreamWriter = Nothing
+        Dim output As StringBuilder = New StringBuilder()
+
+        Try
+            CreateXMLFile(output)   'Save the crop rotation to a xml file
+            sFile = folder + "\" + NTTxmlFolder + "\" + userGuid + ".xml"
+            swFile = New IO.StreamWriter(sFile)
+            swFile.Write(output)
+            swFile.Close()
+            swFile.Dispose()
+            swFile = Nothing
+            If IO.File.Exists(sFile) Then
+                Response.Clear()
+                Response.ContentType = "text/xml"
+                Response.AddHeader("Content-Disposition", "attachment;filename=NTTCropRotationFile.opr")
+                Response.WriteFile(sFile)
+                Response.End()
+            End If
+
+            showMessage(lblMessage, imgIcon, "Green", "GoIcon.jpg", msgDoc.Descendants("ProjectSaved").Value)
+
+        Catch ex As Exception
+            showMessage(lblMessage, imgIcon, "Red", "StopIcon.jpg", msgDoc.Descendants("Errors").Value)
+        End Try
+
+    End Sub
+
+    Private Sub CreateXMLFile(ByRef output As StringBuilder)
+        Try
+            If _startInfo.projectName Is Nothing Or _startInfo.projectName = String.Empty Then
+                showMessage(lblMessage, imgIcon, "Red", "StopIcon.jpg", msgDoc.Descendants("ProjectNotCreated").Value)
+                Exit Sub
+            End If
+            output.Length = 0
+            output.Append("<?xml version='1.0'?>" & vbCr)
+            output.Append("<ScenarioInfo>" & vbCr)
+            Dim project As New Project
+            project.AddOperationsInfo(_fieldsInfo1(currentFieldNumber)._scenariosInfo(currentScenarioNumber)._operationsInfo, output)
+            output.Append("</ScenarioInfo>" & vbCr)
+        Catch e1 As Exception
+            showMessage(lblMessage, imgIcon, "Red", "StopIcon.jpg", msgDoc.Descendants("Errors").Value & e1.Message)
+        End Try
+    End Sub
+
+    Private Sub gvOperations_RowDataBound(sender As Object, e As System.Web.UI.WebControls.GridViewRowEventArgs) Handles gvOperations.RowDataBound
+        If e.Row.DataItem Is Nothing Then Exit Sub
+        If e.Row.RowType = DataControlRowType.DataRow Then
+            'asign a client function on row click
+            e.Row.Attributes.Add("onclick", "onClick(" & e.Row.RowIndex.ToString() & ")")
+            e.Row.Attributes.Add("RowNumber", e.Row.RowIndex)
+
+            Dim txtCrop As HtmlInputText = e.Row.FindControl("txtCrop")
+            If Not txtCrop Is Nothing Then
+                txtCrop.Attributes.Add("CropValue", e.Row.DataItem.ApexCrop)
+                Dim pp As Single = 0
+                If Not ddlCrops.DataSource Is Nothing Then
+                    For i = 0 To ddlCrops.Items.Count - 1
+                        If ddlCrops.DataSource(i).Number = e.Row.DataItem.ApexCrop Then pp = ddlCrops.DataSource(i).plantpopulation : Exit For
+                    Next
+                End If
+                txtCrop.Attributes.Add("CropPP", pp)
+            End If
+
+            Dim txtOper As HtmlInputText = e.Row.FindControl("txtOper")
+            If Not txtOper Is Nothing Then
+                txtOper.Attributes.Add("OperValue", e.Row.DataItem.ApexOp)
+                txtOper.Attributes.Add("OperAbbrev", e.Row.DataItem.ApexOpAbbreviation)
+            End If
+
+            Dim txtType As HtmlInputText = e.Row.FindControl("txtType")
+            If Not txtType Is Nothing Then
+                txtType.Attributes.Add("TypeValue", e.Row.DataItem.ApexOpType)
+            End If
+        End If
+    End Sub
+
+    Private Sub btnAddOperation_ServerClick(sender As Object, e As System.EventArgs) Handles btnAddOperation.ServerClick
+        SaveOperations()
+        Dim newOper As New OperationsData
+        If _fieldsInfo1(currentFieldNumber)._scenariosInfo(currentScenarioNumber)._operationsInfo.Count > 0 Then
+            newOper.ApexCrop = _fieldsInfo1(currentFieldNumber)._scenariosInfo(currentScenarioNumber)._operationsInfo(_fieldsInfo1(currentFieldNumber)._scenariosInfo(currentScenarioNumber)._operationsInfo.Count - 1).ApexCrop
+            newOper.ApexCropName = _fieldsInfo1(currentFieldNumber)._scenariosInfo(currentScenarioNumber)._operationsInfo(_fieldsInfo1(currentFieldNumber)._scenariosInfo(currentScenarioNumber)._operationsInfo.Count - 1).ApexCropName
+        Else
+            newOper.ApexCrop = ddlCrops.Items(ddlCrops.SelectedIndex).Value
+            newOper.ApexCropName = ddlCrops.Items(ddlCrops.SelectedIndex).Text
+        End If
+        _fieldsInfo1(currentFieldNumber)._scenariosInfo(currentScenarioNumber).AddOperation(newOper)
+        LoadOperations()
+        ShowModal()
+    End Sub
+
+    Private Sub btnDeleteOperation_ServerClick(sender As Object, e As System.EventArgs) Handles btnDeleteOperation.ServerClick
+        SaveOperations()
+        ShowModal()
+    End Sub
+
+    Private Sub ShowModal()
+        dvOperations.Style.Item("display") = ""
+        ScriptManager.RegisterStartupScript(Me, Me.GetType(), "Modal", "showModal();", True)
+    End Sub
+    Private Sub updateBmp(type As String, value As String)
+        Dim _subareaInfo As SubareasData = Nothing
+        Dim nirr As String = "  00"
+
+        If type = "nirr" Or type = "afnirr" Then
+            Select Case value
+                Case 1
+                    nirr = "  01"
+                Case 2
+                    nirr = "  02"
+                Case 3
+                    nirr = "  05"
+                Case 7
+                    nirr = "  02"
+                Case 8
+                    nirr = "  02"
+            End Select
+        End If
+
+        For i = 0 To _fieldsInfo1(currentFieldNumber)._soilsInfo.Count - 1
+            With _fieldsInfo1(currentFieldNumber)._soilsInfo(i)._scenariosInfo(currentScenarioNumber)._subareasInfo
+                Select Case type
+                    'irrigation variables
+                    Case "nirr"     'irrigation type
+                        ._line8(0).Nirr = nirr
+                        If _fieldsInfo1(currentFieldNumber)._scenariosInfo(currentScenarioNumber)._bmpsInfo.AIType = 0 Then
+                            ._line9(0).Vimx = 0
+                        Else
+                            ._line9(0).Vimx = vimxDefault
+                            If ._line9(0).Bir = 0 Then ._line9(0).Bir = 0.8
+                            If ._line9(0).Armx = 0 Then ._line9(0).Armx = armxDefault * in_to_mm
+                        End If
+                    Case "iri"      'irrigation frequency
+                        ._line8(0).Iri = value
+                    Case "bir"      'water stress
+                        ._line9(0).Bir = value
+                    Case "efi"      'irrigation efficiency
+                        ._line9(0).Efi = 1 - value
+                    Case "armx"      'irrigation maximium single applciation
+                        ._line9(0).Armx = value * in_to_mm
+                    Case "fdsf"      'irrigation safety factor for furrow dike
+                        ._line9(0).Fdsf = value
+                        'Autofertigation variables
+                    Case "afnirr"     'irrigation type
+                        ._line8(0).Nirr = nirr
+                        If _fieldsInfo1(currentFieldNumber)._scenariosInfo(currentScenarioNumber)._bmpsInfo.AFType = 0 Then
+                            ._line9(0).Vimx = 0
+                            ._line8(0).Idf4 = 0
+                            ._line9(0).Bft = 0
+                        Else
+                            ._line9(0).Vimx = vimxDefault
+                            ._line8(0).Idf4 = 0
+                            ._line9(0).Bft = 0
+                            If ._line9(0).Bir = 0 Then ._line9(0).Bir = 0.8
+                            If ._line9(0).Armx = 0 Then ._line9(0).Armx = armxDefault * in_to_mm
+                        End If
+                    Case "afiri"      'irrigation frequency
+                        ._line8(0).Iri = value
+                    Case "afbir"      'water stress
+                        ._line9(0).Bir = value
+                    Case "afefi"      'irrigation efficiency
+                        ._line9(0).Efi = 1 - value
+                    Case "afarmx"      'irrigation maximium single applciation
+                        ._line9(0).Armx = value * in_to_mm
+                    Case "affdsf"      'irrigation safety factor for furrow dike
+                        ._line9(0).Fdsf = value
+                        'tile drain
+                    Case "idr"      'Tile Drain Depth in mm
+                        ._line8(0).Idr = value * ft_to_mm
+                        If value > 0 Then
+                            ._line9(0).Drt = drt
+                        Else
+                            ._line9(0).Drt = 0
+                        End If
+                        'ponds
+                    Case "pcof"     'fraction of subarea controlled by ponds
+                        ._line7(0).Pcof = value
+                    Case "pcofPP"     'fraction of subarea controlled by ponds when it is from Pads and pipes BMPs
+                        ._line7(0).Pcof = value
+                    Case "sbs"
+                        If _fieldsInfo1(currentFieldNumber)._scenariosInfo(currentScenarioNumber)._bmpsInfo.Sbs = True Then
+                            If ._line5(0).Rchc > 0.01 Then ._line5(0).Rchc = 0.01
+                            If ._line5(0).Rchk > 0.01 Then ._line5(0).Rchk = 0.01
+                            ._line5(0).Rchn = 0.2
+                            ._line4(0).Chn = 0.1
+                        Else
+                            ._line5(0).Rchc = _fieldsInfo1(currentFieldNumber).RchcVal
+                            ._line5(0).Rchk = _fieldsInfo1(currentFieldNumber).RchkVal
+                            ._line5(0).Rchn = 0.0
+                            ._line4(0).Chn = 0.0
+                        End If
+                    Case "llslope"
+                        ._line4(0).Slp = _fieldsInfo1(currentFieldNumber)._soilsInfo(i).Slope / 100 - (_fieldsInfo1(currentFieldNumber)._soilsInfo(i).Slope / 100 * value / 100)
+                    Case "ts"
+                        'Determine PEC for Contour Buffer Strip and TS depeding on table manual APEX0604 PAGE 49.
+                        'todo default value for pec. if there are others bmps that modify pec it should ask for those to change pec accordingly.
+                        ._line10(0).Pec = 1.0
+                        If chkTS.Checked = False Then Exit Sub
+                        Select Case ._line4(0).Slp
+                            Case Is <= 0.02
+                                ._line10(0).Pec = 0.6
+                            Case Is <= 0.08
+                                ._line10(0).Pec = 0.5
+                            Case Is <= 0.12
+                                ._line10(0).Pec = 0.6
+                            Case Is <= 0.16
+                                ._line10(0).Pec = 0.7
+                            Case Is <= 0.2
+                                ._line10(0).Pec = 0.8
+                            Case Is <= 0.25
+                                ._line10(0).Pec = 0.9
+                            Case Else
+                                ._line10(0).Pec = 1.0
+                        End Select
+                    Case "lm"
+                        ._line8(0).Lm = value
+                    Case "AoC"
+                        If chkAoC.Checked = True Then
+                            ._line5(0).Rchk = 0.01
+                            ._line5(0).Rchn = 0.05
+                        Else
+                            ._line5(0).Rchk = _fieldsInfo1(currentFieldNumber).RchkVal
+                            ._line5(0).Rchn = 0.0
+                        End If
+                    Case "GC"
+                        If chkGC.Checked = True Then
+                            ._line5(0).Rchc = 0.01
+                        Else
+                            ._line5(0).Rchc = _fieldsInfo1(currentFieldNumber).RchcVal
+                        End If
+                    Case "SA"
+                        ._line10(0).Pec = 1.0
+                        If chkSA.Checked = False Then Exit Sub
+                        Select Case ._line4(0).Slp
+                            Case Is <= 0.02
+                                ._line10(0).Pec = 0.6
+                            Case Is <= 0.08
+                                ._line10(0).Pec = 0.5
+                            Case Is <= 0.12
+                                ._line10(0).Pec = 0.6
+                            Case Is <= 0.16
+                                ._line10(0).Pec = 0.7
+                            Case Is <= 0.2
+                                ._line10(0).Pec = 0.8
+                            Case Is <= 0.25
+                                ._line10(0).Pec = 0.9
+                            Case Else
+                                ._line10(0).Pec = 1.0
+                        End Select
+                End Select
+            End With
+        Next
+    End Sub
+
+    Private Sub SaveAutoIrrigation()
+        With _fieldsInfo1(currentFieldNumber)._scenariosInfo(currentScenarioNumber)._bmpsInfo
+            fsetAI.Style.Item("display") = "none"
+            msgs = "Auto Irrigation: "
+            .AIType = ddlAIIrrigationType.SelectedIndex
+            .AISafetyFactor = txtAISafetyFactor.Text
+            updateBmp("nirr", .AIType)
+            validateBMPValue(txtAIIrrigationEfficiancy, .AIEff, msgDoc.Descendants("EfficiencyMessage").Value.Replace("First", FractionMin).Replace("Second", FractionMax) & Microsoft.VisualBasic.ControlChars.CrLf, "efi", FractionMin, FractionMax)
+            validateBMPValue(txtAIWaterStress, .AIWaterStressFactor, msgDoc.Descendants("WaterStressFactorMsg").Value & Microsoft.VisualBasic.ControlChars.CrLf, "bir", FractionMin, FractionMax)
+            validateBMPValue(txtAIFrequency, .AIFreq, (msgDoc.Descendants("FrequencyMessage").Value.Replace("First", ValueMin).Replace("Second", ValueMax)) & Microsoft.VisualBasic.ControlChars.CrLf, "iri", ValueMin, ValueMax)
+            validateBMPValue(txtAIMaxSingleAppl, .AIMaxSingleApp, (msgDoc.Descendants("ApplicationMessage").Value.Replace("First", ValueMin).Replace("Second", ValueMax)) & Microsoft.VisualBasic.ControlChars.CrLf, "armx", ValueMin, ValueMax)
+            If .AIType = 7 Then validateBMPValue(txtAISafetyFactor, .AISafetyFactor, (msgDoc.Descendants("SafetyFactorMsg").Value.Replace("First", ValueMin).Replace("Second", ValueMax)) & Microsoft.VisualBasic.ControlChars.CrLf, "fdsf", ValueMin, ValueMax)
+            If .AIType = 8 Then validateBMPValue(txtAIResArea, .AIResArea, "Tailwater Autoirrigatión reservoir area should be numeric between " & ValueMin & "-" & ValueMax & ". Please change the value" & Microsoft.VisualBasic.ControlChars.CrLf, "resArea", ValueMin, ValueMax)
+            If .AIType <> 0 Or .AIEff > 0 Or .AIFreq > 0 Then
+                fsetAI.Style.Item("display") = ""
+                If Not msgs = "Auto Irrigation: " Then lblMessage.Text &= "&#10;" & msgs : lblMessage.ForeColor = Drawing.Color.Red : Exit Sub
+                If .AIResArea > 0 Then createBuffer("AITW", .AIResArea, 0, 0, 0)
+            Else
+                deleteBuffer("AITW")
+            End If
+        End With
+    End Sub
+
+    Private Sub SaveAutoFertigation()
+        With _fieldsInfo1(currentFieldNumber)._scenariosInfo(currentScenarioNumber)._bmpsInfo
+            fsetAF.Style.Item("display") = "none"
+            msgs = "Auto Fertigation: "
+            .AFType = ddlAFIrrigationType.SelectedIndex
+            .AFSafetyFactor = txtAFSafetyFactor.Text
+            .AFNConc = txtAFNConc.Text
+            updateBmp("afnirr", .AFType)
+            validateBMPValue(txtAFIrrigationEfficiancy, _fieldsInfo1(currentFieldNumber)._scenariosInfo(currentScenarioNumber)._bmpsInfo.AFEff, msgDoc.Descendants("EfficiencyMessage").Value.Replace("First", FractionMin).Replace("Second", FractionMax) & Microsoft.VisualBasic.ControlChars.CrLf, "efi", FractionMin, FractionMax)
+            validateBMPValue(txtAFWaterStress, _fieldsInfo1(currentFieldNumber)._scenariosInfo(currentScenarioNumber)._bmpsInfo.AFWaterStressFactor, msgDoc.Descendants("WaterStressFactorMsg").Value & Microsoft.VisualBasic.ControlChars.CrLf, "bir", FractionMin, FractionMax)
+            validateBMPValue(txtAFFrequency, _fieldsInfo1(currentFieldNumber)._scenariosInfo(currentScenarioNumber)._bmpsInfo.AFFreq, (msgDoc.Descendants("FrequencyMessage").Value.Replace("First", ValueMin).Replace("Second", ValueMax)) & Microsoft.VisualBasic.ControlChars.CrLf, "iri", ValueMin, ValueMax)
+            validateBMPValue(txtAFMaxSingleAppl, _fieldsInfo1(currentFieldNumber)._scenariosInfo(currentScenarioNumber)._bmpsInfo.AFMaxSingleApp, (msgDoc.Descendants("ApplicationMessage").Value.Replace("First", ValueMin).Replace("Second", ValueMax)) & Microsoft.VisualBasic.ControlChars.CrLf, "armx", ValueMin, ValueMax)
+            If .AFType = 7 Then validateBMPValue(txtAFSafetyFactor, .AFSafetyFactor, (msgDoc.Descendants("SafetyFactorMsg").Value.Replace("First", ValueMin).Replace("Second", ValueMax)) & Microsoft.VisualBasic.ControlChars.CrLf, "fdsf", ValueMin, ValueMax)
+            validateBMPValue(txtAFNConc, _fieldsInfo1(currentFieldNumber)._scenariosInfo(currentScenarioNumber)._bmpsInfo.AFNConc, (msgDoc.Descendants("NConcentrationMsg").Value.Replace("First", ValueMin).Replace("Second", ValueMax)) & Microsoft.VisualBasic.ControlChars.CrLf, "", ValueMin, ValueMax)
+            If .AFType <> 0 Or .AFEff > 0 Or .AFFreq > 0 Or .AFNConc > 0 Then
+                fsetAF.Style.Item("display") = ""
+                If Not msgs = "Auto Fertigation: " Then lblMessage.Text &= "&#10;" & msgs : lblMessage.ForeColor = Drawing.Color.Red
+            End If
+        End With
+    End Sub
+
+    Private Sub SaveTileDrain()
+        With _fieldsInfo1(currentFieldNumber)._scenariosInfo(currentScenarioNumber)._bmpsInfo
+            fsetTD.Style.Item("display") = "none"
+            msgs = "Tile Drain: "
+            validateBMPValue(txtTDDepth, .TileDrainDepth, (msgDoc.Descendants("TileDrainDepthMsg").Value.Replace("First", ValueMin).Replace("Second", ValueMax)) & Microsoft.VisualBasic.ControlChars.CrLf, "idr", ValueMin, ValueMax)
+            If .TileDrainDepth = 0 Then Exit Sub
+            fsetTD.Style.Item("display") = ""
+            If Not msgs = "Tile Drain: " Then lblMessage.Text &= "&#10;" & msgs : lblMessage.ForeColor = Drawing.Color.Red
+        End With
+    End Sub
+
+    Private Sub SavePadsAndPipesTailWater()
+        'Pads and Pipes TailWater
+        With _fieldsInfo1(currentFieldNumber)._scenariosInfo(currentScenarioNumber)._bmpsInfo
+            fsetPPTW.Style.Item("display") = "none"
+            msgs = "TailWater: "
+            validateBMPValue(txtPPTWSides, .PPTWSides, (msgDoc.Descendants("PadsPipesMsg").Value.Replace("First", sidesMin).Replace("Second", sidesMax)) & Microsoft.VisualBasic.ControlChars.CrLf, "", sidesMin, sidesMax)
+            validateBMPValue(txtPPTWWidth, .PPTWWidth, (msgDoc.Descendants("PadsPipesMsg").Value.Replace("First", ValueMin).Replace("Second", ValueMax)) & Microsoft.VisualBasic.ControlChars.CrLf, "pcofPP", ValueMin, ValueMax)
+            validateBMPValue(txtPPTWResArea, .PPTWResArea, (msgDoc.Descendants("PadsPipesMsg").Value.Replace("First", ValueMin).Replace("Second", ValueMax)) & Microsoft.VisualBasic.ControlChars.CrLf, "resArea", ValueMin, ValueMax)
+            If .PPTWWidth > 0 Or .PPTWSides > 0 Or .PPTWResArea > 0 Then
+                fsetPPTW.Style.Item("display") = ""
+                If Not msgs = "TailWater: " Then lblMessage.Text &= "&#10;" & msgs : lblMessage.ForeColor = Drawing.Color.Red : Exit Sub
+                If .PPTWResArea > 0 Then createBuffer("PPTW", .PPTWResArea, 0, 0, 0)
+            Else
+                deleteBuffer("PPTW")
+            End If
+        End With
+    End Sub
+
+    Private Sub SavePadsAndPipesDitchEnlargement()
+        'Pads and Pipes Ditch Enlargement
+        With _fieldsInfo1(currentFieldNumber)._scenariosInfo(currentScenarioNumber)._bmpsInfo
+                fsetPPDE.Style.Item("display") = "none"
+                msgs = "Ditch Enlargement: "
+                validateBMPValue(txtPPDESides, .PPDESides, (msgDoc.Descendants("PadsPipesMsg").Value.Replace("First", sidesMin).Replace("Second", sidesMax)) & Microsoft.VisualBasic.ControlChars.CrLf, "", sidesMin, sidesMax)
+                validateBMPValue(txtPPDEWidth, .PPDEWidth, (msgDoc.Descendants("PadsPipesMsg").Value.Replace("First", ValueMin).Replace("Second", ValueMax)) & Microsoft.VisualBasic.ControlChars.CrLf, "pcofPP", ValueMin, ValueMax)
+                validateBMPValue(txtPPDEResArea, .PPDEResArea, (msgDoc.Descendants("PadsPipesMsg").Value.Replace("First", ValueMin).Replace("Second", ValueMax)) & Microsoft.VisualBasic.ControlChars.CrLf, "resArea", ValueMin, ValueMax)
+            If .PPDEWidth > 0 Or .PPDESides > 0 Or .PPDEResArea > 0 Then
+                fsetPPDE.Style.Item("display") = ""
+                If Not msgs = "Ditch Enlargement: " Then lblMessage.Text &= "&#10;" & msgs : lblMessage.ForeColor = Drawing.Color.Red : Exit Sub
+                If .PPDEResArea > 0 Then createBuffer("PPDE", .PPDEResArea, 0, 0, 0)
+            Else
+                deleteBuffer("PPDE")
+            End If
+        End With
+    End Sub
+
+    Private Sub SavePadsAndPipesDitchSystem()
+        'Pads and Pipes Ditch system
+        With _fieldsInfo1(currentFieldNumber)._scenariosInfo(currentScenarioNumber)._bmpsInfo
+            fsetPPDS.Style.Item("display") = "none"
+            msgs = "Ditch System: "
+            validateBMPValue(txtPPDSSides, .PPDSSides, (msgDoc.Descendants("PadsPipesMsg").Value.Replace("First", sidesMin).Replace("Second", sidesMax)) & Microsoft.VisualBasic.ControlChars.CrLf, "", sidesMin, sidesMax)
+            validateBMPValue(txtPPDSWidth, .PPDSWidth, (msgDoc.Descendants("PadsPipesMsg").Value.Replace("First", ValueMin).Replace("Second", ValueMax)) & Microsoft.VisualBasic.ControlChars.CrLf, "pcofPP", ValueMin, ValueMax)
+            If .PPDSWidth > 0 Or .PPDSSides > 0 Then
+                fsetPPDS.Style.Item("display") = ""
+                If Not msgs = "Ditch System: " Then lblMessage.Text &= "&#10;" & msgs : lblMessage.ForeColor = Drawing.Color.Red : Exit Sub
+            End If
+        End With
+    End Sub
+
+    Private Sub SavePadsAndPipesNoDitch()
+        'Pads and Pipes No ditch Improvement
+        With _fieldsInfo1(currentFieldNumber)._scenariosInfo(currentScenarioNumber)._bmpsInfo
+            fsetPPND.Style.Item("display") = "none"
+            msgs = "Ditch Improvement: "
+            validateBMPValue(txtPPNDWidth, .PPNDWidth, (msgDoc.Descendants("PadsPipesMsg").Value.Replace("First", ValueMin).Replace("Second", ValueMax)) & Microsoft.VisualBasic.ControlChars.CrLf, "pcofPP", ValueMin, ValueMax)
+            validateBMPValue(txtPPNDSides, .PPNDSides, (msgDoc.Descendants("PadsPipesMsg").Value.Replace("First", sidesMin).Replace("Second", sidesMax)) & Microsoft.VisualBasic.ControlChars.CrLf, "", sidesMin, sidesMax)
+            If .PPNDSides > 0 Or .PPNDWidth > 0 Then
+                fsetPPDS.Style.Item("display") = ""
+                If Not msgs = "Ditch Improvement: " Then lblMessage.Text &= "&#10;" & msgs : lblMessage.ForeColor = Drawing.Color.Red : Exit Sub
+            End If
+        End With
+    End Sub
+
+    Private Sub SaveWetland()
+        With _fieldsInfo1(currentFieldNumber)._scenariosInfo(currentScenarioNumber)._bmpsInfo
+            fsetWL.Style.Item("display") = "none"
+            msgs = "Wetland: "
+            validateBMPValue(txtWLArea, .WLArea, msgDoc.Descendants("WLAreaMsg").Value & msgDoc.Descendants("NumericValue").Value & ValueMin & " - " & ValueMax & ". " & msgDoc.Descendants("ChangeValue").Value & Microsoft.VisualBasic.ControlChars.CrLf, "wlArea", ValueMin, ValueMax)
+            If .WLArea = 0 Then
+                deleteBuffer("WL")
+                Exit Sub
+            End If
+            fsetWL.Style.Item("display") = ""
+            If Not msgs = "Wetland: " Then lblMessage.Text &= "&#10;" & msgs : lblMessage.ForeColor = Drawing.Color.Red : Exit Sub : Exit Sub
+            If .WLArea > 0 Then createBuffer("WL", .WLArea, 0, 0, 0)
+        End With
+    End Sub
+
+    Private Sub SavePond()
+        With _fieldsInfo1(currentFieldNumber)._scenariosInfo(currentScenarioNumber)._bmpsInfo
+            fsetPND.Style.Item("display") = "none"
+            msgs = "Pond: "
+            validateBMPValue(txtPNDFraction, .PndF, (msgDoc.Descendants("PondFractionMsg").Value.Replace("First", FractionMin).Replace("Second", FractionMax)) & Microsoft.VisualBasic.ControlChars.CrLf, "pcof", FractionMin, FractionMax)
+            If .PndF = 0 Then Exit Sub
+            fsetPND.Style.Item("display") = ""
+            If Not msgs = "Pond: " Then lblMessage.Text &= "&#10;" & msgs : lblMessage.ForeColor = Drawing.Color.Red
+        End With
+    End Sub
+
+    Private Sub SaveStreamBankStabilization()
+        fsetSBS.Style.Item("display") = "none"
+        _fieldsInfo1(currentFieldNumber)._scenariosInfo(currentScenarioNumber)._bmpsInfo.Sbs = chkSBS.Checked
+        updateBmp("sbs", chkSBS.Checked)
+        If Not _fieldsInfo1(currentFieldNumber)._scenariosInfo(currentScenarioNumber)._bmpsInfo.Sbs Then Exit Sub
+        fsetSBS.Style.Item("display") = ""
+    End Sub
+
+    Private Sub SaveStreamFencing()
+        With _fieldsInfo1(currentFieldNumber)._scenariosInfo(currentScenarioNumber)._bmpsInfo
+            fsetSF.Style.Item("display") = "none"
+            msgs = "Stream Fencing: "
+            If ddlSFType.SelectedValue <> String.Empty Then
+                .SFCode = ddlSFType.SelectedValue
+            End If
+            validateBMPValue(txtSFDays, .SFDays, (msgDoc.Descendants("DaysMessage").Value.Replace("First", SFDaysMin).Replace("Second", SFDaysMax)) & Microsoft.VisualBasic.ControlChars.CrLf, "", SFDaysMin, SFDaysMax)
+            validateBMPValue(txtSFAnimals, .SFAnimals, (msgDoc.Descendants("AnimalsMessage").Value.Replace("First", ValueMin).Replace("Second", ValueMax)) & Microsoft.VisualBasic.ControlChars.CrLf, "", ValueMin, ValueMax)
+            validateBMPValue(txtSFHours, .SFHours, (msgDoc.Descendants("HoursMessage").Value.Replace("First", SFHoursMin).Replace("Second", SFHoursMax)) & Microsoft.VisualBasic.ControlChars.CrLf, "", SFHoursMin, SFHoursMax)
+            validateBMPValue(txtSFManure, .SFDryManure, (msgDoc.Descendants("DryManureMessage").Value.Replace("First", SFDryManureMin).Replace("Second", SFDryManureMax)) & Microsoft.VisualBasic.ControlChars.CrLf, "", SFDryManureMin, SFDryManureMax)
+            validateBMPValue(txtSFNO3, .SFNo3, (msgDoc.Descendants("NO3NumericMessage").Value.Replace("First", FractionMin).Replace("Second", FractionMax)) & Microsoft.VisualBasic.ControlChars.CrLf, "", FractionMin, FractionMax)
+            validateBMPValue(txtSFPO4, .SFPo4, (msgDoc.Descendants("PO3NumericMessage").Value.Replace("First", FractionMin).Replace("Second", FractionMax)) & Microsoft.VisualBasic.ControlChars.CrLf, "", FractionMin, FractionMax)
+            validateBMPValue(txtSFOrgN, .SFOrgN, (msgDoc.Descendants("OrgNNumericMessage").Value.Replace("First", FractionMin).Replace("Second", FractionMax)) & Microsoft.VisualBasic.ControlChars.CrLf, "", FractionMin, FractionMax)
+            validateBMPValue(txtSFOrgP, .SFOrgP, (msgDoc.Descendants("OrgPNumericMessage").Value.Replace("First", FractionMin).Replace("Second", FractionMax)) & Microsoft.VisualBasic.ControlChars.CrLf, "", FractionMin, FractionMax)
+            If .SFDays > 0 Or .SFAnimals > 0 Or .SFHours > 0 Or .SFDryManure > 0 Or .SFAnimals > 0 Then
+                fsetSF.Style.Item("display") = ""
+                If Not msgs = "Stream Fencing: " Then lblMessage.Text &= "&#10;" & msgs : lblMessage.ForeColor = Drawing.Color.Red
+            End If
+        End With
+    End Sub
+
+    Private Sub SaveRiparianForest()
+        With _fieldsInfo1(currentFieldNumber)._scenariosInfo(currentScenarioNumber)._bmpsInfo
+            fsetRF.Style.Item("display") = "none"
+            msgs = "Riparian Forest: "
+            validateBMPValue(txtRFWidth, .RFWidth, msgDoc.Descendants("RFWidthMsg").Value & msgDoc.Descendants("NumericValue").Value & ValueMin & " - " & ValueMax & ". " & msgDoc.Descendants("ChangeValue").Value & Microsoft.VisualBasic.ControlChars.CrLf, "", ValueMin, ValueMax)
+            validateBMPValue(txtRFArea, .RFArea, msgDoc.Descendants("RFAreaMsg").Value & msgDoc.Descendants("NumericValue").Value & ValueMin & " - " & ValueMax & ". " & msgDoc.Descendants("ChangeValue").Value & Microsoft.VisualBasic.ControlChars.CrLf, "rfArea", ValueMin, ValueMax)
+            validateBMPValue(txtRFRatio, .RFslopeRatio, msgDoc.Descendants("RFslopeRatioMsg").Value & msgDoc.Descendants("NumericValue").Value & "0.25" & " - " & FractionMax & ". " & msgDoc.Descendants("ChangeValue").Value & Microsoft.VisualBasic.ControlChars.CrLf, "", 0.25, FractionMax)
+            validateBMPValue(txtRFGrass, .RFGrassFieldPortion, msgDoc.Descendants("GrassFieldPortionMsg").Value & msgDoc.Descendants("NumericValue").Value & FractionMin & " - " & "0.75" & ". " & msgDoc.Descendants("ChangeValue").Value & Microsoft.VisualBasic.ControlChars.CrLf, "", FractionMin, 0.75)
+            If .RFWidth > 0 Or .RFArea > 0 Or .RFslopeRatio > 0 Or .RFGrassFieldPortion > 0 Then
+                fsetRF.Style.Item("display") = ""
+                If Not msgs = "Riparian Forest: " Then lblMessage.Text &= "&#10;" & msgs : lblMessage.ForeColor = Drawing.Color.Red : Exit Sub
+                If .RFArea > 0 Or .RFWidth > 0 Then
+                    createBuffer("RF", 0, .RFWidth, .RFslopeRatio, .RFGrassFieldPortion)
+                End If
+            Else
+                deleteBuffer("RF")
+            End If
+        End With
+    End Sub
+
+    Private Sub SaveFilterStrip()
+        With _fieldsInfo1(currentFieldNumber)._scenariosInfo(currentScenarioNumber)._bmpsInfo
+            fsetFS.Style.Item("display") = "none"
+            msgs = "Filter Strip: "
+            If ddlFSType.SelectedValue <> String.Empty Then
+                .FSCrop = ddlFSType.SelectedValue
+            End If
+            validateBMPValue(txtFSArea, .FSArea, msgDoc.Descendants("FSAreaMsg").Value & msgDoc.Descendants("NumericValue").Value & ValueMin & " - " & ValueMax & ". " & msgDoc.Descendants("ChangeValue").Value & Microsoft.VisualBasic.ControlChars.CrLf, "", ValueMin, ValueMax)
+            validateBMPValue(txtFSWidth, .FSWidth, msgDoc.Descendants("FSWidthMsg").Value & msgDoc.Descendants("NumericValue").Value & ValueMin & " - " & ValueMax & ". " & msgDoc.Descendants("ChangeValue").Value & Microsoft.VisualBasic.ControlChars.CrLf, "", ValueMin, ValueMax)
+            validateBMPValue(txtFSRatio, .FSslopeRatio, msgDoc.Descendants("FSslopeRatioMsg").Value & msgDoc.Descendants("NumericValue").Value & 0.25 & " - " & FractionMax & ". " & msgDoc.Descendants("ChangeValue").Value & Microsoft.VisualBasic.ControlChars.CrLf, "", 0.25, FractionMax)
+            If .FSWidth > 0 Or .FSArea > 0 Or .FSslopeRatio > 0 Or .FSCrop > 0 Then
+                fsetFS.Style.Item("display") = ""
+                If Not msgs = "Filter Strip: " Then lblMessage.Text &= "&#10;" & msgs : lblMessage.ForeColor = Drawing.Color.Red : Exit Sub
+                If .FSArea > 0 Or .FSWidth > 0 Then
+                    createBuffer("FS", .FSCrop, .FSWidth, .FSslopeRatio, 0)
+                End If
+            Else
+                deleteBuffer("FS")
+            End If
+        End With
+    End Sub
+
+    Private Sub SaveWaterWay()
+        With _fieldsInfo1(currentFieldNumber)._scenariosInfo(currentScenarioNumber)._bmpsInfo
+            fsetWW.Style.Item("display") = "none"
+            msgs = "Waterway: "
+            If ddlWWType.SelectedValue <> String.Empty Then
+                .WWCrop = ddlWWType.SelectedValue
+            End If
+            .WWCrop = ddlWWType.SelectedValue
+            validateBMPValue(txtWWWidth, .WWWidth, (msgDoc.Descendants("WaterWayMsg").Value.Replace("First", ValueMin).Replace("Second", ValueMax)) & Microsoft.VisualBasic.ControlChars.CrLf, "wwwidth", ValueMin, ValueMax)
+            If .WWWidth > 0 Or .WWCrop > 0 Then
+                fsetWW.Style.Item("display") = ""
+                If Not msgs = "Waterway: " Then lblMessage.Text &= "&#10;" & msgs : lblMessage.ForeColor = Drawing.Color.Red : Exit Sub
+                createBuffer("WW", .WWCrop, .WWWidth, 0, 0)
+            Else
+                deleteBuffer("WW")
+            End If
+        End With
+    End Sub
+
+    Private Sub SaveContourBuffer()
+        With _fieldsInfo1(currentFieldNumber)._scenariosInfo(currentScenarioNumber)._bmpsInfo
+            fsetCB.Style.Item("display") = "none"
+            msgs = "Contour Buffer: "
+            .CBCrop = 0
+            If ddlCBType.SelectedValue <> String.Empty Then
+                .CBCrop = ddlCBType.SelectedValue
+            End If
+            validateBMPValue(txtCBBufferWidth, .CBBWidth, (msgDoc.Descendants("BufferWidthMsg").Value.Replace("First", ValueMin).Replace("Second", ValueMax)) & Microsoft.VisualBasic.ControlChars.CrLf, "", ValueMin, ValueMax)
+            validateBMPValue(txtCBCropWidth, .CBCWidth, (msgDoc.Descendants("BufferWidthMsg").Value.Replace("First", ValueMin).Replace("Second", ValueMax)) & Microsoft.VisualBasic.ControlChars.CrLf, "", ValueMin, ValueMax)
+            If .CBBWidth > 0 Or .CBCWidth > 0 Or .CBCrop > 0 Then
+                fsetCB.Style.Item("display") = ""
+                If Not msgs = "Contour Buffer: " Then lblMessage.Text &= "&#10;" & msgs : lblMessage.ForeColor = Drawing.Color.Red : Exit Sub
+                callCreateCBBuffer(_fieldsInfo1(currentFieldNumber)._scenariosInfo(currentScenarioNumber)._bmpsInfo.CBCrop, _fieldsInfo1(currentFieldNumber)._scenariosInfo(currentScenarioNumber)._bmpsInfo.CBCWidth, _fieldsInfo1(currentFieldNumber)._scenariosInfo(currentScenarioNumber)._bmpsInfo.CBBWidth)
+            End If
+        End With
+    End Sub
+
+    Private Sub SaveLandLeveling()
+        With _fieldsInfo1(currentFieldNumber)._scenariosInfo(currentScenarioNumber)._bmpsInfo
+            fsetLL.Style.Item("display") = "none"
+            msgs = "Land Leveling: "
+            validateBMPValue(txtLLReduction, .SlopeRed, (msgDoc.Descendants("LandLevelingMsg").Value.Replace("First", LLSlopeRedMin).Replace("Second", LLSlopeRedMax)) & Microsoft.VisualBasic.ControlChars.CrLf, "llslope", LLSlopeRedMin, LLSlopeRedMax)
+            If .SlopeRed = 0 Then Exit Sub
+            fsetLL.Style.Item("display") = ""
+            If Not msgs = "Land Leveling: " Then lblMessage.Text &= "&#10;" & msgs : lblMessage.ForeColor = Drawing.Color.Red
+        End With
+    End Sub
+
+    Private Sub SaveTerraceSystem()
+        fsetTS.Style.Item("display") = "none"
+        _fieldsInfo1(currentFieldNumber)._scenariosInfo(currentScenarioNumber)._bmpsInfo.Ts = chkTS.Checked
+        updateBmp("ts", chkTS.Checked)
+        If Not _fieldsInfo1(currentFieldNumber)._scenariosInfo(currentScenarioNumber)._bmpsInfo.Ts Then Exit Sub
+        fsetTS.Style.Item("display") = ""
+    End Sub
+
+    Private Sub SaveLiming()
+        fsetLM.Style.Item("display") = "none"
+        _fieldsInfo1(currentFieldNumber)._scenariosInfo(currentScenarioNumber)._bmpsInfo.Lm = chkLM.Checked
+        If chkLM.Checked = True Then
+            updateBmp("lm", "0")
+        Else
+            updateBmp("lm", "1")
+        End If
+        If Not _fieldsInfo1(currentFieldNumber)._scenariosInfo(currentScenarioNumber)._bmpsInfo.Lm Then Exit Sub
+        fsetLM.Style.Item("display") = ""
+    End Sub
+
+    Private Sub SaveAsfaltOrConcret()
+        fsetAoC.Style.Item("display") = "none"
+        _fieldsInfo1(currentFieldNumber)._scenariosInfo(currentScenarioNumber)._bmpsInfo.AoC = chkAoC.Checked
+        updateBmp("AoC", chkAoC.Checked)
+        If Not _fieldsInfo1(currentFieldNumber)._scenariosInfo(currentScenarioNumber)._bmpsInfo.AoC Then Exit Sub
+        fsetAoC.Style.Item("display") = ""
+    End Sub
+
+    Private Sub SaveGrassCover()
+        fsetGC.Style.Item("display") = "none"
+        _fieldsInfo1(currentFieldNumber)._scenariosInfo(currentScenarioNumber)._bmpsInfo.Gc = chkGC.Checked
+        updateBmp("GC", chkGC.Checked)
+        If Not _fieldsInfo1(currentFieldNumber)._scenariosInfo(currentScenarioNumber)._bmpsInfo.Gc Then Exit Sub
+        fsetGC.Style.Item("display") = ""
+    End Sub
+
+    Private Sub SaveSlopeAdjustment()
+        fsetSA.Style.Item("display") = "none"
+        _fieldsInfo1(currentFieldNumber)._scenariosInfo(currentScenarioNumber)._bmpsInfo.Sa = chkSA.Checked
+        updateBmp("SA", chkSA.Checked)
+        If Not _fieldsInfo1(currentFieldNumber)._scenariosInfo(currentScenarioNumber)._bmpsInfo.Sa Then Exit Sub
+        fsetSA.Style.Item("display") = ""
+    End Sub
+
+    Private Sub SaveShading()
+        With _fieldsInfo1(currentFieldNumber)._scenariosInfo(currentScenarioNumber)._bmpsInfo
+            fsetSdg.Style.Item("display") = "none"
+            msgs = "Shading: "
+            If ddlSdgCrop.SelectedValue <> String.Empty Then
+                .SdgCrop = ddlSdgCrop.SelectedValue
+            End If
+            validateBMPValue(txtSdgArea, .SdgArea, msgDoc.Descendants("SdgAreaMsg").Value & msgDoc.Descendants("NumericValue").Value & ValueMin & " - " & ValueMax & ". " & msgDoc.Descendants("ChangeValue").Value & Microsoft.VisualBasic.ControlChars.CrLf, "", ValueMin, ValueMax)
+            validateBMPValue(txtSdgWidth, .SdgWidth, msgDoc.Descendants("SdgWidthMsg").Value & msgDoc.Descendants("NumericValue").Value & ValueMin & " - " & ValueMax & ". " & msgDoc.Descendants("ChangeValue").Value & Microsoft.VisualBasic.ControlChars.CrLf, "", ValueMin, ValueMax)
+            validateBMPValue(txtSdgSlopeRatio, .SdgslopeRatio, msgDoc.Descendants("SdgslopeRatioMsg").Value & msgDoc.Descendants("NumericValue").Value & "0.25" & " - " & FractionMax & ". " & msgDoc.Descendants("ChangeValue").Value & Microsoft.VisualBasic.ControlChars.CrLf, "", 0.25, FractionMax)
+            If .SdgArea > 0 Or .SdgWidth > 0 Or .SdgslopeRatio > 0 Or .SdgCrop > 0 Then
+                fsetFS.Style.Item("display") = ""
+                If Not msgs = "Shading: " Then lblMessage.Text &= "&#10;" & msgs : lblMessage.ForeColor = Drawing.Color.Red : Exit Sub
+                createBuffer("Sdg", .SdgCrop, .SdgWidth, .SdgslopeRatio, 0)
+            Else
+                deleteBuffer("Sdg")
+            End If
+        End With
+    End Sub
+
+    Private Sub validateBMPValue(ByRef sender As TextBox, ByRef placeToSave As Single, ByVal msg As String, ByVal updateValue As String, ByVal minVal As Single, ByVal maxVal As Single)
+        Dim result As Single = 0
+        If currentFieldNumber < 0 Or currentScenarioNumber < 0 Then Exit Sub
+        Dim valueTruncated As Short
+        Dim bmpValue As Single = 0
+
+        Try
+            sender.BackColor = Drawing.Color.White
+            If sender.Text = String.Empty Then sender.Text = 0
+
+            If Single.TryParse(sender.Text, result) Then
+                placeToSave = sender.Text
+                If sender.ID.Contains("Animal") Or sender.ID.Contains("Days") Or sender.ID.Contains("Días") Then
+                    valueTruncated = sender.Text
+                    sender.Text = valueTruncated
+                End If
+                bmpValue = sender.Text
+                updateBmp(updateValue, bmpValue)
+                If result < minVal Or result > maxVal Then Throw New Global.System.Exception
+                If updateValue = "pcofPP" Or updateValue = "idr" Then
+                    If updateValue = "pcofPP" And (sender.ID = "txtPPDEWidth" Or sender.ID = "txtPPTWWidth" Or sender.ID = "txtPPDSWidth") Then bmpValue = 0.5
+                    If updateValue = "pcofPP" And sender.ID = "txtPPNDWidth" Then bmpValue = 0.0
+                    If Not ((placeToSave = 0 And sender.Text = 0) Or (placeToSave > 0 And sender.Text > 0)) Then
+                        'width was changed, so if sender.text > 0 then reduction should be applie
+                        modifyCN(placeToSave)
+                    End If
+                End If
+            Else
+                Throw New Global.System.Exception
+            End If
+
+        Catch ex As Exception
+            msgs &= msg
+            'sender.Text = 0
+            sender.BackColor = Drawing.Color.Red
+        End Try
+    End Sub
+
+    Private Sub modifyCN(ByVal placeToSave As Single)
+        For Each oper In _fieldsInfo1(currentFieldNumber)._scenariosInfo(currentScenarioNumber)._operationsInfo
+            If oper.ApexOpAbbreviation.Trim = planting Then
+                If placeToSave = 0 Then oper.OpVal2 *= 0.9 Else oper.OpVal2 *= (100 / 90)
+            End If
+        Next
+
+        For Each scen In _fieldsInfo1(currentFieldNumber)._soilsInfo(currentSoilNumber)._scenariosInfo
+            For Each oper In scen._operationsInfo
+                If oper.ApexOpAbbreviation.Trim = planting Then
+                    If placeToSave = 0 Then oper.OpVal2 *= 0.9 Else oper.OpVal2 *= (100 / 90)
+                End If
+            Next
+        Next
+    End Sub
+
+    'Private Sub verifyBuffers()
+    '    Dim lastFieldNumber As UShort = currentFieldNumber
+    '    Dim lastScenarioNumber As Short = currentScenarioNumber
+
+    '    Try
+    '        If _startInfo.Versions = "" Then
+    '            Dim i As UShort = 0, j As UShort = 0
+    '            For Each Field In _fieldsInfo1
+    '                currentFieldNumber = i
+    '                j = 0
+    '                For Each scen In Field._scenariosInfo
+    '                    currentScenarioNumber = j
+    '                    If scen._bufferInfo.Count <= 0 Then
+    '                        createBuffer("Sdg", scen._bmpsInfo.SdgCrop, scen._bmpsInfo.SdgWidth, scen._bmpsInfo.SdgslopeRatio, 0)
+    '                        createBuffer("FS", scen._bmpsInfo.FSCrop, scen._bmpsInfo.FSWidth, scen._bmpsInfo.FSslopeRatio, 0)
+    '                        createBuffer("RF", 0, scen._bmpsInfo.RFWidth, scen._bmpsInfo.RFslopeRatio, scen._bmpsInfo.RFGrassFieldPortion)
+    '                        createBuffer("WW", scen._bmpsInfo.WWCrop, scen._bmpsInfo.WWWidth, 0, 0)
+    '                        createBuffer("WL", scen._bmpsInfo.WLArea, 0, 0, 0)
+    '                        createBuffer("PPDE", scen._bmpsInfo.PPDEResArea, 0, 0, 0)
+    '                        createBuffer("PPTW", scen._bmpsInfo.PPTWResArea, 0, 0, 0)
+    '                        createBuffer("AITW", scen._bmpsInfo.AIResArea, 0, 0, 0)
+    '                    End If
+    '                    'verify if there are more bmps to update if this is an old version
+    '                    'Auto Irrigation
+    '                    If scen._bmpsInfo.AIType > 0 Then
+    '                        Select Case scen._bmpsInfo.AIType
+    '                            Case 1
+    '                                updateBmp("nirr", 1)
+    '                            Case 2
+    '                                updateBmp("nirr", 2)
+    '                            Case 5
+    '                                updateBmp("nirr", 5)
+    '                                'Case 2
+    '                                '    updateBmp("nirr", scen._bmpsInfo.AIType)
+    '                        End Select
+    '                        updateBmp("bir", scen._bmpsInfo.AIWaterStressFactor)
+    '                        updateBmp("efi", scen._bmpsInfo.AIEff)
+    '                        updateBmp("iri", scen._bmpsInfo.AIFreq)
+    '                        updateBmp("armx", scen._bmpsInfo.AIMaxSingleApp)
+    '                        updateBmp("fdsf", scen._bmpsInfo.AISafetyFactor)
+    '                    End If
+    '                    'Auto Fertigation
+    '                    If scen._bmpsInfo.AFType > 0 Then
+    '                        updateBmp("afnirr", scen._bmpsInfo.AFType)
+    '                        updateBmp("afbir", scen._bmpsInfo.AFWaterStressFactor)
+    '                        updateBmp("afefi", scen._bmpsInfo.AFEff)
+    '                        updateBmp("afiri", scen._bmpsInfo.AFFreq)
+    '                        updateBmp("afarmx", scen._bmpsInfo.AFMaxSingleApp)
+    '                        updateBmp("affdsf", scen._bmpsInfo.AFSafetyFactor)
+    '                    End If
+    '                    'tile drain
+    '                    If scen._bmpsInfo.TileDrainDepth > 0 Then updateBmp("idr", scen._bmpsInfo.TileDrainDepth)
+    '                    'pads and pipes - no dithc improvement
+    '                    If scen._bmpsInfo.PPDSWidth > 0 Or scen._bmpsInfo.PPDEWidth > 0 Or scen._bmpsInfo.PPNDWidth > 0 Or scen._bmpsInfo.PPTWWidth > 0 Then updateBmp("pcofPP", 0.5)
+    '                    'ponds
+    '                    If scen._bmpsInfo.PndF Then updateBmp("pcof", scen._bmpsInfo.PndF)
+    '                    'stream bank stabilization
+    '                    If scen._bmpsInfo.Sbs Then updateBmp("sbs", 0)
+    '                    'land leveling
+    '                    If scen._bmpsInfo.SlopeRed Then updateBmp("llslope", scen._bmpsInfo.SlopeRed)
+    '                    'Terrace system
+    '                    If scen._bmpsInfo.Ts Then updateBmp("ts", 0)
+    '                    'liming                        
+    '                    If _fieldsInfo1(currentFieldNumber)._scenariosInfo(currentScenarioNumber)._bmpsInfo.Lm Then
+    '                        updateBmp("lm", "0")
+    '                    Else
+    '                        updateBmp("lm", "1")
+    '                    End If
+    '                    j += 1
+    '                Next
+    '                i += 1
+    '            Next
+    '            _startInfo.Versions = version
+    '        End If
+
+    '        currentFieldNumber = lastFieldNumber
+    '        currentScenarioNumber = lastScenarioNumber
+    '    Catch ex As Exception
+    '        showMessage(lblMessage, imgIcon, "Red", "StopIcon.jpg", msgDoc.Descendants("Errors").Value & "--> " & ex.Message)
+    '    End Try
+    'End Sub
+
+    Private Sub callCreateCBBuffer(ByVal crop, ByVal value1, ByVal value2)
+        If value1 = 0 And value2 = 0 And crop Then
+            deleteBuffer("CBMain")
+            deleteBuffer("CBFS")
+        End If
+
+        If value1 > 0 And value2 > 0 And crop Then
+            createBuffer("CB", crop, value1, value2, 0)
+            'validate bmps to recreate all of them in the new contour buffer fields created.
+            Dim nirr As String = "  00"
+
+            For j = 0 To _fieldsInfo1(currentFieldNumber)._scenariosInfo(currentScenarioNumber)._bufferInfo.Count - 1
+                With _fieldsInfo1(currentFieldNumber)._scenariosInfo(currentScenarioNumber)._bufferInfo(j)
+                    'auto irrigation
+                    If _fieldsInfo1(currentFieldNumber)._scenariosInfo(currentScenarioNumber)._bmpsInfo.AIType > 0 Then
+                        With ._line8(0)
+                            Select Case _fieldsInfo1(currentFieldNumber)._scenariosInfo(currentScenarioNumber)._bmpsInfo.AIType
+                                Case 1
+                                    .Nirr = "  01"
+                                Case 2
+                                    .Nirr = "  02"
+                                Case 3
+                                    .Nirr = "  05"
+                                Case 7
+                                    .Nirr = "  02"
+                                Case 8
+                                    .Nirr = "  02"
+                            End Select
+                            .Iri = _fieldsInfo1(currentFieldNumber)._scenariosInfo(currentScenarioNumber)._bmpsInfo.AIFreq
+                        End With
+                        With ._line9(0)
+                            .Vimx = vimxDefault
+                            If .Bir = 0 Then .Bir = 0.8
+                            If .Armx = 0 Then .Armx = armxDefault * in_to_mm
+                            .Bir = _fieldsInfo1(currentFieldNumber)._scenariosInfo(currentScenarioNumber)._bmpsInfo.AIWaterStressFactor
+                            .Efi = 1 - _fieldsInfo1(currentFieldNumber)._scenariosInfo(currentScenarioNumber)._bmpsInfo.AIEff
+                            .Armx = _fieldsInfo1(currentFieldNumber)._scenariosInfo(currentScenarioNumber)._bmpsInfo.AIMaxSingleApp * in_to_mm
+                            .Fdsf = _fieldsInfo1(currentFieldNumber)._scenariosInfo(currentScenarioNumber)._bmpsInfo.AISafetyFactor
+                        End With
+                    End If
+
+                    'auto fertigation
+                    If _fieldsInfo1(currentFieldNumber)._scenariosInfo(currentScenarioNumber)._bmpsInfo.AFType > 0 Then
+                        With ._line8(0)
+                            Select Case _fieldsInfo1(currentFieldNumber)._scenariosInfo(currentScenarioNumber)._bmpsInfo.AFType
+                                Case 1
+                                    .Nirr = "  01"
+                                Case 2
+                                    .Nirr = "  02"
+                                Case 3
+                                    .Nirr = "  05"
+                                Case 7
+                                    .Nirr = "  02"
+                                Case 8
+                                    .Nirr = "  02"
+                            End Select
+                            .Iri = _fieldsInfo1(currentFieldNumber)._scenariosInfo(currentScenarioNumber)._bmpsInfo.AFFreq
+                            .Idf4 = 1
+                        End With
+                        With ._line9(0)
+                            .Vimx = vimxDefault
+                            .Bft = 1
+                            If .Bir = 0 Then .Bir = 0.8
+                            If .Armx = 0 Then .Armx = armxDefault * in_to_mm
+                            .Bir = _fieldsInfo1(currentFieldNumber)._scenariosInfo(currentScenarioNumber)._bmpsInfo.AFWaterStressFactor
+                            .Efi = 1 - _fieldsInfo1(currentFieldNumber)._scenariosInfo(currentScenarioNumber)._bmpsInfo.AFEff
+                            .Armx = _fieldsInfo1(currentFieldNumber)._scenariosInfo(currentScenarioNumber)._bmpsInfo.AFMaxSingleApp * in_to_mm
+                            .Fdsf = _fieldsInfo1(currentFieldNumber)._scenariosInfo(currentScenarioNumber)._bmpsInfo.AFSafetyFactor
+                        End With
+                    End If
+
+                    'tile drain
+                    If _fieldsInfo1(currentFieldNumber)._scenariosInfo(currentScenarioNumber)._bmpsInfo.TileDrainDepth > 0 Then
+                        ._line8(0).Idr = _fieldsInfo1(currentFieldNumber)._scenariosInfo(currentScenarioNumber)._bmpsInfo.TileDrainDepth * ft_to_mm
+                        ._line9(0).Drt = drt
+                    End If
+
+                    'ponds
+                    If _fieldsInfo1(currentFieldNumber)._scenariosInfo(currentScenarioNumber)._bmpsInfo.PndF > 0 Then
+                        ._line7(0).Pcof = _fieldsInfo1(currentFieldNumber)._scenariosInfo(currentScenarioNumber)._bmpsInfo.PndF
+                    End If
+
+                    'pond in PP
+                    If _fieldsInfo1(currentFieldNumber)._scenariosInfo(currentScenarioNumber)._bmpsInfo.PPDEWidth > 0 Or _fieldsInfo1(currentFieldNumber)._scenariosInfo(currentScenarioNumber)._bmpsInfo.PPDSWidth > 0 Or _fieldsInfo1(currentFieldNumber)._scenariosInfo(currentScenarioNumber)._bmpsInfo.PPNDWidth > 0 Or _fieldsInfo1(currentFieldNumber)._scenariosInfo(currentScenarioNumber)._bmpsInfo.PPTWWidth > 0 Then
+                        ._line7(0).Pcof = 0.5
+                    End If
+
+                    'stream bank stabilization
+                    If _fieldsInfo1(currentFieldNumber)._scenariosInfo(currentScenarioNumber)._bmpsInfo.Sbs Then
+                        If ._line5(0).Rchc > 0.01 Then ._line5(0).Rchc = 0.01
+                        If ._line5(0).Rchk > 0.01 Then ._line5(0).Rchk = 0.01
+                        ._line5(0).Rchn = 0.2
+                        ._line4(0).Chn = 0.1
+                    End If
+
+                    'land leveling
+                    If _fieldsInfo1(currentFieldNumber)._scenariosInfo(currentScenarioNumber)._bmpsInfo.SlopeRed > 0 Then
+                        ._line4(0).Slp = _fieldsInfo1(currentFieldNumber)._scenariosInfo(currentScenarioNumber)._bufferInfo(j)._line4(0).Slp - (_fieldsInfo1(currentFieldNumber)._scenariosInfo(currentScenarioNumber)._bufferInfo(j)._line4(0).Slp * _fieldsInfo1(currentFieldNumber)._scenariosInfo(currentScenarioNumber)._bmpsInfo.SlopeRed / 100)
+                    End If
+
+                    'Terrace System
+                    'Determine PEC for Contour Buffer Strip and TS depeding on table manual APEX0604 PAGE 49.
+                    'todo default value for pec. if there are others bmps that modify pec it should ask for those to change pec accordingly.
+                    If _fieldsInfo1(currentFieldNumber)._scenariosInfo(currentScenarioNumber)._bmpsInfo.Ts Then
+                        ._line10(0).Pec = 1.0
+                        If chkTS.Checked = False Then Exit Sub
+                        Select Case ._line4(0).Slp
+                            Case Is <= 0.02
+                                ._line10(0).Pec = 0.6
+                            Case Is <= 0.08
+                                ._line10(0).Pec = 0.5
+                            Case Is <= 0.12
+                                ._line10(0).Pec = 0.6
+                            Case Is <= 0.16
+                                ._line10(0).Pec = 0.7
+                            Case Is <= 0.2
+                                ._line10(0).Pec = 0.8
+                            Case Is <= 0.25
+                                ._line10(0).Pec = 0.9
+                            Case Else
+                                ._line10(0).Pec = 1.0
+                        End Select
+                    End If
+
+                    'lime
+                    If _fieldsInfo1(currentFieldNumber)._scenariosInfo(currentScenarioNumber)._bmpsInfo.Lm Then
+                        ._line8(0).Lm = 0
+                    Else
+                        ._line8(0).Lm = 1
+                    End If
+                    'Asfalt or Concreto
+                    If _fieldsInfo1(currentFieldNumber)._scenariosInfo(currentScenarioNumber)._bmpsInfo.AoC Then
+                        ._line5(0).Rchk = 0.01
+                        ._line5(0).Rchn = 0.05
+                    End If
+                    'Grass cover
+                    If _fieldsInfo1(currentFieldNumber)._scenariosInfo(currentScenarioNumber)._bmpsInfo.Gc Then
+                        ._line5(0).Rchc = 0.01
+                    End If
+                    'Slope Adjustment
+                    If _fieldsInfo1(currentFieldNumber)._scenariosInfo(currentScenarioNumber)._bmpsInfo.Sa Then
+                        Select Case ._line4(0).Slp
+                            Case Is <= 0.02
+                                ._line10(0).Pec = 0.6
+                            Case Is <= 0.08
+                                ._line10(0).Pec = 0.5
+                            Case Is <= 0.12
+                                ._line10(0).Pec = 0.6
+                            Case Is <= 0.16
+                                ._line10(0).Pec = 0.7
+                            Case Is <= 0.2
+                                ._line10(0).Pec = 0.8
+                            Case Is <= 0.25
+                                ._line10(0).Pec = 0.9
+                            Case Else
+                                ._line10(0).Pec = 1.0
+                        End Select
+                    End If
+                End With
+            Next
+        End If
+    End Sub
+
+    Function validateAllBMPs() As String
+        Dim msg As String = String.Empty
+
+        msg &= validateAutoIrrigation(fsetAI)
+        msg &= validateAutoFertigation(fsetAF)
+        msg &= validatePadsAndPipesNoDitchImprovement(fsetPPND)
+        msg &= validatePadsAndPipesTwoStagaeDitchSystem(fsetPPDS)
+        msg &= validatePadsAndPipesDitchEnlargment(fsetPPDE)
+        msg &= validatePadsAndPipesTailwaterIrrigation(fsetPPTW)
+        msg &= validateFencing(fsetSF)
+
+        If msg = String.Empty Then
+            Return "OK"
+        Else
+            Return msg
+        End If
+    End Function
+
+    Private Sub ddlSFType_DataBinding(sender As Object, e As System.EventArgs) Handles ddlSFType.DataBinding
+        Dim a As UShort = 0
+
+    End Sub
+
+    Private Sub ddlSFType_Load(sender As Object, e As System.EventArgs) Handles ddlSFType.Load
+        Dim a As UShort = 0
+    End Sub
+End Class

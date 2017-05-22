@@ -1,0 +1,403 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="SSURGO_SOILDB" Class="SoilDBDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="WebSettings" ConnectionString="Data Source=T-NN\SQLEXPRESS;Initial Catalog=SSURGO_SOILDB;Integrated Security=True" SettingsObjectName="System.Configuration.ConfigurationManager.ConnectionStrings" SettingsPropertyName="SSURGO_SOILDBConnectionString1" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.MDSOILS" Member="MDSOILs">
+    <Type Name="MDSOIL">
+      <Column Name="TSID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="TSSSACode" Type="System.String" DbType="VarChar(255)" CanBeNull="true" />
+      <Column Name="TSCountyCode" Type="System.String" DbType="VarChar(255)" CanBeNull="true" />
+      <Column Name="MUID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="SLID" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="SERIES" Type="System.String" DbType="VarChar(255)" CanBeNull="true" />
+      <Column Name="UDEP" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="LDEP" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="SAND" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="SILT" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="CLAY" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="TEXTR" Type="System.String" DbType="VarChar(255)" CanBeNull="true" />
+      <Column Name="BD" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="OM" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="CEC" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="PH" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="PAW" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="WC13" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="WC15" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="CF" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="SALIN" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="HORIZDESC1" Type="System.String" DbType="VarChar(255)" CanBeNull="true" />
+      <Column Name="HORIZGEN" Type="System.String" DbType="VarChar(255)" CanBeNull="true" />
+      <Column Name="HORIZDESC2" Type="System.String" DbType="VarChar(255)" CanBeNull="true" />
+      <Column Name="NO3N" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="P205" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="WCSTART" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="SERIESNAME" Type="System.String" DbType="VarChar(255)" CanBeNull="true" />
+      <Column Name="MUNAME" Type="System.String" DbType="VarChar(255)" CanBeNull="true" />
+      <Column Name="SLOPEL" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="SLOPEH" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="COMPPCT" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="TFACTOR" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="KSAT" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="ALBEDO" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="COARSE" Type="System.Double" DbType="Float" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.OHSOILS" Member="OHSOILs">
+    <Type Name="OHSOIL">
+      <Column Name="TSID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="TSSSACode" Type="System.String" DbType="VarChar(255)" CanBeNull="true" />
+      <Column Name="TSCountyCode" Type="System.String" DbType="VarChar(255)" CanBeNull="true" />
+      <Column Name="MUID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="SLID" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="SERIES" Type="System.String" DbType="VarChar(255)" CanBeNull="true" />
+      <Column Name="UDEP" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="LDEP" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="SAND" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="SILT" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="CLAY" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="TEXTR" Type="System.String" DbType="VarChar(255)" CanBeNull="true" />
+      <Column Name="BD" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="OM" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="CEC" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="PH" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="PAW" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="WC13" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="WC15" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="CF" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="SALIN" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="HORIZDESC1" Type="System.String" DbType="VarChar(255)" CanBeNull="true" />
+      <Column Name="HORIZGEN" Type="System.String" DbType="VarChar(255)" CanBeNull="true" />
+      <Column Name="HORIZDESC2" Type="System.String" DbType="VarChar(255)" CanBeNull="true" />
+      <Column Name="NO3N" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="P205" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="WCSTART" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="SERIESNAME" Type="System.String" DbType="VarChar(255)" CanBeNull="true" />
+      <Column Name="MUNAME" Type="System.String" DbType="VarChar(255)" CanBeNull="true" />
+      <Column Name="SLOPEL" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="SLOPEH" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="COMPPCT" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="TFACTOR" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="KSAT" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="ALBEDO" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="COARSE" Type="System.Double" DbType="Float" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.INSOILS" Member="INSOILs">
+    <Type Name="INSOIL">
+      <Column Name="TSID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="TSSSACode" Type="System.String" DbType="VarChar(255)" CanBeNull="true" />
+      <Column Name="TSCountyCode" Type="System.String" DbType="VarChar(255)" CanBeNull="true" />
+      <Column Name="MUID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="SLID" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="SERIES" Type="System.String" DbType="VarChar(255)" CanBeNull="true" />
+      <Column Name="UDEP" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="LDEP" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="SAND" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="SILT" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="CLAY" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="TEXTR" Type="System.String" DbType="VarChar(255)" CanBeNull="true" />
+      <Column Name="BD" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="OM" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="CEC" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="PH" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="PAW" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="WC13" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="WC15" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="CF" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="SALIN" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="HORIZDESC1" Type="System.String" DbType="VarChar(255)" CanBeNull="true" />
+      <Column Name="HORIZGEN" Type="System.String" DbType="VarChar(255)" CanBeNull="true" />
+      <Column Name="HORIZDESC2" Type="System.String" DbType="VarChar(255)" CanBeNull="true" />
+      <Column Name="NO3N" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="P205" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="WCSTART" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="SERIESNAME" Type="System.String" DbType="VarChar(255)" CanBeNull="true" />
+      <Column Name="MUNAME" Type="System.String" DbType="VarChar(255)" CanBeNull="true" />
+      <Column Name="SLOPEL" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="SLOPEH" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="COMPPCT" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="TFACTOR" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="KSAT" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="ALBEDO" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="COARSE" Type="System.Double" DbType="Float" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.KYSOILS" Member="KYSOILs">
+    <Type Name="KYSOIL">
+      <Column Name="TSID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="TSSSACode" Type="System.String" DbType="VarChar(255)" CanBeNull="true" />
+      <Column Name="TSCountyCode" Type="System.String" DbType="VarChar(255)" CanBeNull="true" />
+      <Column Name="MUID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="SLID" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="SERIES" Type="System.String" DbType="VarChar(255)" CanBeNull="true" />
+      <Column Name="UDEP" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="LDEP" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="SAND" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="SILT" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="CLAY" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="TEXTR" Type="System.String" DbType="VarChar(255)" CanBeNull="true" />
+      <Column Name="BD" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="OM" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="CEC" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="PH" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="PAW" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="WC13" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="WC15" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="CF" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="SALIN" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="HORIZDESC1" Type="System.String" DbType="VarChar(255)" CanBeNull="true" />
+      <Column Name="HORIZGEN" Type="System.String" DbType="VarChar(255)" CanBeNull="true" />
+      <Column Name="HORIZDESC2" Type="System.String" DbType="VarChar(255)" CanBeNull="true" />
+      <Column Name="NO3N" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="P205" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="WCSTART" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="SERIESNAME" Type="System.String" DbType="VarChar(255)" CanBeNull="true" />
+      <Column Name="MUNAME" Type="System.String" DbType="VarChar(255)" CanBeNull="true" />
+      <Column Name="SLOPEL" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="SLOPEH" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="COMPPCT" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="TFACTOR" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="KSAT" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="ALBEDO" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="COARSE" Type="System.Double" DbType="Float" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.KSSOILS" Member="KSSOILs">
+    <Type Name="KSSOIL">
+      <Column Name="TSID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="TSSSACode" Type="System.String" DbType="VarChar(255)" CanBeNull="true" />
+      <Column Name="TSCountyCode" Type="System.String" DbType="VarChar(255)" CanBeNull="true" />
+      <Column Name="MUID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="SLID" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="SERIES" Type="System.String" DbType="VarChar(255)" CanBeNull="true" />
+      <Column Name="UDEP" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="LDEP" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="SAND" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="SILT" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="CLAY" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="TEXTR" Type="System.String" DbType="VarChar(255)" CanBeNull="true" />
+      <Column Name="BD" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="OM" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="CEC" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="PH" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="PAW" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="WC13" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="WC15" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="CF" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="SALIN" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="HORIZDESC1" Type="System.String" DbType="VarChar(255)" CanBeNull="true" />
+      <Column Name="HORIZGEN" Type="System.String" DbType="VarChar(255)" CanBeNull="true" />
+      <Column Name="HORIZDESC2" Type="System.String" DbType="VarChar(255)" CanBeNull="true" />
+      <Column Name="NO3N" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="P205" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="WCSTART" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="SERIESNAME" Type="System.String" DbType="VarChar(255)" CanBeNull="true" />
+      <Column Name="MUNAME" Type="System.String" DbType="VarChar(255)" CanBeNull="true" />
+      <Column Name="SLOPEL" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="SLOPEH" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="COMPPCT" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="TFACTOR" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="KSAT" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="ALBEDO" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="COARSE" Type="System.Double" DbType="Float" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.MSSOILS" Member="MSSOILs">
+    <Type Name="MSSOIL">
+      <Column Name="TSID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="TSSSACode" Type="System.String" DbType="VarChar(255)" CanBeNull="true" />
+      <Column Name="TSCountyCode" Type="System.String" DbType="VarChar(255)" CanBeNull="true" />
+      <Column Name="MUID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="SLID" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="SERIES" Type="System.String" DbType="VarChar(255)" CanBeNull="true" />
+      <Column Name="UDEP" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="LDEP" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="SAND" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="SILT" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="CLAY" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="TEXTR" Type="System.String" DbType="VarChar(255)" CanBeNull="true" />
+      <Column Name="BD" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="OM" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="CEC" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="PH" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="PAW" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="WC13" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="WC15" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="CF" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="SALIN" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="HORIZDESC1" Type="System.String" DbType="VarChar(255)" CanBeNull="true" />
+      <Column Name="HORIZGEN" Type="System.String" DbType="VarChar(255)" CanBeNull="true" />
+      <Column Name="HORIZDESC2" Type="System.String" DbType="VarChar(255)" CanBeNull="true" />
+      <Column Name="NO3N" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="P205" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="WCSTART" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="SERIESNAME" Type="System.String" DbType="VarChar(255)" CanBeNull="true" />
+      <Column Name="MUNAME" Type="System.String" DbType="VarChar(255)" CanBeNull="true" />
+      <Column Name="SLOPEL" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="SLOPEH" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="COMPPCT" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="TFACTOR" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="KSAT" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="ALBEDO" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="COARSE" Type="System.Double" DbType="Float" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.OKSOILS" Member="OKSOILs">
+    <Type Name="OKSOIL">
+      <Column Name="TSID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="TSSSACode" Type="System.String" DbType="VarChar(255)" CanBeNull="true" />
+      <Column Name="TSCountyCode" Type="System.String" DbType="VarChar(255)" CanBeNull="true" />
+      <Column Name="MUID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="SLID" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="SERIES" Type="System.String" DbType="VarChar(255)" CanBeNull="true" />
+      <Column Name="UDEP" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="LDEP" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="SAND" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="SILT" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="CLAY" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="TEXTR" Type="System.String" DbType="VarChar(255)" CanBeNull="true" />
+      <Column Name="BD" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="OM" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="CEC" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="PH" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="PAW" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="WC13" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="WC15" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="CF" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="SALIN" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="HORIZDESC1" Type="System.String" DbType="VarChar(255)" CanBeNull="true" />
+      <Column Name="HORIZGEN" Type="System.String" DbType="VarChar(255)" CanBeNull="true" />
+      <Column Name="HORIZDESC2" Type="System.String" DbType="VarChar(255)" CanBeNull="true" />
+      <Column Name="NO3N" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="P205" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="WCSTART" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="SERIESNAME" Type="System.String" DbType="VarChar(255)" CanBeNull="true" />
+      <Column Name="MUNAME" Type="System.String" DbType="VarChar(255)" CanBeNull="true" />
+      <Column Name="SLOPEL" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="SLOPEH" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="COMPPCT" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="TFACTOR" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="KSAT" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="ALBEDO" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="COARSE" Type="System.Double" DbType="Float" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.CASOILS" Member="CASOILs">
+    <Type Name="CASOIL">
+      <Column Name="TSID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="TSSSACode" Type="System.String" DbType="VarChar(255)" CanBeNull="true" />
+      <Column Name="TSCountyCode" Type="System.String" DbType="VarChar(255)" CanBeNull="true" />
+      <Column Name="MUID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="SLID" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="SERIES" Type="System.String" DbType="VarChar(255)" CanBeNull="true" />
+      <Column Name="UDEP" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="LDEP" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="SAND" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="SILT" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="CLAY" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="TEXTR" Type="System.String" DbType="VarChar(255)" CanBeNull="true" />
+      <Column Name="BD" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="OM" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="CEC" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="PH" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="PAW" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="WC13" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="WC15" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="CF" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="SALIN" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="HORIZDESC1" Type="System.String" DbType="VarChar(255)" CanBeNull="true" />
+      <Column Name="HORIZGEN" Type="System.String" DbType="VarChar(255)" CanBeNull="true" />
+      <Column Name="HORIZDESC2" Type="System.String" DbType="VarChar(255)" CanBeNull="true" />
+      <Column Name="NO3N" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="P205" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="WCSTART" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="SERIESNAME" Type="System.String" DbType="VarChar(255)" CanBeNull="true" />
+      <Column Name="MUNAME" Type="System.String" DbType="VarChar(255)" CanBeNull="true" />
+      <Column Name="SLOPEL" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="SLOPEH" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="COMPPCT" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="TFACTOR" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="KSAT" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="ALBEDO" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="COARSE" Type="System.Double" DbType="Float" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.TXSOILS" Member="TXSOILs">
+    <Type Name="TXSOIL">
+      <Column Name="TSID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="TSSSACode" Type="System.String" DbType="VarChar(255)" CanBeNull="true" />
+      <Column Name="TSCountyCode" Type="System.String" DbType="VarChar(255)" CanBeNull="true" />
+      <Column Name="MUID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="SLID" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="SERIES" Type="System.String" DbType="VarChar(255)" CanBeNull="true" />
+      <Column Name="UDEP" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="LDEP" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="SAND" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="SILT" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="CLAY" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="TEXTR" Type="System.String" DbType="VarChar(255)" CanBeNull="true" />
+      <Column Name="BD" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="OM" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="CEC" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="PH" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="PAW" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="WC13" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="WC15" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="CF" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="SALIN" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="HORIZDESC1" Type="System.String" DbType="VarChar(255)" CanBeNull="true" />
+      <Column Name="HORIZGEN" Type="System.String" DbType="VarChar(255)" CanBeNull="true" />
+      <Column Name="HORIZDESC2" Type="System.String" DbType="VarChar(255)" CanBeNull="true" />
+      <Column Name="NO3N" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="P205" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="WCSTART" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="SERIESNAME" Type="System.String" DbType="VarChar(255)" CanBeNull="true" />
+      <Column Name="MUNAME" Type="System.String" DbType="VarChar(255)" CanBeNull="true" />
+      <Column Name="SLOPEL" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="SLOPEH" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="COMPPCT" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="TFACTOR" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="KSAT" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="ALBEDO" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="COARSE" Type="System.Double" DbType="Float" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.WASOILS" Member="WASOILs">
+    <Type Name="WASOIL">
+      <Column Name="TSID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="TSSSACode" Type="System.String" DbType="VarChar(255)" CanBeNull="true" />
+      <Column Name="TSCountyCode" Type="System.String" DbType="VarChar(255)" CanBeNull="true" />
+      <Column Name="MUID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="SLID" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="SERIES" Type="System.String" DbType="VarChar(255)" CanBeNull="true" />
+      <Column Name="UDEP" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="LDEP" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="SAND" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="SILT" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="CLAY" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="TEXTR" Type="System.String" DbType="VarChar(255)" CanBeNull="true" />
+      <Column Name="BD" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="OM" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="CEC" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="PH" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="PAW" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="WC13" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="WC15" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="CF" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="SALIN" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="HORIZDESC1" Type="System.String" DbType="VarChar(255)" CanBeNull="true" />
+      <Column Name="HORIZGEN" Type="System.String" DbType="VarChar(255)" CanBeNull="true" />
+      <Column Name="HORIZDESC2" Type="System.String" DbType="VarChar(255)" CanBeNull="true" />
+      <Column Name="NO3N" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="P205" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="WCSTART" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="SERIESNAME" Type="System.String" DbType="VarChar(255)" CanBeNull="true" />
+      <Column Name="MUNAME" Type="System.String" DbType="VarChar(255)" CanBeNull="true" />
+      <Column Name="SLOPEL" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="SLOPEH" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="COMPPCT" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="TFACTOR" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="KSAT" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="ALBEDO" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="COARSE" Type="System.Double" DbType="Float" CanBeNull="true" />
+    </Type>
+  </Table>
+</Database>

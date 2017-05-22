@@ -1,0 +1,149 @@
+﻿<%@ Master Language="VB" AutoEventWireup="false" CodeBehind="Site.master.vb" Inherits="NTTHTML5.Site" %>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head runat="server">
+    <title>NTT</title>
+    <link href="Styles/Site.css" rel="stylesheet" type="text/css" />
+    <asp:ContentPlaceHolder ID="HeadContent" runat="server"></asp:ContentPlaceHolder>
+    <script type="text/javascript">
+        var imgCol = "";
+        var imgExp = "";
+
+        function ShowInsCon(show, hide) {
+            var dvShow = document.getElementById(show);
+            document.getElementById(hide).style.display="none";
+            if (dvShow.style.display == "") { dvShow.style.display = "none"; }
+            else { dvShow.style.display = ""; }
+        }
+
+        function Forzar(item, lan) {
+            var from = item.indexOf('tvMain');                                            
+            if (from == -1) { __doPostBack(item, lan); }
+        }
+
+        function initialize() 
+        {
+            if (document.title == "Management" && imgCol == "") 
+            {
+                var element = document.getElementById("tdMain").getElementsByTagName("div")[0].getElementsByTagName("img")
+                for (i = 0; i <= element.length - 1; i++) {
+                    if (element[i].alt.indexOf('Collapse') != -1) { imgExp = element[i].src; }
+                    if (element[i].alt.indexOf('Expand') != -1) { imgCol = element[i].src; }
+                    if (imgCol != "" && imgExp != "") { break; }
+                }                 
+            }
+        }
+
+    </script>
+</head>
+
+<body onload="initialize()">
+    <form runat="server">
+    <div class="page" class="width" >
+        <div class="header" style="top: 0px; left: 0px;">
+            <div class="title">
+                <figure><%--<img src="/Resources/NTTMasthead_Tracking.jpg" alt="NTT Image" width="100%" dir="rtl"/>--%></figure>
+            </div>
+            <div class="hideSkiplink">
+                <asp:Menu ID="NavigationMenu" runat="server" CssClass="menu" EnableViewState="false" IncludeStyleBlock="false" Orientation="Horizontal" OnMenuItemClick="NavigationMenu_MenuItemClick"  >
+                    <Items>
+                        <asp:MenuItem NavigateUrl="~/Views/Default.aspx" Text="Welcome"/>
+                        <asp:MenuItem NavigateUrl="~/Views/Project.aspx" Text="Project" Enabled="false"/>
+                        <asp:MenuItem NavigateUrl="~/Views/Location.aspx" Text="Location" Enabled="false"/>
+                        <asp:MenuItem NavigateUrl="~/Views/Weather.aspx" Text="Weather" Enabled="false"/>
+                        <asp:MenuItem NavigateUrl="~/Views/Field.aspx" Text="Fields" Enabled="false"/>
+                        <asp:MenuItem NavigateUrl="~/Views/Soil.aspx" Text="Soils" Enabled="false"/>
+                        <asp:MenuItem NavigateUrl="~/Views/Management.aspx" Text="Management" Enabled="false"/>
+                        <asp:MenuItem NavigateUrl="~/Views/Subproject.aspx" Text="Subproject" Enabled="false"/>
+                        <asp:MenuItem NavigateUrl="~/Views/Economics.aspx" Text="Economics" />
+                        <asp:MenuItem NavigateUrl="~/Views/Simulation.aspx" Text="Simulation" Enabled="false"/>
+                        <asp:MenuItem NavigateUrl="~/Views/Results.aspx" Text="Results" Enabled="false"/>
+                        <asp:MenuItem NavigateUrl="~/Views/Modifications.aspx" Text="Modifications" Enabled="false"/>
+                    </Items>
+                </asp:Menu>
+            </div>
+            <div class="title" >
+                <h2 ><asp:Label id="lbltitle" runat="server" ></asp:Label></h2>
+            </div>
+            <div>
+                <asp:Image runat="server" ID="imgIcon" ImageUrl="~/Resources/GoIcon.jpg" Width="20" style="display:none"/>
+                <%--<figure><img id="imgIcon" runat="server" src="~/Resources/GoIcon.jpg" alt="NTT Image" /></figure>--%>
+                <asp:Label ID="lblMessage" runat="server"></asp:Label>
+            </div>
+            <div>
+                <asp:Label id="lblStatus" runat="server" ></asp:Label>
+            </div>
+        </div>
+        <div class="main">
+            <asp:ContentPlaceHolder ID="MainContent" runat="server"/>
+        </div>
+
+        <section id="sectionfooter">
+            <div id="divContactUs" style="display:none; color:White">
+<%--		            <a href="#close" title="Close" class="close">X</a>
+--%>		        <h3><label id="lblContactTitle" runat="server" style="color:White"></label></h3>
+                    <section>
+                        <table>
+                            <tr>
+                                <td>
+                                    <label id="lblContactName" runat="server"></label>
+                                </td>
+                                <td>
+                                    <asp:TextBox ID="txtContactName" runat="server"></asp:TextBox>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <label id="lblContactEmail" runat="server"></label>
+                                </td>
+                                <td>
+                                    <asp:TextBox ID="txtContactEmail" runat="server"></asp:TextBox>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <label id="lblContactSubject" runat="server"></label>
+                                </td>
+                                <td>
+                                    <asp:TextBox ID="txtContactSubject" runat="server"></asp:TextBox>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <label id="lblContactMessage" runat="server"></label>
+                                </td>
+                                <td>
+                                    <asp:TextBox ID="txtContactMessage" runat="server" Height="74px" 
+                                        TextMode="MultiLine" Width="494px"></asp:TextBox>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td rowspan=2>
+                                    <asp:Button ID="btnContactEnviar" runat="server" />
+                                </td>
+                            </tr>
+                        </table>
+                    </section>
+            </div>
+            <div id="divInstructions" style="display:none">
+		        <h3><label id="lblInstructions" runat="server" style="color:White" ></label></h3>
+            </div>
+            <div id='cssmenu' >
+                <ul id="mnuFooter" runat="server">
+                    <li><a id="itmInstructions" runat="server" onclick="ShowInsCon('divInstructions', 'divContactUs');"></a></li>
+                    <li><a id="itmContactUs" runat="server" onclick="ShowInsCon('divContactUs', 'divInstructions');"></a></li>
+                    <li><a href='#' id="itmAboutNTT" runat="server"></a></li>
+                    <li><a href='#' id="itmNTTHelp" runat="server"></a></li>
+                    <li class='active has-sub'><a id="itmLanguage1" runat="server"></a>
+                        <ul  id="cssSubMenu" runat="server" >
+                            <li><a href="" id="itmEnglish" runat="server" onclick="Forzar('itmEnglish', 'English');"></a></li>
+                            <li><a href="" id="itmSpanish" runat="server" onclick="Forzar('itmSpanish', 'Español');"></a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </section>
+    </div>
+    </form>
+</html>

@@ -1,0 +1,487 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <About>Acerca de NTT</About>
+  <CloseActiveProject>Cerrar Proyecto Activo</CloseActiveProject>
+  <ContactUs>Contactarnos</ContactUs>
+  <Language>Idioma</Language>
+  <Continue>Continuar</Continue>
+  <_Continue>Continuar</_Continue>
+  <Save>Salvar</Save>
+  <SaveAndClose>Salvar y Regresar</SaveAndClose>
+  <MappingSystem>Sistema de Mapa</MappingSystem>
+  <StateCounty>Estado/Condado</StateCounty>
+  <UserInput>Entrada del Usuario</UserInput>
+  <WeatherStationOption>Estación del clima usando los datos de PRISM</WeatherStationOption>
+  <OwnWeatherOption>Cargar Archivo propio del Clima</OwnWeatherOption>
+  <WeatherCoordinatesOption>Cargar Clima Usando Coordenadas especificas (en los Estados Unidos)</WeatherCoordinatesOption>
+  <AddNewField>Adicionar Parcela Nueva</AddNewField>
+  <FieldNumber>#</FieldNumber>
+  <FieldName>Nombre</FieldName>
+  <ChannelCondition>Condición de cubrimiento&#10;vegetación del canal</ChannelCondition>
+  <ChannelErodibility>Erosionabilidad&#10;del Canal</ChannelErodibility>
+  <NewFieldName>Parcela Nueva 1</NewFieldName>
+  <VeryGoodChannelVegetation>Muy Buena</VeryGoodChannelVegetation>
+  <GoodChannelVegetation>Buena</GoodChannelVegetation>
+  <ModerateChannelVegetation>Moderada</ModerateChannelVegetation>
+  <PoorChannelVegetation>Pobre</PoorChannelVegetation>
+  <VeryPoorChannelVegetation>Muy Pobre</VeryPoorChannelVegetation>
+  <VeryHighChannelErodibility>Muy Alta</VeryHighChannelErodibility>
+  <HighChannelErodibility>Alta</HighChannelErodibility>
+  <ModerateChannelErodibility>Moderada</ModerateChannelErodibility>
+  <LowChannelErodibility>Baja</LowChannelErodibility>
+  <VeryLowChannelErodibility>Muy Baja</VeryLowChannelErodibility>
+  <SoilSurveyAreaHeading>Área Estudio de Suelos</SoilSurveyAreaHeading>
+  <SelectSoilsHeading>Suelos</SelectSoilsHeading>
+  <AddSoilSelected>Addicionar Suelo Seleccionado</AddSoilSelected>
+  <SelectFieldHeading>Seleccionar Parcela</SelectFieldHeading>
+  <Delete>Borrar</Delete>
+  <SoilKey>Código</SoilKey>
+  <SoilSymbol>Símbolo</SoilSymbol>
+  <SoilGroup>Grupo</SoilGroup>
+  <SoilName>Nombre</SoilName>
+  <SoilAlbedo>Albedo</SoilAlbedo>
+  <SoilSlope>Inclinación</SoilSlope>
+  <SoilPercentage>Porcentaje</SoilPercentage>
+  <SoilDrainageClass>Clase de drenage</SoilDrainageClass>
+  <LayersInformationTitle>Información de las Capas</LayersInformationTitle>
+  <AddEmptyLayer>Addicionar Capa Nueva</AddEmptyLayer>
+  <LayerNumber>Capa</LayerNumber>
+  <LayerDepth>Profundidad&#10;(in)</LayerDepth>
+  <LayerSoilP>P en Suelo&#10;(ppm)</LayerSoilP>
+  <LayerBulkDensity>Densidad de Masa&#10;(Mg/m3)</LayerBulkDensity>
+  <LayerSand>Arena&#10;(%)</LayerSand>
+  <LayerSilt>Limo&#10;(%)</LayerSilt>
+  <LayerOrganicMatter>Materia Orgánica (%)</LayerOrganicMatter>
+  <LayerpH>pH</LayerpH>
+  <SelectScenarioHeading>Seleccionar Escenario</SelectScenarioHeading>
+  <AddNewScenario>Adicionar Escenario Nuevo</AddNewScenario>
+  <AddScenario>Adicionar Escenario</AddScenario>
+  <DeleteScenario>Borrar Escenario Seleccionado</DeleteScenario>
+  <ScenarioNameHeading>Nombre:</ScenarioNameHeading>
+  <BMPCroppingSystemHeading>Sistema de Cultivo</BMPCroppingSystemHeading>
+  <SelectExistingRotation>Seleccionar Sistema de Cultivo Existente</SelectExistingRotation>
+  <UploadSavedCropRotation>Cargar Sistema de Cultivo Salvado</UploadSavedCropRotation>
+  <SaveCurrentCropRotation>Salvar Sistema de Cultivo Activo</SaveCurrentCropRotation>
+  <SelectCroppingSystemHeading>Seleccionar Sistema de Cultivo</SelectCroppingSystemHeading>
+  <SelectTillageHeading>Método de Arado</SelectTillageHeading>
+  <Upload>Cargar</Upload>
+  <Crop>Cultivo</Crop>
+  <Operation>Operación</Operation>
+  <Year>Año</Year>
+  <Month>Mes</Month>
+  <Day>Día</Day>
+  <Type>Tipo</Type>
+  <NutrientComposition>Composición de Nutrientes (fractión)</NutrientComposition>
+  <CopyOperationsFrom>Copiar las Operaciones desde...</CopyOperationsFrom>
+  <Copy>Copiar</Copy>
+  <BestManagementPracticesHeading>Buenas Practicas Agrícolas (BPAs)</BestManagementPracticesHeading>
+  <IrrigacionFertigationHeading>Irrigación y Fertirrigación Automáticas</IrrigacionFertigationHeading>
+  <AutoIrrigationHeading>Irrigación Automática</AutoIrrigationHeading>
+  <IrrigationTypeHeading>Clase de Irrigación:</IrrigationTypeHeading>
+  <WaterStressHeading>Factor de Estrés&#10;por agua (0-1):</WaterStressHeading>
+  <SafetyFactor>Factor de&#10;Seguridad(0-1):</SafetyFactor>
+  <IrrigationEfficiencyHeading>Eficiencia&#10;(0-1):</IrrigationEfficiencyHeading>
+  <FrequencyHeading>Frecuencia&#10;(Días 1-365):</FrequencyHeading>
+  <MaxApplicationHeading>Máxima Aplicación&#10;Individual (in):</MaxApplicationHeading>
+  <AutoFertigationHeading>Fertirrigación Automática</AutoFertigationHeading>
+  <NitrogenConcentrationHeading>Concetración&#10;de N (ppm):</NitrogenConcentrationHeading>
+  <ApplicationRate>Cantidad&#10;Aplicada (lb/ac)</ApplicationRate>
+  <SelectOne>Seleccionar Uno</SelectOne>
+  <Sprinkle>Rociar</Sprinkle>
+  <FurrowFlood>Surco/Inundación</FurrowFlood>
+  <Drip>Riego por Goteo</Drip>
+  <FurrowDiking>Diques en Surcos</FurrowDiking>
+  <DrainageHeading>Manejo de Sistemas de Drenaje</DrainageHeading>
+  <TileDrainHeading>Sistema de Drenaje</TileDrainHeading>
+  <TileDrainDepthHeading>Profundidad (en ft):</TileDrainDepthHeading>
+  <Clear>Limpiar</Clear>
+  <PPNoImprovementHeading>Almohadillas y Tuberías - Ningún Mejoramiento a la Zanja</PPNoImprovementHeading>
+  <PPWidthHeading>Ancho de las Almohadillas y Tuberías (ft):</PPWidthHeading>
+  <NumberCoveredByPipesHeading># de Lados Tubería Installada</NumberCoveredByPipesHeading>
+  <PPTwoStageDitchHeading>Almohadillas y Tuberías - Sistema de Zanja de Dos Etapas</PPTwoStageDitchHeading>
+  <PPDitchReservoirHeading>Almohadillas y Tuberías - Ampliación de la Zanja y Sistema de Represa</PPDitchReservoirHeading>
+  <ReservoirAreaHeading>Area de la Represa (ac.)</ReservoirAreaHeading>
+  <PPTailwaterHeading>Almohadillas y Tuberías - Irrigación desde Reserva</PPTailwaterHeading>
+  <WetlandsPondsHeading>Humedales y Lagunas</WetlandsPondsHeading>
+  <PondsAreaHeading>Fracción del área controlada por la laguna (0.01 - 1.00):</PondsAreaHeading>
+  <WetlandsHeading>Humedales</WetlandsHeading>
+  <AreaHeading>Area (ac.)</AreaHeading>
+  <PondsHeading>Lagunas</PondsHeading>
+  <PondsAreaHeading>Fracción del área Controlado por la laguna (0.01 - 1.00):</PondsAreaHeading>
+  <StreamAndRiparianHeading>Manejo de los rios y riberas</StreamAndRiparianHeading>
+  <StreamFencingHeading>Cercado del rio (Control de Acceso del Ganado)</StreamFencingHeading>
+  <NumberOfAnimalsHeading># de Animales:</NumberOfAnimalsHeading>
+  <DaysInStreamHeading>Días en el rio:</DaysInStreamHeading>
+  <HoursDayInStreamHeading>Horas/Día en el rio:</HoursDayInStreamHeading>
+  <SelectAnimalHeading>Seleccionar Animal:</SelectAnimalHeading>
+  <DryManureHeading>Abono Seco/Día (lbs):</DryManureHeading>
+  <Beef>Res</Beef>
+  <Dairy>Lácteo</Dairy>
+  <Horse>Caballo</Horse>
+  <Sheep>Oveja</Sheep>
+  <Swine>Cerdo</Swine>
+  <StreambankStabilizationHeading>Estabilización de la Orilla del rio</StreambankStabilizationHeading>
+  <RiparianForestHeading>Bosque Ribereño</RiparianForestHeading>
+  <WidthHeading>Ancho (ft):</WidthHeading>
+  <RiparianGrassPortionHeading>Porción del Pasto&#10;en la Zona (0.01 - 0.75):</RiparianGrassPortionHeading>
+  <RiparianBufferSlopeHeading>Proporción de la Inclinación&#10;con Respecto a la Parcela(0.25 - 1.00):</RiparianBufferSlopeHeading>
+  <FilterStripHeading>Zona de Contención Filtrante</FilterStripHeading>
+  <VegetationHeading>Vegetación:</VegetationHeading>
+  <FilterStripEfficiencyHeading>Eficiencia (0.1 - 1.0):</FilterStripEfficiencyHeading>
+  <StripSlopeHeading>Porción de la Inclinación&#10;con Respecto a la Parcela(0.25 - 1.00):</StripSlopeHeading>
+  <WaterwayHeading>Canal de Agua (Zona de Pasto)</WaterwayHeading>
+  <WaterwayWidthHeading>Ancho (ft) *incluyendo los dos lados del canal:</WaterwayWidthHeading>
+  <ContourBufferHeading>Buffer de Contorno (Cultivar en Franjas)</ContourBufferHeading>
+  <ContourBufferHeading2>Buffer de Contorno</ContourBufferHeading2>
+  <BufferWidthHeading>Ancho del Buffer (ft)</BufferWidthHeading>
+  <CropWidthHeading>Ancho del Cultivo (ft)</CropWidthHeading>
+  <LandGradingManagementHeading>Nivelación y Manejo de la Tierra</LandGradingManagementHeading>
+  <LandLevelingHeading>Nivelación de la Tierra</LandLevelingHeading>
+  <TerraceSystemHeading>Sistema de Terraza</TerraceSystemHeading>
+  <LimingHeading>Encalado</LimingHeading>
+  <ClimateChange>Cambio Climático</ClimateChange>
+  <TempAndPcpChanges>Cambios de Temperatura y Precipitación</TempAndPcpChanges>
+  <ChangeMinimumTemperature>Cambiar Temperatura Mínima(±C°)</ChangeMinimumTemperature>
+  <ChangeMaximiumTemperature>Cambiar Temperatura Máximama(±C°)</ChangeMaximiumTemperature>
+  <ChangePrecipitation>Cambiar Precipitación(±%)</ChangePrecipitation>
+  <Roads>Carreteras</Roads>
+  <AsfaltOrConcrete>Asfalto o Concreto</AsfaltOrConcrete>
+  <GrassCover>Cubierta de Pasto</GrassCover>
+  <SlopeAdjustment>Ajuste de la Inclinación</SlopeAdjustment>
+  <Shading>Shading</Shading>
+  <SelectTypeHeading>Seleccionar Clase</SelectTypeHeading>
+  <AddFieldScenarioToRun>Adicionar Selección para Correr</AddFieldScenarioToRun>
+  <RunSelected>Correr Escenarios Seleccionado</RunSelected>
+  <RunEconomics>Correr Costos</RunEconomics>
+  <Scenario>Escenario</Scenario>
+  <Project>Proyecto</Project>
+  <Location>Ubicación</Location>
+  <Weather>Clima</Weather>
+  <Fields>Parcelas</Fields>
+  <Soils>Suelos</Soils>
+  <Management>Operación</Management>
+  <LastSimulation>Ultima&#10;Simulación</LastSimulation>
+  <FirstScenario>Primer Escenario</FirstScenario>
+  <SecondScenario>Segundo Escenario</SecondScenario>
+  <ThirdScenario>Tercer Escenario</ThirdScenario>
+  <TabularResults>Resumen</TabularResults>
+  <BySoil>Por Suelo</BySoil>
+  <DownloadMessage>* Para descargar y crear PDF es necesario deshabilitar los bloqueadores de pop-up</DownloadMessage>
+  <GraphResults>Gráficas</GraphResults>
+  <EconomicsResults>Costos</EconomicsResults>
+  <Environment>Ambiente</Environment>
+  <Detail>Detalle</Detail>
+  <Description>Descripción</Description>
+  <Difference>Diferencia</Difference>
+  <SlopeReduction>Reducción de la Inclinación (%)</SlopeReduction>
+  <TotalArea>Area Total</TotalArea>
+  <MainArea>Area Pricipal</MainArea>
+  <TotalArea2>Area Total (ac.)</TotalArea2>
+  <TotalN>N Total (lbs/ac)</TotalN>
+  <OrgN>N Org (lbs/ac)</OrgN>
+  <NO3>NO3_N (lbs/ac)</NO3>
+  <NH3>NH3</NH3>
+  <RunoffN>N en Flujo(lbs/ac)</RunoffN>
+  <SubsurfaceN>N en Subsuelo (lbs/ac)</SubsurfaceN>
+  <TileDrainN>N Sistema Drenaje (lbs/ac)</TileDrainN>
+  <TotalP>P Total (lbs/ac)</TotalP>
+  <OrgP>P Org (lbs/ac)</OrgP>
+  <PO4>PO4_P (lbs/ac)</PO4>
+  <TileDrainP>P Sistema Drenaje (lbs/ac)</TileDrainP>
+  <TotalFlow>Flujo Total (in)</TotalFlow>
+  <SurfaceRunoff>Flujo Superficie (in)</SurfaceRunoff>
+  <SubsurfaceRunoff>Flujo Subsuperficie (in)</SubsurfaceRunoff>
+  <TileDrainFlow>Flujo Sitema Drenaje (in)</TileDrainFlow>
+  <OtherWaterInfo>Otra Información de Agua</OtherWaterInfo>
+  <Irrigation>Irrigación (in)</Irrigation>
+  <DeepPercolation>Filtración Profunda (in)</DeepPercolation>
+  <TotalSediment>Total Sedimento (t/ac)</TotalSediment>
+  <Sediment>Sedimento (t/ac)</Sediment>
+  <ManureErosion>Erosión por Estiércol (t/ac)</ManureErosion>
+  <N2o>N2O</N2o>
+  <LeachedN>Leached N (lbs/ac)</LeachedN>
+  <LeachedP>Leached P (lbs/ac)</LeachedP>
+  <Crops>Cultivos</Crops>
+  <CropYield>Cultivo Cosechado</CropYield>
+  <MonthlyAverageTitle>Promedio Mensual (El Periodo Entero)</MonthlyAverageTitle>
+  <AnnualResults>Anual (Ultimos 12 Años)</AnnualResults>
+  <Flow>Flujo (in)</Flow>
+  <TotalRevenue>Ingresos Totales</TotalRevenue>
+  <TotalCost>Costo Total</TotalCost>
+  <NetReturn>Ganancia Neta</NetReturn>
+  <NetCashFlow>Flujo de Efectivo Neto</NetCashFlow>
+  <SelectFile>Seleccionar Archivo</SelectFile>
+  <SaveFile>Guardar Archivo</SaveFile>
+  <EditFile>Editar Archivo</EditFile>
+  <DownloadAPEX>Descargar Folder de APEX</DownloadAPEX>
+  <ControlFile>Archivo de Control</ControlFile>
+  <ParametersFile>Archivo de Parámetros</ParametersFile>
+  <SiteFile>Archivo del Sitio</SiteFile>
+  <SubareaFile>Archivo de Subareas</SubareaFile>
+  <SoilFile>Archivo de Suelos</SoilFile>
+  <LayerFile>Archivo de Capas</LayerFile>
+  <OperationFile>Archivo de Operaciones</OperationFile>
+  <Code>Código</Code>
+  <Value1>Valor1</Value1>
+  <Range1>Rango1</Range1>
+  <Range2>Rango2</Range2>
+  <Latitude>Latitud</Latitude>
+  <Longitude>Longitud</Longitude>
+  <Elevation>Elevación</Elevation>
+  <Apm>Apm</Apm>
+  <SbaType>Clase de Subarea</SbaType>
+  <SubareaNumber>Número de Subarea</SubareaNumber>
+  <SubareaTitle>Título de Subarea</SubareaTitle>
+  <LoadOwnWeather>Usted subio su propio archivo del clima. Si necesita correr escenarios de nuevo, usted tiene que Cargar el archivo del clima nuevamente. La aplicatiÃ³n no salva la informaciÃ³n del clima cuando es subida desde un archivo del usuario.</LoadOwnWeather>
+  <Warning>Advertencia</Warning>
+  <ProjectName>Nombre del Proyecto</ProjectName>
+  <SelectExample>Seleccione un Ejemplo</SelectExample>
+  <Counties>Condados</Counties>
+  <States>Estados</States>
+  <SpecificLocation>Ubicación Específica</SpecificLocation>
+  <GeneralLocation>Ubicación General</GeneralLocation>
+  <WeatherClosestLocation>Use Información del Clima más ceracna a su ubicación</WeatherClosestLocation>
+  <LoadOwnFile>Cargar archivo del clima</LoadOwnFile>
+  <SelectWeather>Seleccione la Infomación del Clima de las opciones en la lista</SelectWeather>
+  <SaveCoordinates>Salvar Coordenadas</SaveCoordinates>
+  <PeriodSimulation>El periodo a simular es el mismo periodo contenido en la información de clima seleccionado. Usted puede cambiar el periodo  a simular pero el programa va a adicionar cinco años antes como inicialización. Los últimos doce años son los que se muestran en las gráficas en la página de resultados. Si el periodo es menos que doce años, todos los años serán presentados en la página de resultados.</PeriodSimulation>
+  <PeriodToSimulate>Periodo a simular</PeriodToSimulate>
+  <SelectOne>Seleccione Uno</SelectOne>
+  <MDExample>Maryland una parcela</MDExample>
+  <OHExample>Ohio varias parcelas</OHExample>
+  <!--project content-->
+  <CreateNewProject>Crear Proyecto Nuevo</CreateNewProject>
+  <SaveProject>Salvar Proyecto Activo ....</SaveProject>
+  <EnterProjectInformation>Entre Información del Proyecto</EnterProjectInformation>
+  <UploadingProject>Seleccione el Archivo del Proyecto a Cargar</UploadingProject>
+  <OpenExampleProject>Abrir un Proyecto Ejemplo</OpenExampleProject>
+  <OpenSavedProject>Abrir un Proyecto Guardado</OpenSavedProject>
+  <SelectExample>Seleccione el Ejemplo que quiere abrir</SelectExample>
+  <!--Weather content-->
+  <YearsOfWeatherInformation>Años de Informacion Acerca del Clima</YearsOfWeatherInformation>
+  <Browser>Precione el botón cargar archivo del clima y luego seleccione su archivo</Browser>
+  <to>a</to>
+  <Simulationperiod>Periodo de Simulación: </Simulationperiod>
+  <AddEmptySoil>Addicionar Suelo Vacio</AddEmptySoil>
+  <SoilDescription>Seleccione un máximo de tres suelos para simulación. El porcentaje total no debe ser mayor que el 100%, pero si es menos, el program lo ajustará. Si ninguno es seleccionado, los tres suelos dominantes serán seleccionados para la simulación.</SoilDescription>
+  <Select1>Seleccionar</Select1>
+  <Soil>Suelo</Soil>
+  <PlantPopulation>Población planta&#10;(semillas/ac)</PlantPopulation>
+  <Amountlbs>Cantidad(lbs/ac)</Amountlbs>
+  <Amountin>Cantidad(in)</Amountin>
+  <KindOfAnimal>Clase de Animal</KindOfAnimal>
+  <PlantingMethod>Método de siembra</PlantingMethod>
+  <FertilizerType>Clase de Fertilizante</FertilizerType>
+  <HoursInField>Horas en&#10;Parcela(0-24)</HoursInField>
+  <LiquidManure>"Liquid Manure"</LiquidManure>
+  <CommercialFertilizer>"Fertilizante Comercial"</CommercialFertilizer>
+  <ManagementOperation>Manejo de las Operaciones</ManagementOperation>
+  <NutrientFractions>Fracción de Nutrientes (Base Peso Seco)</NutrientFractions>
+  <ResultTitle>Resultados Anuales para Nutrientes, Flujo, Sedimento, y Cultivo Cosechado. Intervalo de Confianza (±)</ResultTitle>
+  <Reduction>Reducción (%)</Reduction>
+  <Precipitation>Precipitación (in)</Precipitation>
+  <AnnualAverage>Promedio Anual</AnnualAverage>
+  <Yield>Cosecha</Yield>
+  <MonthlyAverage>Promedio Mensual</MonthlyAverage>
+  <NoFileSelected>Archivo no Seleccionado</NoFileSelected>
+  <NoFieldSelected>Parcela no Seleccionada</NoFieldSelected>
+  <FSArea>Area de la Franja de Filtración</FSArea>
+  <RFArea>Area del Bosque Ribereño</RFArea>
+  <PPArea>Area del Sistema de Almohadillas y Tubos</PPArea>
+  <PPResArea>Area del Sistema de Almohadillas y Tubos con Represa</PPResArea>
+  <CBArea>Area de la Franja de Pasto</CBArea>
+  <WLArea>Area del Humedal</WLArea>
+  <WWArea>Area del Canal de Agua</WWArea>
+  <SdgArea>Area del Shading</SdgArea>
+  <SelectSubarea>Seleccione Subarea</SelectSubarea>
+  <ContactTitle>Por favor entre la información correspondiente y precione al botón de “Enviar” para enviar el mensaje. Gracias.</ContactTitle>
+  <ContactName>Nombre:</ContactName>
+  <ContactEmail>Correo electrónico:</ContactEmail>
+  <ContactSubject>Tema:</ContactSubject>
+  <ContactMessage>Mensaje:</ContactMessage>
+  <ContactSubmit>Enviar</ContactSubmit>
+  <ContactClose>Cerrar</ContactClose>
+  <Report>Reporte</Report>
+  <InputInformationReport>Reporte de Información Entrada</InputInformationReport>
+  <ResultInformationReport>Reporte de Resultados</ResultInformationReport>
+  <EconomicInformationReport>Reporte Económico</EconomicInformationReport>
+  <ProjectInfoSubtitle>Información del Projecto</ProjectInfoSubtitle>
+  <LocationInfoSubtitle>Por favor Entre la Información de Ubicación</LocationInfoSubtitle>
+  <WeatherInfoSubtitle>Información del clima</WeatherInfoSubtitle>
+  <FieldInfoSubtitle>Información de la Parcela</FieldInfoSubtitle>
+  <SoilsInfoSubtitle>Información de Suelos</SoilsInfoSubtitle>
+  <LayersInfoSubtitle>Información de Capas</LayersInfoSubtitle>
+  <ManagementInfoSubtitle>Información de Operaciones</ManagementInfoSubtitle>
+  <WeatherOption>Opción del Clima</WeatherOption>
+  <StationName>Nombre de la Estación</StationName>
+  <ValueOne>Valor Uno</ValueOne>
+  <ValueTwo>Valor Dos</ValueTwo>
+  <ConfidenceInterval>Intervalo de Confianza</ConfidenceInterval>
+  <Page>Página</Page>
+  <Period>Periodo</Period>
+  <AverageSlope>Inclinación Promédio</AverageSlope>
+  <FromField>Desde la Parcela</FromField>
+  <FromScenario>Desde el Escenario</FromScenario>
+  <ToField>A la Parcela</ToField>
+  <ToScenario>A el Escenario</ToScenario>
+  <SavePDFResults>Crear un PDF</SavePDFResults>
+  <!--Economic Names-->
+  <Select>Seleccionar</Select>
+  <Name>Nombre</Name>
+  <SelectKindOfInformationHeading>Seleccione tipo de información</SelectKindOfInformationHeading>
+  <ShowOnlySelectedItemsFromListHeading>Mostrar sólo los elementos seleccionados de la lista</ShowOnlySelectedItemsFromListHeading>
+  <!--Equipment-->
+  <LeaseRate>Tasa de Arrendamiento</LeaseRate>
+  <NewPrice>Nuevo Precio</NewPrice>
+  <NewHours>Nuevo Horario</NewHours>
+  <CurrentPrice> Precio Actual</CurrentPrice>
+  <HoursRemaining>Horas Restantes</HoursRemaining>                                 
+  <Width>Ancho</Width>
+  <Speed>Velocidad</Speed>
+  <FieldEfficiency>Eficiencia Campo</FieldEfficiency>
+  <HorsePower>Caballos de Potencia</HorsePower>
+  <RF1>RF1</RF1>
+  <RF2>RF2</RF2>
+  <IrLoan>Ir Préstamo</IrLoan>
+  <LLoan>L Préstamo</LLoan>
+  <IrEquity>Ir Equidad</IrEquity>
+  <PDebt>P Deuda</PDebt>
+  <Rv1>Rv1</Rv1>
+  <Rv2>Rv2</Rv2>
+  <!--Feeds-->
+  <SellingPrice>Precio de Venta</SellingPrice>
+  <PurchasePrice>Precio de Compra</PurchasePrice>
+  <Concentrate>Concentrado</Concentrate>
+  <Forage>Forraje</Forage>
+  <Grain>Grano</Grain>
+  <Hay>Heno</Hay>
+  <Pasture>Pasto</Pasture>
+  <Silage>Ensilaje</Silage>
+  <Suplement>Suplemento</Suplement>
+  <!--Structures-->
+  <LeaseRate1>Tasa de Arrendamiento</LeaseRate1>
+  <NewPrice1>Nuevo Precio</NewPrice1>
+  <NewLife>Nueva Vida</NewLife>
+  <CurrentPrice1> Precio Actual</CurrentPrice1>
+  <LifeRemaining>La Vida Restante</LifeRemaining>
+  <MaintenanceCoefficient>Coeficiente de Mantenimiento</MaintenanceCoefficient>
+  <LoanInterestRate>Tasa de Interes del Prestamo</LoanInterestRate>
+  <LengthLoan>Duración del Préstamo</LengthLoan>
+  <InterestRateEquity>Tasa de Interés Equidad</InterestRateEquity>
+  <ProportionDebt>Proporción de la Deuda</ProportionDebt>
+  <Year1>Año</Year1>
+  <!--Other Inputs-->
+  <Values>Valores</Values>
+  <NTTHelp>Ayuda NTT</NTTHelp>
+  <Instructions>Instrucciones</Instructions>
+  <FieldScenario>Parcela/Escenario</FieldScenario>
+  <SelectSoil>seleccione de la lista el suelo del cual quiere ver los resultados</SelectSoil>
+  <!--New Message-->
+  <Map>Mapa</Map>
+  <SelectCrop>Seleccione Cultivo</SelectCrop>
+  <SelectOperation>Seleccione Operación</SelectOperation>
+  <SelectYear>Seleccione Año</SelectYear>
+  <SelectMonth>Seleccione Mes</SelectMonth>
+  <SelectDay>Seleccione Día</SelectDay>
+  <SelectPeriod>Seleccione Periodo</SelectPeriod>
+  <!--Addional Operations Content-->
+  <Planting>Sembrar</Planting>
+  <Harvest>Cosechar</Harvest>
+  <Kill>Terminar</Kill>
+  <StartGrazing>Iniciar Pasteo</StartGrazing>
+  <StopGrazing>Terminar Pasteo</StopGrazing>
+  <IrrigationManual>Irrigación (Manual)</IrrigationManual>
+  <Burn>Quema</Burn>
+  <Tillage>Arar</Tillage>
+  <Fertilizer>Fertilizante</Fertilizer>
+  <State>Estado</State>
+  <County>Condado</County>
+  <Field>Parcela</Field>
+  <ProjectName>Nombre del Projecto</ProjectName>
+  <FirstHalf>Primera Mitad</FirstHalf>
+  <SecondHalf>Segunda Mitad</SecondHalf>
+  <CopySelectedOperationsTo>Copiar Selecciones a</CopySelectedOperationsTo>
+  <AddNewOperation>Adicionar Operation</AddNewOperation>
+  <DeleteOperationsSelected>Borrar Seleccionados</DeleteOperationsSelected>
+  <ReorderByOperationDate>Reordenar por Fecha</ReorderByOperationDate>
+  <Hide>Ocultar</Hide>
+  <Show>Mostrar</Show>
+  <CopyCropRotation>Copiar Sistema de Cultivo</CopyCropRotation>
+  <EditOperations>Editar Operaciones</EditOperations>
+  <RenameScenario>Renombrar Escenario a --></RenameScenario>
+  <!--Aditional Fields Content-->
+  <AddNewFielsInMap>Cualquier parcela adicionada en esta pantalla no será mostrada en el mapa</AddNewFielsInMap>
+  <FieldsInfo>Información de Parcelas</FieldsInfo>
+  <Forestry>Bosque</Forestry>
+  <!--Aditional Simulation Content-->
+  <AddAll>Adicionar Todo</AddAll>
+  <RemoveAll>Remover Todo</RemoveAll>
+  <SelectSpecific>Seleccionar Escenario o Subprojecto</SelectSpecific>
+  <AddRemoveAll>Adicionar or Remover Todos</AddRemoveAll>
+  <ListScenariosSimulate>Lista de Escenarios para Simular</ListScenariosSimulate>
+  <Comments>Observaciones</Comments>
+  <!--Google Map -->
+  <LabelRemove>Para remover un poligono solo seleccione el poligono y luego presione el botón Remover.</LabelRemove>
+  <Address>Dirección</Address>
+  <Browse>Browse</Browse>
+  <MapNavigation>Use la busqueda por mapa, dirección, Latitud y Longitud o código de estado y condado en la lista debajo para encontrar el area de interes.</MapNavigation>
+  <Choice2>Elija los archivos de finca y parcela/parcelas para subir</Choice2>
+  <ChooseFarmShapefile>Elijan el Shapefile de la finca</ChooseFarmShapefile>
+  <ChooseFieldShapefile1>Elija el Shapefile/s de las parcelas</ChooseFieldShapefile1>
+  <Farm>Finca</Farm>
+  <Field>Parcelas</Field>
+  <LatLon>Latitud, Longitud</LatLon>
+  <NoFileSelected>Archivo no seleccionado</NoFileSelected>
+  <Note1>Nota: Usted puede subir un archivo comprimido que consiste de al menos cuatro archivos con el mismo nombre pero extesión diferente. (.shp, .shx, .dbf, .prj).</Note1>
+  <Note2>El archivo .shp debe este en formato Shapefile ESRI usando un sistema de coordenadas geográficas. (latitud y longitud).</Note2>
+  <Note5>Si quiere copiar una parcela o campo desde una finca y hay o ya existen en este mapa, serán removidos y una nueva parcela/campo igual al polígono de la finca sera creado</Note5>
+  <Option1>Selecciione al Area de Interes (AOI)</Option1>
+  <Navigation>Mapa de Navegación</Navigation>
+  <Remove>Remover</Remove>
+  <Submit>Enviar</Submit>
+  <UploadShapefile>Subir Shapefile</UploadShapefile>
+  <View>Ver</View>
+  <ZoomCounty>Enfocar a el Condado</ZoomCounty>
+  <ZoomState>Enfocar a el Estado</ZoomState>
+  <EditingOptions>Opciones de Edición</EditingOptions>
+  <Tools>Herramientas de Finca Parcelas</Tools>
+  <ToolsNote1>Para adicionar una nueva finca o parcela, presione el ícono correspondiente en el mapa y luego presione en el mapa para dibujar los bordes de la finca o parcela y luego entre el nombre de la finca/parcela.</ToolsNote1>
+  <ToolsNote2>Para editar una fina o una parcela dentro de una finca, primero seleccione la usando las opciones de edición. Luego mueva los vertices para editar los bordes.</ToolsNote2>
+  <ToolsNote3>Presione el botón de enviar para iniciar el calculo del crédito de nutrientes. </ToolsNote3>
+  <ToolsNote4>Para borrar un polígono, seleccione el polígono y luego presione el botón remover.</ToolsNote4>
+  <CopyFarmasField>Copiar finca/granja como parcela/campo</CopyFarmasField>
+  <!--Additonal Project content-->
+  <UploadLabel>Presione para seleccionar el archivo</UploadLabel>
+  <DateCreated>Fecha de Creación</DateCreated>
+  <ClearProject>Toda la información del proyecto activo será borrada. Si usted no quiere borrar la información de este proyecto, usted deberá salvarlo. Le gustaría continuar?</ClearProject>
+  <SelectOption>Seleccione una opción</SelectOption>
+  <!--Subprojects-->
+  <SubprojectName>Nombre del Subproyecto</SubprojectName>
+  <FirstSubproject>Primer Subprojecto</FirstSubproject>
+  <SecondSubproject>Segundo Subprojecto</SecondSubproject>
+  <ThirdSubproject>Tercer Subprojecto</ThirdSubproject>
+  <AddNewSubproject>Adicionar un nuevo Subproyecto</AddNewSubproject>
+  <AddSubproject>Adicionar Subproyecto </AddSubproject>
+  <DeleteSubproject>Borrar Subproyect</DeleteSubproject>
+  <SelectSubproject>Seleccionar Subproyect</SelectSubproject>
+  <SubprojectName>Nombre del Subproyect</SubprojectName>
+  <Subproject>Subproyecto</Subproject>
+  <AddDeleteSelectSubproject>Adicionar, Borrar, Seleccionar Subproject</AddDeleteSelectSubproject>
+  <SelectFieldScenario>Seleccioner Parcelas/Escenarios para este Subprojecto</SelectFieldScenario>
+  <ListFieldScenario>Lista de Parcelas//Escenarios en el subprojecto seleccionado</ListFieldScenario>
+  <!--Location content-->
+  <SelectStations>Seleccione la estación de la lista</SelectStations>
+  <!--Login and Register content-->
+  <Email>Correo electrónico</Email>
+  <Password>Contraseña</Password>
+  <NewPassword>Contraseña Nueva</NewPassword>
+  <Login>Entrar</Login>
+  <ChangePassword>Cambiar Contraseña</ChangePassword>
+  <ForgetPassword>Olvide Mi Contraseña</ForgetPassword>
+  <YourName>Nombre</YourName>
+  <YourInstitution>Su Empresa</YourInstitution>
+  <Registre>Registro</Registre>
+  <!--Modifications-->
+  <Title>Título</Title>
+  <Action>Acción</Action>
+</root>

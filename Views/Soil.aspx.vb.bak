@@ -1,0 +1,598 @@
+﻿Public Class Soil
+    Inherits System.Web.UI.Page
+    'Dim dc As New NTTDBDataContext
+    'Dim dcSoil As New SoilDBTNN1DataContext
+    Dim SSA As New List(Of CodeAndName)
+    'Classes definition
+    Private _startInfo As New StartInfo
+    Private _fieldsInfo1 As New List(Of FieldsData)
+    'active record    
+    Private currentFieldNumber As Short = 0
+    Private currentSoilNumber As Short = 0
+    'Controls used in sitemaster page
+    Private lblMessage As Label
+    Private imgIcon As Image
+
+    Protected Sub Page_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
+        folder = My.Computer.FileSystem.GetParentPath(Server.MapPath(""))
+        If Session("userGuide") = "" Then
+            Response.Redirect("~/Default.aspx", False)
+            Exit Sub
+        End If
+        lblMessage = New Label
+        lblMessage = CType(Master.FindControl("lblMessage"), Label)
+        imgIcon = New Image
+        imgIcon = CType(Master.FindControl("imgIcon"), Image)
+        lblMessage.Style.Item("display") = "none"
+        imgIcon.Style.Item("display") = "none"
+        lblMessage.Text = ""
+
+        Select Case Page.Request.Params("__EVENTARGUMENT")
+            Case english
+                Session("Language") = english
+            Case spanish
+                Session("Language") = spanish
+        End Select
+
+        openXMLLanguagesFile()
+        ChangeLanguageContent()
+
+        ArrangeInfo("Open")
+        If Not Page.Request.Params("__EVENTTARGET") Is Nothing Then
+            Select Case True
+                Case Page.Request.Params("__EVENTTARGET").Contains("btnSaveLayer")
+                    currentSoilNumber = lblSoilName.Text.Split("|")(0)
+                    btnSaveLayers_Click()
+                Case Page.Request.Params("__EVENTTARGET").Contains("btnSave")
+                    currentFieldNumber = Session("currentFieldNumber")
+                    btnSave_Click("Continue")
+                Case Page.Request.Params("__EVENTTARGET").Contains("btnContinue")
+                    btnContinue_Click()
+                Case Page.Request.Params("__EVENTTARGET").Contains("btnAddSoil")
+                    currentFieldNumber = Session("currentFieldNumber")
+                    btnSave_Click("add")
+                    btnAddSoil_Click()
+                Case Page.Request.Params("__EVENTTARGET").Contains("btnAddEmptySoil")
+                    currentFieldNumber = Session("currentFieldNumber")
+                    btnSave_Click("add")
+                    btnAddEmptySoil_Click()
+                Case Page.Request.Params("__EVENTTARGET").Contains("ddlField")
+                    currentFieldNumber = hdnField.Value
+                    btnSave_Click("ddl")
+                    ddlFields_SelectedIndexChanged()
+                Case Page.Request.Params("__EVENTTARGET").Contains("ddlSSA")
+                    btnSave_Click("ddl")
+                    ddlSSA_SelectedIndexChanged()
+                Case Page.Request.Params("__EVENTARGUMENT").Contains("Delete") And Page.Request.Params("__EVENTTARGET").Contains("gvSoil")
+                    btnSave_Click("")       'save first to be sure the values from screan are being taken
+                    gvSoils_RowDeleting(Page.Request.Params("__EVENTARGUMENT").Split("$")(1))
+                Case Page.Request.Params("__EVENTARGUMENT").Contains("Select") And Page.Request.Params("__EVENTTARGET").Contains("gvSoil")
+                    'get the soil number first
+                    currentSoilNumber = Page.Request.Params("__EVENTARGUMENT").Split("$")(1)
+                    currentFieldNumber = Session("currentFieldNumber")
+                    btnSave_Click("")       'save first to be sure the values from screan are being taken
+                    LoadDataLayers(currentSoilNumber)
+                    gvSoils_SelectedIndexChanging()
+                Case Page.Request.Params("__EVENTTARGET").Contains("btnAddLayer")
+                    currentSoilNumber = lblSoilName.Text.Split("|")(0)
+                    btnSaveLayers_Click()
+                    btnAddEmptyLayer_Click()
+                    gvSoils_SelectedIndexChanging()
+                Case Page.Request.Params("__EVENTARGUMENT").Contains("Delete") And Page.Request.Params("__EVENTTARGET").Contains("gvLayer")
+                    currentSoilNumber = lblSoilName.Text.Split("|")(0)
+                    btnSaveLayers_Click()       'save first to be sure the values from screan are being taken
+                    gvLayers_RowDeleting(Page.Request.Params("__EVENTARGUMENT").Split("$")(1))
+                    gvSoils_SelectedIndexChanging()
+            End Select
+        End If
+
+        If Not IsPostBack Then
+            currentFieldNumber = Session("currentFieldNumber")
+            ddlFields.SelectedIndex = currentFieldNumber
+            LoadSSAs()
+            LoadSoils()
+            LoadFields(ddlFields, _fieldsInfo1, currentFieldNumber)
+        End If
+        LoadDataSoils()
+    End Sub
+
+    Protected Sub btnSaveLayers_Click()
+        Try
+            'layer text boxes
+            Dim tTXTDepth As HtmlInputText
+            Dim tTXTSoilp As HtmlInputText
+            Dim tTXTBD As HtmlInputText
+            Dim tTXTSand As HtmlInputText
+            Dim tTXTSilt As HtmlInputText
+            Dim tTXTOM As HtmlInputText
+            Dim tTXTPH As HtmlInputText
+
+            For i = 0 To gvLayers.Rows.Count - 1
+                'update layers information
+                tTXTDepth = DirectCast(gvLayers.Rows(i).FindControl("txtDepth"), HtmlInputText)
+                tTXTSoilp = DirectCast(gvLayers.Rows(i).FindControl("txtSoilP"), HtmlInputText)
+                tTXTBD = DirectCast(gvLayers.Rows(i).FindControl("txtBD"), HtmlInputText)
+                tTXTSand = DirectCast(gvLayers.Rows(i).FindControl("txtSand"), HtmlInputText)
+                tTXTSilt = DirectCast(gvLayers.Rows(i).FindControl("txtSilt"), HtmlInputText)
+                tTXTOM = DirectCast(gvLayers.Rows(i).FindControl("txtOM"), HtmlInputText)
+                tTXTPH = DirectCast(gvLayers.Rows(i).FindControl("txtPH"), HtmlInputText)
+                _fieldsInfo1(currentFieldNumber)._soilsInfo(currentSoilNumber).UpdateLayer(tTXTDepth.Value, tTXTSoilp.Value, tTXTBD.Value, tTXTSand.Value, tTXTSilt.Value, tTXTOM.Value, tTXTPH.Value, i)
+            Next
+            ArrangeInfo("Save")
+            Dim msg As String = validateSoilInputs()
+            If msg <> "" Then Throw New Exception(msg)
+
+        Catch ex As Exception
+            showMessage(lblMessage, imgIcon, "Red", "StopIcon.jpg", ex.Message)
+        End Try
+    End Sub
+
+    Protected Sub btnSave_Click(status As String)
+        Try
+            'soil text boxes
+            Dim tTXTKey As HtmlInputText
+            Dim tTXTSymbol As HtmlInputText
+            Dim tTXTGroup As HtmlInputText
+            Dim tTXTName As HtmlInputText
+            Dim tTXTAlbedo As HtmlInputText
+            Dim tTXTSlope As HtmlInputText
+            Dim tTXTPercentage As HtmlInputText
+            Dim tCHKSelecte As CheckBox
+            'Dim tDDLdrainageCl As HtmlSelect
+            'receive message from validation
+            Dim msg As String = "OK"
+
+            For j = 0 To _fieldsInfo1.Count - 1
+                For i = 0 To gvSoils.Rows.Count - 1
+                    If j = currentFieldNumber Then
+                        'update soils information
+                        tCHKSelecte = DirectCast(gvSoils.Rows(i).FindControl("chkSelected"), CheckBox)
+                        tTXTKey = DirectCast(gvSoils.Rows(i).FindControl("txtKey"), HtmlInputText)
+                        tTXTSymbol = DirectCast(gvSoils.Rows(i).FindControl("txtSymbol"), HtmlInputText)
+                        tTXTGroup = DirectCast(gvSoils.Rows(i).FindControl("txtGroup"), HtmlInputText)
+                        tTXTName = DirectCast(gvSoils.Rows(i).FindControl("txtName"), HtmlInputText)
+                        tTXTAlbedo = DirectCast(gvSoils.Rows(i).FindControl("txtAlbedo"), HtmlInputText)
+                        tTXTSlope = DirectCast(gvSoils.Rows(i).FindControl("txtSlope"), HtmlInputText)
+                        tTXTPercentage = DirectCast(gvSoils.Rows(i).FindControl("txtPercentage"), HtmlInputText)
+                        'tDDLdrainageCl = DirectCast(gvSoils.Rows(i).FindControl("ddlDrainageCl"), HtmlSelect)
+                        _fieldsInfo1(currentFieldNumber).UpdateSoil(tTXTKey.Value, tTXTSymbol.Value, tTXTGroup.Value, tTXTName.Value, tTXTAlbedo.Value, tTXTSlope.Value, tTXTPercentage.Value, i, tCHKSelecte.Checked)
+                        _fieldsInfo1(currentFieldNumber)._soilsInfo.Sort(New sortByArea())
+                        CalculateAvgSlope(_fieldsInfo1, currentFieldNumber)
+                    Else
+                        CalculateAvgSlope(_fieldsInfo1, j)
+                    End If
+
+                    'if it is forestry the selection and percentage is taken from forestry land  todo
+                    'If _fieldsInfo1(currentFieldNumber).Forestry And Not (_fieldsInfo1(currentFieldNumber).Name.Contains(road) Or _fieldsInfo1(currentFieldNumber).Name.Contains(smz)) Then
+                    '    For Each _field In _fieldsInfo1
+                    '        If _field.Name = _fieldsInfo1(currentFieldNumber).Name & road Or _field.Name = _fieldsInfo1(currentFieldNumber).Name & smz Then
+                    '            For Each _soil In _field._soilsInfo
+
+                    '            Next
+                    '        End If
+                    '    Next
+                    'End If
+                    ArrangeInfo("Save")
+                Next
+            Next
+
+            msg = validateSoilInputs()
+            If msg = "" Then
+                If status = "Continue" Then
+                    showMessage(lblMessage, imgIcon, "Green", "GoIcon", msgDoc.Descendants("InformationSaved").Value)
+                End If
+            Else
+                showMessage(lblMessage, imgIcon, "Red", "StopIcon.jpg", msg)
+            End If
+        Catch ex As Exception
+            showMessage(lblMessage, imgIcon, "Red", "StopIcon.jpg", ex.Message)
+        End Try
+    End Sub
+
+    Protected Sub btnContinue_Click()
+        Session("currentFieldNumber") = currentFieldNumber
+        Response.Redirect("Management.aspx", False)
+    End Sub
+
+    Private Function validateSoilInputs()
+        Dim msg As String = ""
+        Dim j As UShort = 0
+
+        For i = 0 To _fieldsInfo1.Count - 1
+            If _fieldsInfo1(i)._soilsInfo.Count <= 0 Then
+                msg &= "Field --> " & _fieldsInfo1(i).Name & " " & msgDoc.Descendants("SoilNoSoils").Value & vbCrLf       'no soils
+                Exit For
+            End If
+            If _fieldsInfo1(i)._soilsInfo.Where(Function(y) y.Selected = True).Sum(Function(x) x.Percentage) = 0 Then
+                For j = 0 To _fieldsInfo1(i)._soilsInfo.OrderByDescending(Function(x) x.Percentage).Count - 1           'if none selected model select the three most dominant soils
+                    If j <= 2 Then
+                        _fieldsInfo1(i)._soilsInfo(j).Selected = True
+                        CalculateAvgSlope(_fieldsInfo1, currentFieldNumber)
+                    End If
+                Next
+            End If
+
+            For Each record In _fieldsInfo1(i)._soilsInfo.Where(Function(x) x.Selected = True)
+                If (record.Key <= 0) Then msg &= "Key for soil " & record.Name & " Is Not valid - "
+                If record.Albedo < AlbedoMin Or record.Albedo > AlbedoMax Then msg &= "Albedo for Soil " & record.Name & " Is Not valid - "
+                If record.Slope <= 0 Or record.Slope > 50 Or CSng(record.Slope) <= 0 Then msg &= "Slope for soil " & record.Name & " Is Not valid - "
+                If record.Percentage <= 0 Or record.Percentage > 100 Then msg &= "Percentage for soil " & record.Name & " Is Not valid - "
+                If record._layersInfo.Count <= 0 Then
+                    msg &= msgDoc.Descendants("LayerNoLayers").Value
+                Else
+                    Dim msg1 As String = String.Empty
+                    For Each layer In record._layersInfo
+                        If layer.Depth <= 0 Then msg1 &= " " & msgDoc.Descendants("DepthError").Value
+                        If layer.SoilP < 0 Then msg1 &= " " & msgDoc.Descendants("SoilPError").Value
+                        If layer.BD < BDMin And layer.BD > BDMax Then msg1 &= " " & msgDoc.Descendants("BDError").Value
+                        If layer.Sand <= SandMin And layer.Silt > SandMax Then msg1 &= " " & msgDoc.Descendants("SandError").Value
+                        If layer.Silt <= SiltMin And layer.Silt > SiltMax Then msg1 &= " " & msgDoc.Descendants("SiltError").Value
+                        If layer.OM <= OMMin And layer.OM > OMMax Then msg1 &= " " & msgDoc.Descendants("OMError").Value
+                        If layer.PH < PHMin And layer.PH > PHMax Then msg1 &= " " & msgDoc.Descendants("PHError").Value
+                    Next
+                    If msg1 <> String.Empty Then msg &= msg1
+                End If
+            Next
+            If _fieldsInfo1(i)._soilsInfo.Where(Function(x) x.Selected = True).Count > 3 Then
+                msg &= "Errors in red" & " for Field--> " & _fieldsInfo1(i).Name & ": more than three soils selected" & vbCrLf    'more than three soils selected
+                Exit For
+            End If
+            If _fieldsInfo1(i)._soilsInfo.Where(Function(y) y.Selected = True).Sum(Function(x) x.Percentage) > 100.1 Then
+                msg &= msgDoc.Descendants("SoilPercentages").Value & " - " & cntDoc.Descendants("Field").Value & _fieldsInfo1(i).Name & vbCrLf        'percentage > 100.1%
+                Return msg
+            End If
+            If _fieldsInfo1(i)._soilsInfo.Where(Function(y) y.Selected = True).Sum(Function(x) x.Percentage) < 0 Then
+                msg &= msgDoc.Descendants("SoilPercentages").Value & " - " & cntDoc.Descendants("Field").Value & _fieldsInfo1(i).Name & vbCrLf        'percentage < 0
+                Return msg
+            End If
+            'recalculate percentage and subareas area always just in case it has been changed and add 100%
+            Dim totalPercentage As Single = _fieldsInfo1(i)._soilsInfo.Where(Function(y) y.Selected = True).Sum(Function(x) x.Percentage)
+            j = 0
+            For Each Soil In _fieldsInfo1(i)._soilsInfo.Where(Function(y) y.Selected = True)
+                Soil.Percentage = Soil.Percentage / totalPercentage * 100                                   'recalculate the soils percentage.
+                If totalPercentage = 0 Then Soil.Percentage = 0
+                CalculateNewSubareaArea(j, Soil.Percentage, i)
+                j += 1
+            Next
+        Next
+
+        Return msg
+    End Function
+
+    Private Sub CalculateNewSubareaArea(soilNumber As UShort, soilPercentage As Single, fieldNumber As UShort)
+        'todo check this one
+        For Each _scen In _fieldsInfo1(fieldNumber)._soilsInfo(soilNumber)._scenariosInfo
+            With _scen._subareasInfo
+                ._line4(0).Wsa = soilPercentage * _fieldsInfo1(fieldNumber).Area / 100 * ac_to_ha
+                For Each _buffer In _scen._bufferInfo
+                    ._line4(0).Wsa -= _buffer._line4(0).Wsa * _fieldsInfo1(fieldNumber)._soilsInfo(soilNumber).Percentage / 100
+                Next
+                ._line4(0).chl = Math.Sqrt(._line4(0).Wsa * 0.01)
+                If soilNumber = 0 And .SbaType = "Soil" Then
+                    ._line5(0).Rchl = ._line4(0).chl
+                Else
+                    '.rchl = .chl * 0.9
+                    ._line5(0).Rchl = ._line4(0).chl      'changed to add all fields
+                    '.Wsa *= -1               'cahanged to add all fields
+                End If
+            End With
+        Next
+    End Sub
+
+    Private Sub ChangeLanguageContent()
+        lblSSA.Value = cntDoc.Descendants("SoilSurveyAreaHeading").Value
+        lblSoils.Value = cntDoc.Descendants("SelectSoilsHeading").Value
+        lblFields.Value = cntDoc.Descendants("SelectFieldHeading").Value
+        btnAddSoil.Value = cntDoc.Descendants("AddSoilSelected").Value
+        lblNote.Text = cntDoc.Descendants("SoilDescription").Value
+        btnAddEmptyLayer.Value = cntDoc.Descendants("AddEmptyLayer").Value
+        btnSave.Text = cntDoc.Descendants("Save").Value
+        btnContinue.Text = cntDoc.Descendants("Continue").Value
+        btnSaveLayer.Text = cntDoc.Descendants("SaveAndClose").Value
+        lblLayersTitle.Text = cntDoc.Descendants("LayerPageTitle").Value
+        gvSoils.Columns(0).HeaderText = cntDoc.Descendants("Delete").Value
+        gvSoils.Columns(1).HeaderText = cntDoc.Descendants("LayerNumber").Value & "s"
+        gvSoils.Columns(2).HeaderText = cntDoc.Descendants("Select").Value
+        gvSoils.Columns(3).HeaderText = cntDoc.Descendants("SoilKey").Value
+        gvSoils.Columns(4).HeaderText = cntDoc.Descendants("SoilSymbol").Value
+        gvSoils.Columns(5).HeaderText = cntDoc.Descendants("SoilGroup").Value
+        gvSoils.Columns(6).HeaderText = cntDoc.Descendants("SoilName").Value
+        gvSoils.Columns(7).HeaderText = cntDoc.Descendants("SoilAlbedo").Value
+        gvSoils.Columns(8).HeaderText = cntDoc.Descendants("SoilSlope").Value
+        gvSoils.Columns(9).HeaderText = cntDoc.Descendants("SoilPercentage").Value
+
+        gvLayers.Columns(0).HeaderText = cntDoc.Descendants("Delete").Value
+        gvLayers.Columns(1).HeaderText = cntDoc.Descendants("LayerNumber").Value
+        gvLayers.Columns(2).HeaderText = cntDoc.Descendants("LayerDepth").Value
+        gvLayers.Columns(3).HeaderText = cntDoc.Descendants("LayerSoilP").Value
+        gvLayers.Columns(4).HeaderText = cntDoc.Descendants("LayerBulkDensity").Value
+        gvLayers.Columns(5).HeaderText = cntDoc.Descendants("LayerSand").Value
+        gvLayers.Columns(6).HeaderText = cntDoc.Descendants("LayerSilt").Value
+        gvLayers.Columns(7).HeaderText = cntDoc.Descendants("LayerOrganicMatter").Value
+        gvLayers.Columns(8).HeaderText = cntDoc.Descendants("LayerpH").Value
+        'tooltips
+        ddlSSA.Attributes.Add("title", msgDoc.Descendants("ttSSA").Value)
+        ddlFields.Attributes.Add("title", msgDoc.Descendants("ttSoilFields").Value)        
+        btnSave.ToolTip = msgDoc.Descendants("ttSaveAndContinue").Value
+    End Sub
+
+    Private Sub LoadSSAs()
+        Dim stateQuery = GetSSA(_startInfo.countyCode)
+        ddlSSA.DataTextField = "Name"
+        ddlSSA.DataValueField = "Code"
+        ddlSSA.DataSource = stateQuery
+        ddlSSA.DataBind()
+        ddlSSA.SelectedIndex = 0
+    End Sub
+
+    Private Sub LoadSoils()
+        If _startInfo.Status = userInput Then Exit Sub
+        Dim soilQuery As Object = GetSoils(ddlSSA.Items(ddlSSA.SelectedIndex).Value.Trim, _startInfo.StateAbrev)
+        Dim index As Short = ddlSoils.SelectedIndex
+
+        ddlSoils.DataTextField = "key"
+        ddlSoils.DataValueField = "MUID"
+        ddlSoils.DataSource = soilQuery
+        ddlSoils.DataBind()
+        ddlSoils.SelectedIndex = index
+    End Sub
+
+    'Public Function ExecQuery() As Object
+    'Return GetSoils(ddlSSA.Items(ddlSSA.SelectedIndex).Value.Trim, _startInfo.StateAbrev)
+    'Return Nothing
+    'End Function
+
+    Private Sub LoadDataSoils()
+        'currentSoilNumber = -1
+        gvSoils.DataSource = Nothing
+        If Not _fieldsInfo1(currentFieldNumber)._soilsInfo Is Nothing AndAlso _fieldsInfo1(currentFieldNumber)._soilsInfo.Count > 0 Then
+            gvSoils.DataSource = _fieldsInfo1(currentFieldNumber)._soilsInfo
+        End If
+        gvSoils.DataBind()
+        currentSoilNumber = 0
+        hdnField.Value = currentFieldNumber
+    End Sub
+
+    Private Sub LoadDataLayers(soilNumber As Short)
+        gvLayers.DataSource = Nothing
+        gvLayers.DataBind()
+        currentSoilNumber = soilNumber
+        If _fieldsInfo1(currentFieldNumber)._soilsInfo Is Nothing Or _fieldsInfo1(currentFieldNumber)._soilsInfo.Count <= 0 Then Exit Sub
+        If Not _fieldsInfo1(currentFieldNumber)._soilsInfo(currentSoilNumber)._layersInfo Is Nothing AndAlso _fieldsInfo1(currentFieldNumber)._soilsInfo(currentSoilNumber)._layersInfo.Count > 0 Then
+            gvLayers.DataSource = _fieldsInfo1(currentFieldNumber)._soilsInfo(currentSoilNumber)._layersInfo
+            gvLayers.DataBind()
+        End If
+    End Sub
+
+    Private Sub gvSoils_RowDeleting(sender As Object, e As System.Web.UI.WebControls.GridViewDeleteEventArgs) Handles gvSoils.RowDeleting
+        'This subroutine needs to be here but does nothing.
+    End Sub
+
+    Protected Sub gvSoils_RowDeleting(eRowIndex As Short)
+        _fieldsInfo1(currentFieldNumber).DeleteSoil(eRowIndex, False)
+        'LoadDataSoils()
+        If _fieldsInfo1(currentFieldNumber)._soilsInfo.Count > 0 Then
+            currentSoilNumber = 0
+            gvSoils.SelectedIndex = 0
+            'LoadDataLayers()
+        Else
+            currentSoilNumber = -1
+            gvSoils.SelectedIndex = -1
+        End If
+    End Sub
+
+    Protected Sub gvSoils_SelectedIndexChanging()
+        With _fieldsInfo1(currentFieldNumber)._soilsInfo(currentSoilNumber)
+            lblSoilName.Text = currentSoilNumber & "|" & .Key & " | " & .Symbol & " | " & .Group & " | " & .Name
+        End With
+        ScriptManager.RegisterStartupScript(Me, Me.GetType(), "Modal", "showModal();", True)
+
+    End Sub
+
+    Protected Sub btnAddEmptySoil_Click()
+        Dim _soil As New SoilsData
+        Try
+            'put default values
+            _soil.Symbol = "New" & _fieldsInfo1(currentFieldNumber)._soilsInfo.Count + 1
+            _soil.Group = "B"
+            _soil.Name = "Soil " & _fieldsInfo1(currentFieldNumber)._soilsInfo.Count + 1
+            _soil.Key = _fieldsInfo1(currentFieldNumber)._soilsInfo.Count + 1
+            'validate inputs
+            Select Case True
+                Case ddlFields.SelectedIndex < 0 And ddlFields.Items.Count >= 1
+                    showMessage(lblMessage, imgIcon, "Red", "StopIcon.jpg", msgDoc.Descendants("SoilFieldSelected").Value)
+                    Exit Sub
+            End Select
+            showMessage(lblMessage, imgIcon, "Orange", "WarningIcon.jpg", msgDoc.Descendants("SoilAdding").Value)
+            Dim totalSoils As UShort = _fieldsInfo1(currentFieldNumber)._soilsInfo.Count
+            _fieldsInfo1(currentFieldNumber).AddSoil(_soil, _startInfo, _fieldsInfo1(currentFieldNumber).Area, _fieldsInfo1(currentFieldNumber).RchcVal, _fieldsInfo1(currentFieldNumber).RchkVal)
+
+            If _fieldsInfo1(currentFieldNumber).Forestry And Not (_fieldsInfo1(currentFieldNumber).Name.Contains(smz) Or _fieldsInfo1(currentFieldNumber).Name.Contains(road)) Then
+                Dim answer As Short = MsgBox("Do you want to add the same soils for SMZ and Road?", MsgBoxStyle.YesNo, "Forestry")
+                If answer = 6 Then
+                    For Each _field In _fieldsInfo1
+                        If _field.Name = _fieldsInfo1(currentFieldNumber).Name & road Or _field.Name = _fieldsInfo1(currentFieldNumber).Name & smz Then
+                            _field.AddSoil(_soil, _startInfo, _fieldsInfo1(currentFieldNumber).Area, _fieldsInfo1(currentFieldNumber).RchcVal, _fieldsInfo1(currentFieldNumber).RchkVal)
+                        End If
+                    Next
+                End If
+            End If
+            If totalSoils = _fieldsInfo1(currentFieldNumber)._soilsInfo.Count Then Throw New Global.System.Exception(msgDoc.Descendants("LayerNoLayers").Value)
+            currentSoilNumber = _fieldsInfo1(currentFieldNumber)._soilsInfo.Count - 1
+            gvSoils.PageIndex = _fieldsInfo1(currentFieldNumber)._soilsInfo.Count
+
+            gvSoils.SelectedIndex = _fieldsInfo1(currentFieldNumber)._soilsInfo.Count - 1
+            ArrangeInfo("Save")
+            showMessage(lblMessage, imgIcon, "Green", "GoIcon.jpg", msgDoc.Descendants("SoilAdded").Value)
+        Catch ex As Exception
+            showMessage(lblMessage, imgIcon, "Red", "StopIcon.jpg", msgDoc.Descendants("Error").Value & " - " & ex.Message)
+        End Try
+
+    End Sub
+
+
+    Protected Sub btnAddSoil_Click()
+        Try
+            'validate inputs
+            Select Case True
+                Case ddlSoils.Items.Count <= 0
+                    showMessage(lblMessage, imgIcon, "Red", "StopIcon.jpg", msgDoc.Descendants("SoilSurveyAreaSelected").Value)
+                    Exit Sub
+                Case ddlSoils.SelectedIndex < 0 And ddlSoils.Items.Count >= 1
+                    showMessage(lblMessage, imgIcon, "Red", "StopIcon.jpg", msgDoc.Descendants("SoilSelected").Value)
+                    Exit Sub
+                Case ddlFields.SelectedIndex < 0 And ddlFields.Items.Count >= 1
+                    showMessage(lblMessage, imgIcon, "Red", "StopIcon.jpg", msgDoc.Descendants("SoilFieldSelected").Value)
+                    Exit Sub
+            End Select
+            showMessage(lblMessage, imgIcon, "Orange", "WarningIcon.jpg", msgDoc.Descendants("SoilAdding").Value)
+            Dim sSQL As String = String.Empty
+            sSQL = "SELECT top 1 seriesname, albedo, (slopeh-slopel)/2 as slope, horizdesc2, horizgen"
+            sSQL = sSQL & " FROM " & _startInfo.StateAbrev & "SOILS"
+            sSQL = sSQL & " WHERE TSSSACODE = '" & ddlSSA.SelectedValue.Trim & "'"
+            sSQL = sSQL & " AND horizdesc1 = '" + ddlSoils.Items(ddlSoils.SelectedIndex).Text.Split("|")(0).Trim & "'"
+            sSQL = sSQL & " AND muname = '" + ddlSoils.Items(ddlSoils.SelectedIndex).Text.Split("|")(1).Trim & "'"
+            sSQL = sSQL & " AND muid = '" + ddlSoils.Items(ddlSoils.SelectedIndex).Value.Trim & "'"
+            sSQL = sSQL & " AND horizdesc2<>''"
+            Dim totalSoils As UShort = _fieldsInfo1(currentFieldNumber)._soilsInfo.Count
+            _fieldsInfo1(currentFieldNumber).AddSingleSoil(sSQL, ddlSoils.Items(ddlSoils.SelectedIndex).Value.Trim, ddlSoils.Items(ddlSoils.SelectedIndex).Text.Split("|")(1).Trim, ddlSoils.Items(ddlSoils.SelectedIndex).Text.Split("|")(0).Trim, ddlSSA.SelectedValue.Trim, 0, 0, _startInfo, 0)
+
+            If _fieldsInfo1(currentFieldNumber).Forestry And Not (_fieldsInfo1(currentFieldNumber).Name.Contains(smz) Or _fieldsInfo1(currentFieldNumber).Name.Contains(road)) Then
+                Dim answer As Short = MsgBox("Do you want to add the same soils for SMZ and Road?", MsgBoxStyle.YesNo, "Forestry")
+                If answer = 6 Then
+                    For Each _field In _fieldsInfo1
+                        If _field.Name = _fieldsInfo1(currentFieldNumber).Name & road Or _field.Name = _fieldsInfo1(currentFieldNumber).Name & smz Then
+                            _field.AddSingleSoil(sSQL, ddlSoils.Items(ddlSoils.SelectedIndex).Value.Trim, ddlSoils.Items(ddlSoils.SelectedIndex).Text.Split("|")(1).Trim, ddlSoils.Items(ddlSoils.SelectedIndex).Text.Split("|")(0).Trim, ddlSSA.SelectedValue.Trim, 0, 0, _startInfo, 0)
+                        End If
+                    Next
+                End If
+            End If
+            If totalSoils = _fieldsInfo1(currentFieldNumber)._soilsInfo.Count Then Throw New Global.System.Exception(msgDoc.Descendants("LayerNoLayers").Value)
+            currentSoilNumber = _fieldsInfo1(currentFieldNumber)._soilsInfo.Count - 1
+            gvSoils.PageIndex = _fieldsInfo1(currentFieldNumber)._soilsInfo.Count
+
+            gvSoils.SelectedIndex = _fieldsInfo1(currentFieldNumber)._soilsInfo.Count - 1
+            'LoadDataLayers()
+            ArrangeInfo("Save")
+            showMessage(lblMessage, imgIcon, "Green", "GoIcon.jpg", msgDoc.Descendants("SoilAdded").Value)
+        Catch ex As Exception
+            showMessage(lblMessage, imgIcon, "Red", "StopIcon.jpg", msgDoc.Descendants("Error").Value & " - " & ex.Message)
+        End Try
+
+    End Sub
+
+    Private Sub gvLayers_RowDeleting1(sender As Object, e As System.Web.UI.WebControls.GridViewDeleteEventArgs) Handles gvLayers.RowDeleting
+        'This subroutine needs to be here but does nothing.
+    End Sub
+
+    Protected Sub gvLayers_RowDeleting(eRowIndex As Short)
+        _fieldsInfo1(currentFieldNumber)._soilsInfo(currentSoilNumber).DeleteLayer(eRowIndex)
+        ArrangeInfo("Save")
+        gvLayers.DataSource = _fieldsInfo1(currentFieldNumber)._soilsInfo(currentSoilNumber)._layersInfo
+        gvLayers.DataBind()
+    End Sub
+
+    Protected Sub ddlSSA_SelectedIndexChanged()
+        LoadSoils()
+    End Sub
+
+    Protected Sub btnAddEmptyLayer_Click()
+        _fieldsInfo1(currentFieldNumber)._soilsInfo(currentSoilNumber).AddEmptyLayer()
+        ArrangeInfo("Save")
+        LoadDataLayers(currentSoilNumber)
+    End Sub
+
+    Private Sub ddlFields_SelectedIndexChanged()
+        currentFieldNumber = ddlFields.SelectedIndex
+        Session("currentFieldNumber") = currentFieldNumber
+        currentSoilNumber = 0
+        If _fieldsInfo1(currentFieldNumber)._soilsInfo.Count <= 0 Then currentSoilNumber = -1
+    End Sub
+
+    Private Sub gvSoils_RowDataBound(sender As Object, e As System.Web.UI.WebControls.GridViewRowEventArgs) Handles gvSoils.RowDataBound
+        If e.Row.RowType = DataControlRowType.DataRow Then
+            e.Row.Cells(0).Controls(0).ID = "btnDelete"
+            e.Row.Cells(1).Controls(0).ID = "btnLayers"
+            Dim btnDelete As New Object
+            Dim btnLayers As New Object
+            Dim txtSlope As New HtmlInputText
+            btnDelete = e.Row.Cells(0).FindControl("btnDelete")
+            btnLayers = e.Row.Cells(1).FindControl("btnLayers")
+            btnDelete.Text = cntDoc.Descendants("Delete").Value
+            btnLayers.Text = cntDoc.Descendants("LayerNumber").Value & "s"
+            txtSlope = e.Row.Cells(8).FindControl("txtSlope")
+            txtSlope.Value = Math.Round(CSng(txtSlope.Value), 2).ToString
+            e.Row.Cells(0).Attributes.Add("onclick", "return DeleteRow(" & e.Row.RowIndex.ToString() & ")")
+            'validate inputs. Wrong values are in red from the beginning
+            Dim txtKey As New HtmlInputText
+            Dim txtSymbol As New HtmlInputText
+            Dim txtGroup As New HtmlInputText
+            Dim txtName As New HtmlInputText
+            Dim txtAlbedo As New HtmlInputText
+            txtKey = e.Row.Cells(8).FindControl("txtKey")
+            txtSymbol = e.Row.Cells(8).FindControl("txtSymbol")
+            txtGroup = e.Row.Cells(8).FindControl("txtGroup")
+            txtName = e.Row.Cells(8).FindControl("txtName")
+            txtAlbedo = e.Row.Cells(8).FindControl("txtAlbedo")
+
+            If Integer.Parse(txtKey.Value) <= 0 Then txtKey.Style.Item("background-color") = "Red"
+            If txtSymbol.Value = "" Or txtSymbol.Value = String.Empty Then txtSymbol.Style.Item("background-color") = "Red"
+            If txtGroup.Value = "" Or txtGroup.Value = String.Empty Then txtGroup.Style.Item("background-color") = "Red"
+            If txtName.Value = "" Or txtName.Value = String.Empty Then txtName.Style.Item("background-color") = "Red"
+            If Single.Parse(txtAlbedo.Value) <= AlbedoMin And Single.Parse(txtAlbedo.Value) > AlbedoMax Then txtAlbedo.Style.Item("background-color") = "Red"
+            If Single.Parse(txtSlope.Value) <= 0 And Single.Parse(txtSlope.Value) > 50 Then txtSlope.Style.Item("background-color") = "Red"
+        End If
+    End Sub
+
+    Private Sub gvLayers_RowDataBound(sender As Object, e As System.Web.UI.WebControls.GridViewRowEventArgs) Handles gvLayers.RowDataBound
+        If e.Row.RowType = DataControlRowType.DataRow Then
+            'validate inputs. Wrong values are in red from the beginning
+            Dim txtDepth As New HtmlInputText
+            Dim txtBD As New HtmlInputText
+            Dim txtSand As New HtmlInputText
+            Dim txtSilt As New HtmlInputText
+            Dim txtOM As New HtmlInputText
+            Dim txtPH As New HtmlInputText
+            txtDepth = e.Row.Cells(8).FindControl("txtDepth")
+            txtBD = e.Row.Cells(8).FindControl("txtBD")
+            txtSand = e.Row.Cells(8).FindControl("txtSand")
+            txtSilt = e.Row.Cells(8).FindControl("txtSilt")
+            txtOM = e.Row.Cells(8).FindControl("txtOM")
+            txtPH = e.Row.Cells(8).FindControl("txtPH")
+
+            If Single.Parse(txtDepth.Value) <= 0 Then txtDepth.Style.Item("background-color") = "Red"
+            If Single.Parse(txtBD.Value) < BDMin Or Single.Parse(txtBD.Value) > BDMax Then txtBD.Style.Item("background-color") = "Red"
+            If Single.Parse(txtSand.Value) <= SandMin Or Single.Parse(txtSand.Value) > SandMax Then txtSand.Style.Item("background-color") = "Red"
+            If Single.Parse(txtSilt.Value) <= SiltMin Or Single.Parse(txtSilt.Value) > SiltMax Then txtSilt.Style.Item("background-color") = "Red"
+            If Single.Parse(txtOM.Value) <= OMMin Or Single.Parse(txtOM.Value) > OMMax Then txtOM.Style.Item("background-color") = "Red"
+            If Single.Parse(txtPH.Value) < PHMin Or Single.Parse(txtPH.Value) > PHMax Then txtPH.Style.Item("background-color") = "Red"
+        End If
+    End Sub
+
+    Private Sub gvLayers_RowCreated(sender As Object, e As System.Web.UI.WebControls.GridViewRowEventArgs) Handles gvLayers.RowCreated
+        If e.Row.RowType = DataControlRowType.DataRow Then
+            e.Row.Cells(0).Controls(0).ID = "btnDelete"
+            Dim btnDelete As New Object
+            btnDelete = e.Row.Cells(0).FindControl("btnDelete")
+            btnDelete.Text = cntDoc.Descendants("Delete").Value
+            e.Row.Cells(0).Attributes.Add("onclick", "return DeleteRow(" & e.Row.RowIndex.ToString() & ")")
+        End If
+    End Sub
+    Private Sub ArrangeInfo(openSave As String)
+        Select Case openSave
+            'this is done after the open subrutine
+            Case "Open"
+                _startInfo = Session("projects")._StartInfo
+                _fieldsInfo1 = Session("projects")._fieldsInfo1
+                'this is done before the save subroutine
+            Case "Save"
+                Session("projects")._StartInfo = _startInfo
+                Session("projects")._fieldsInfo1 = _fieldsInfo1
+        End Select
+    End Sub
+
+    Private Sub ddlFields_SelectedIndexChanged1(sender As Object, e As System.EventArgs) Handles ddlFields.SelectedIndexChanged
+        currentFieldNumber = ddlFields.SelectedIndex
+        Session("currentFieldNumber") = currentFieldNumber
+    End Sub
+End Class

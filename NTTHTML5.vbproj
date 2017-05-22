@@ -1,0 +1,591 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
+    <DebugSymbols>true</DebugSymbols>
+    <DefineDebug>true</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <OutputPath>bin\x86\Debug\</OutputPath>
+    <DocumentationFile>NTTHTML5.xml</DocumentationFile>
+    <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022,42353,42354,42355</NoWarn>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <CodeAnalysisLogFile>bin\NTTHTML5.dll.CodeAnalysisLog.xml</CodeAnalysisLogFile>
+    <CodeAnalysisUseTypeNameInSuppression>true</CodeAnalysisUseTypeNameInSuppression>
+    <CodeAnalysisModuleSuppressionsFile>GlobalSuppressions.vb</CodeAnalysisModuleSuppressionsFile>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <CodeAnalysisRuleSetDirectories>;C:\Program Files (x86)\Microsoft Visual Studio 10.0\Team Tools\Static Analysis Tools\\Rule Sets</CodeAnalysisRuleSetDirectories>
+    <CodeAnalysisIgnoreBuiltInRuleSets>false</CodeAnalysisIgnoreBuiltInRuleSets>
+    <CodeAnalysisRuleDirectories>;C:\Program Files (x86)\Microsoft Visual Studio 10.0\Team Tools\Static Analysis Tools\FxCop\\Rules</CodeAnalysisRuleDirectories>
+    <CodeAnalysisIgnoreBuiltInRules>false</CodeAnalysisIgnoreBuiltInRules>
+    <CodeAnalysisFailOnMissingRules>false</CodeAnalysisFailOnMissingRules>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x86'">
+    <DefineTrace>true</DefineTrace>
+    <OutputPath>bin\x86\Release\</OutputPath>
+    <DocumentationFile>NTTHTML5.xml</DocumentationFile>
+    <Optimize>true</Optimize>
+    <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022,42353,42354,42355</NoWarn>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <CodeAnalysisLogFile>bin\NTTHTML5.dll.CodeAnalysisLog.xml</CodeAnalysisLogFile>
+    <CodeAnalysisUseTypeNameInSuppression>true</CodeAnalysisUseTypeNameInSuppression>
+    <CodeAnalysisModuleSuppressionsFile>GlobalSuppressions.vb</CodeAnalysisModuleSuppressionsFile>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <CodeAnalysisRuleSetDirectories>;C:\Program Files (x86)\Microsoft Visual Studio 10.0\Team Tools\Static Analysis Tools\\Rule Sets</CodeAnalysisRuleSetDirectories>
+    <CodeAnalysisRuleDirectories>;C:\Program Files (x86)\Microsoft Visual Studio 10.0\Team Tools\Static Analysis Tools\FxCop\\Rules</CodeAnalysisRuleDirectories>
+    <CodeAnalysisIgnoreBuiltInRules>false</CodeAnalysisIgnoreBuiltInRules>
+    <CodeAnalysisFailOnMissingRules>false</CodeAnalysisFailOnMissingRules>
+  </PropertyGroup>
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>
+    </SchemaVersion>
+    <ProjectGuid>{179DACD3-925A-4572-97A4-C2EE42F45C4D}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{F184B08F-C81C-45F6-A57F-5ABD9991F28F}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <RootNamespace>NTTHTML5</RootNamespace>
+    <AssemblyName>NTTHTML5</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <MyType>Custom</MyType>
+    <UseIISExpress>false</UseIISExpress>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <UpgradeBackupLocation>
+    </UpgradeBackupLocation>
+    <OldToolsVersion>4.0</OldToolsVersion>
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <DefineDebug>true</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <OutputPath>bin\</OutputPath>
+    <DocumentationFile>NTTHTML5.xml</DocumentationFile>
+    <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022,42353,42354,42355</NoWarn>
+    <PackageAsSingleFile>true</PackageAsSingleFile>
+    <DeployIisAppPath>Default/NTTG3</DeployIisAppPath>
+    <ExcludeApp_Data>false</ExcludeApp_Data>
+    <PublishDatabaseSettings>
+      <Objects>
+        <ObjectGroup Name="NTTDBConnectionString-Deployment" Order="1">
+          <Destination Path="" />
+          <Object Type="dbFullSql" Enabled="False">
+            <PreSource Path="Data Source=T-NN\SQLEXPRESS%3bInitial Catalog=NTTDB%3bPersist Security Info=True%3bUser ID=sa%3bPassword=pass%24word" ScriptSchema="True" ScriptData="False" CopyAllFullTextCatalogs="False" DriDefaults="True" />
+            <Source Path="obj\Debug\AutoScripts\NTTDBConnectionString-Deployment_SchemaOnly.sql" Transacted="True" />
+          </Object>
+        </ObjectGroup>
+        <ObjectGroup Name="SSURGO_SOILDBConnectionString-Deployment" Order="2">
+          <Destination Path="" />
+          <Object Type="dbFullSql">
+            <PreSource Path="Data Source=T-NN\SQLEXPRESS%3bInitial Catalog=SSURGO_SOILDB%3bPersist Security Info=True%3bUser ID=sa%3bPassword=pass%24word" ScriptSchema="True" ScriptData="False" CopyAllFullTextCatalogs="False" DriDefaults="True" />
+            <Source Path="obj\Debug\AutoScripts\SSURGO_SOILDBConnectionString-Deployment_SchemaOnly.sql" Transacted="True" />
+          </Object>
+        </ObjectGroup>
+      </Objects>
+    </PublishDatabaseSettings>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <DefineDebug>false</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DocumentationFile>NTTHTML5.xml</DocumentationFile>
+    <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022,42353,42354,42355</NoWarn>
+  </PropertyGroup>
+  <PropertyGroup>
+    <OptionExplicit>On</OptionExplicit>
+  </PropertyGroup>
+  <PropertyGroup>
+    <OptionCompare>Binary</OptionCompare>
+  </PropertyGroup>
+  <PropertyGroup>
+    <OptionStrict>Off</OptionStrict>
+  </PropertyGroup>
+  <PropertyGroup>
+    <OptionInfer>On</OptionInfer>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EASendMail20">
+      <HintPath>Resources\EASendMail\EASendMail20.dll</HintPath>
+    </Reference>
+    <Reference Include="HUCal, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\HUCal\HUCal\bin\Debug\HUCal.dll</HintPath>
+    </Reference>
+    <Reference Include="Interop.MapWinGIS, Version=4.8.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+      <HintPath>C:\NTTDeployed\References\Interop.MapWinGIS.dll</HintPath>
+    </Reference>
+    <Reference Include="Ionic.Zip.Reduced, Version=1.9.1.8, Culture=neutral, PublicKeyToken=edbe51ad942a3f5c, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\NTTDeployed\References\Ionic.Zip.Reduced.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ApplicationBlocks.Data, Version=1.0.2111.17319, Culture=neutral">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\NTTDeployed\References\Microsoft.ApplicationBlocks.Data.dll</HintPath>
+    </Reference>
+    <Reference Include="msgBox, Version=1.0.3506.17968, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\NTTDeployed\References\msgBox.dll</HintPath>
+    </Reference>
+    <Reference Include="SoilsInfo1, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\NTTDeployed\References\SoilsInfo1.dll</HintPath>
+    </Reference>
+    <Reference Include="syncfusion.pdf.base, Version=4.302.0.30, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\NTTDeployed\References\syncfusion.pdf.base.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.Web.DataVisualization" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+  </ItemGroup>
+  <ItemGroup>
+    <Import Include="Microsoft.VisualBasic" />
+    <Import Include="System" />
+    <Import Include="System.Collections" />
+    <Import Include="System.Collections.Generic" />
+    <Import Include="System.Data" />
+    <Import Include="System.Linq" />
+    <Import Include="System.Xml.Linq" />
+    <Import Include="System.Diagnostics" />
+    <Import Include="System.Collections.Specialized" />
+    <Import Include="System.Configuration" />
+    <Import Include="System.Text" />
+    <Import Include="System.Text.RegularExpressions" />
+    <Import Include="System.Web" />
+    <Import Include="System.Web.Caching" />
+    <Import Include="System.Web.SessionState" />
+    <Import Include="System.Web.Security" />
+    <Import Include="System.Web.Profile" />
+    <Import Include="System.Web.UI" />
+    <Import Include="System.Web.UI.WebControls" />
+    <Import Include="System.Web.UI.WebControls.WebParts" />
+    <Import Include="System.Web.UI.HtmlControls" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="App_Data\wp1Data.vb" />
+    <Compile Include="App_Data\WthData.vb" />
+    <Content Include="Account\Login.aspx" />
+    <Content Include="Account\Register.aspx" />
+    <Content Include="App_Data\CA_SingleField.xml" />
+    <Content Include="App_Data\MD_SingleField.xml" />
+    <Compile Include="App_Data\MixedCropsData.vb" />
+    <Content Include="App_Data\OH_MultipleFields.xml">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Scripts\infoBox.js" />
+    <None Include="App_Data\PHUCRP.DAT" />
+    <None Include="My Project\DataSources\System.Data.DataTable.datasource" />
+    <None Include="My Project\PublishProfiles\New.pubxml" />
+    <None Include="Service References\GetSoilsInfo\soils.disco" />
+    <None Include="Service References\GetSoilsInfo\configuration91.svcinfo" />
+    <None Include="Service References\GetSoilsInfo\configuration.svcinfo" />
+    <None Include="Service References\GetSoilsInfo\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.vb</LastGenOutput>
+    </None>
+    <Compile Include="Account\Login.aspx.designer.vb">
+      <DependentUpon>Login.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Account\Login.aspx.vb">
+      <DependentUpon>Login.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Account\Register.aspx.designer.vb">
+      <DependentUpon>Register.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Account\Register.aspx.vb">
+      <DependentUpon>Register.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="App_Data\ProjectsData.vb" />
+    <Compile Include="App_Data\StartData.vb" />
+    <Compile Include="App_Data\StationData.vb" />
+    <Compile Include="App_Data\SubareaLine12.vb" />
+    <Compile Include="App_Data\SubareaLine11.vb" />
+    <Compile Include="App_Data\SubareaLine10.vb" />
+    <Compile Include="App_Data\SubareaLine9.vb" />
+    <Compile Include="App_Data\SubareaLine8.vb" />
+    <Compile Include="App_Data\SubareaLine7.vb" />
+    <Compile Include="App_Data\SubareaLine6.vb" />
+    <Compile Include="App_Data\SubareaLine5.vb" />
+    <Compile Include="App_Data\SubareaLine4.vb" />
+    <Compile Include="App_Data\SubareaLine3.vb" />
+    <Compile Include="App_Data\ResultsData.vb" />
+    <Content Include="App_Data\ResultsData_log.ldf">
+      <DependentUpon>ResultsData.vb</DependentUpon>
+    </Content>
+    <Content Include="Resources\APEX1Files.txt" />
+    <Content Include="Resources\NTTG2_LOgo.png" />
+    <Content Include="Resources\NTTLogo.jpg" />
+    <Content Include="Resources\search.png" />
+    <Content Include="Resources\Wait.png" />
+    <Content Include="Scripts\modifications.js" />
+    <Content Include="Scripts\results.js" />
+    <Content Include="Scripts\simulation.js" />
+    <Content Include="Scripts\subprojects.js" />
+    <None Include="Service References\GetWeatherInfo\NTTHTML5.GetWeatherInfo.ArrayOfString.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\GetWeatherInfo\service.disco" />
+    <None Include="Service References\GetWeatherInfo\configuration91.svcinfo" />
+    <None Include="Service References\GetWeatherInfo\configuration.svcinfo" />
+    <None Include="Service References\GetWeatherInfo\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.vb</LastGenOutput>
+    </None>
+    <None Include="Service References\NTTCalcHU1\NTTHTML5.NTTCalcHU1.ArrayOfString.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\NTTCalcHU1\NTTService.wsdl" />
+    <None Include="Service References\NTTCalcHU\NTTHTML5.NTTCalcHU.ArrayOfString.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\NTTCalcHU\configuration91.svcinfo" />
+    <None Include="Service References\NTTCalcHU\configuration.svcinfo" />
+    <None Include="Service References\NTTCalcHU\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.vb</LastGenOutput>
+    </None>
+    <None Include="Service References\NTTCalcHU1\NTTService.disco" />
+    <None Include="Service References\NTTCalcHU1\configuration91.svcinfo" />
+    <None Include="Service References\NTTCalcHU1\configuration.svcinfo" />
+    <None Include="Service References\NTTCalcHU1\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.vb</LastGenOutput>
+    </None>
+    <None Include="Service References\NTTCalcHU\service.disco" />
+    <Content Include="Views\Economics.aspx" />
+    <Content Include="Scripts\management.js" />
+    <Content Include="Scripts\weather.js" />
+    <Content Include="Views\Field.aspx" />
+    <Content Include="Views\GoogleMap.aspx" />
+    <Content Include="Views\Management.aspx" />
+    <Content Include="Scripts\location1.js" />
+    <Content Include="Scripts\project.js" />
+    <Content Include="Resources\ApplicationStringsEnglish.xml" />
+    <Content Include="Resources\ApplicationStringsPortuguese.xml">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Resources\ApplicationStringsSpanish.xml">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Resources\ContentEnglish.xml">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Resources\ContentPortuguese.xml">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Resources\ContentSpanish.xml">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Resources\GoIcon.jpg" />
+    <Content Include="Resources\MessagesEnglish.xml">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Resources\MessagesPortuguese.xml">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Resources\MessagesSpanish.xml">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Resources\StopIcon.jpg" />
+    <Content Include="Resources\warningIcon.jpg" />
+    <Content Include="Scripts\soil.js" />
+    <Content Include="Views\About.aspx" />
+    <Content Include="Styles\Site.css" />
+    <Content Include="Default.aspx" />
+    <Content Include="Global.asax" />
+    <Content Include="Scripts\jquery-1.4.1-vsdoc.js" />
+    <Content Include="Scripts\jquery-1.4.1.js" />
+    <Content Include="Scripts\jquery-1.4.1.min.js" />
+    <Content Include="Views\Location.aspx" />
+    <Content Include="Views\Modifications.aspx" />
+    <Content Include="Views\Project.aspx" />
+    <Content Include="Views\Results.aspx" />
+    <Content Include="Views\Simulation.aspx" />
+    <Content Include="Views\Soil.aspx" />
+    <Content Include="Views\Subproject.aspx" />
+    <Content Include="Views\Weather.aspx" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <None Include="Service References\GetSoilsInfo\soils.wsdl" />
+    <None Include="Service References\GetWeatherInfo\service.wsdl" />
+    <None Include="Service References\NTTCalcHU\service.wsdl" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="App_Data\AnimalUnitData.vb" />
+    <Compile Include="App_Data\CroppingSystem.vb" />
+    <Compile Include="App_Data\CropsInfo.vb" />
+    <Compile Include="App_Data\EquipmentData.vb" />
+    <Compile Include="App_Data\FeedData.vb" />
+    <Compile Include="App_Data\FieldsData.vb" />
+    <Compile Include="App_Data\BMPsData.vb" />
+    <Compile Include="App_Data\FEMData.vb" />
+    <Compile Include="App_Data\CropsData.vb" />
+    <Compile Include="App_Data\CodeAndName.vb" />
+    <Compile Include="App_Data\FieldsSelectedData.vb" />
+    <Compile Include="App_Data\IrrigationTypes.vb" />
+    <Compile Include="App_Data\OtherData.vb" />
+    <Compile Include="App_Data\parmsData.vb" />
+    <Compile Include="App_Data\ScenariosToRun.vb" />
+    <Compile Include="App_Data\SiteData.vb" />
+    <Compile Include="App_Data\StructureData.vb" />
+    <Compile Include="App_Data\SubareaLine2.vb" />
+    <Compile Include="App_Data\SubprojectNameData.vb" />
+    <Compile Include="App_Data\SummaryResults.vb" />
+    <Compile Include="Modules\Database.vb" />
+    <Compile Include="Modules\NTTPDFReport.vb" />
+    <Compile Include="Modules\SaveAndLoad.vb" />
+    <Compile Include="Modules\Validations.vb" />
+    <Compile Include="Service References\GetSoilsInfo\Reference.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Service References\GetWeatherInfo\Reference.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Service References\NTTCalcHU1\Reference.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Service References\NTTCalcHU\Reference.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Economics.aspx.designer.vb">
+      <DependentUpon>Economics.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Economics.aspx.vb">
+      <DependentUpon>Economics.aspx</DependentUpon>
+      <SubType>ASPXCodebehind</SubType>
+    </Compile>
+    <Compile Include="Views\Field.aspx.designer.vb">
+      <DependentUpon>Field.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Field.aspx.vb">
+      <DependentUpon>Field.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\GoogleMap.aspx.designer.vb">
+      <DependentUpon>GoogleMap.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\GoogleMap.aspx.vb">
+      <DependentUpon>GoogleMap.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\Management.aspx.designer.vb">
+      <DependentUpon>Management.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Management.aspx.vb">
+      <DependentUpon>Management.aspx</DependentUpon>
+      <SubType>ASPXCodebehind</SubType>
+    </Compile>
+    <Compile Include="Modules\Globals.vb" />
+    <Compile Include="App_Data\SoilsData.vb" />
+    <Compile Include="App_Data\ScenariosData.vb" />
+    <Compile Include="App_Data\LayersData.vb" />
+    <Compile Include="App_Data\OperationsData.vb" />
+    <Compile Include="App_Data\SubareasData.vb" />
+    <Compile Include="Views\About.aspx.designer.vb">
+      <DependentUpon>About.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\About.aspx.vb">
+      <DependentUpon>About.aspx</DependentUpon>
+      <SubType>ASPXCodebehind</SubType>
+    </Compile>
+    <Compile Include="Default.aspx.vb">
+      <SubType>ASPXCodeBehind</SubType>
+      <DependentUpon>Default.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Default.aspx.designer.vb">
+      <DependentUpon>Default.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Global.asax.vb">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="My Project\AssemblyInfo.vb" />
+    <Compile Include="My Project\Application.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Application.myapp</DependentUpon>
+    </Compile>
+    <Compile Include="My Project\MyExtensions\MyWebExtension.vb">
+      <VBMyExtensionTemplateID>Microsoft.VisualBasic.Web.MyExtension</VBMyExtensionTemplateID>
+      <VBMyExtensionTemplateVersion>1.0.0.0</VBMyExtensionTemplateVersion>
+    </Compile>
+    <Compile Include="My Project\Resources.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="My Project\Settings.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <Compile Include="Site.Master.designer.vb">
+      <DependentUpon>Site.Master</DependentUpon>
+    </Compile>
+    <Compile Include="Site.Master.vb">
+      <DependentUpon>Site.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\Location.aspx.designer.vb">
+      <DependentUpon>Location.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Location.aspx.vb">
+      <DependentUpon>Location.aspx</DependentUpon>
+      <SubType>ASPXCodebehind</SubType>
+    </Compile>
+    <Compile Include="Views\Modifications.aspx.designer.vb">
+      <DependentUpon>Modifications.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Modifications.aspx.vb">
+      <DependentUpon>Modifications.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\Project.aspx.designer.vb">
+      <DependentUpon>Project.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Project.aspx.vb">
+      <DependentUpon>Project.aspx</DependentUpon>
+      <SubType>ASPXCodebehind</SubType>
+    </Compile>
+    <Compile Include="Views\Results.aspx.designer.vb">
+      <DependentUpon>Results.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Results.aspx.vb">
+      <DependentUpon>Results.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\Simulation.aspx.designer.vb">
+      <DependentUpon>Simulation.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Simulation.aspx.vb">
+      <DependentUpon>Simulation.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\Soil.aspx.designer.vb">
+      <DependentUpon>Soil.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Soil.aspx.vb">
+      <DependentUpon>Soil.aspx</DependentUpon>
+      <SubType>ASPXCodebehind</SubType>
+    </Compile>
+    <Compile Include="Views\Subproject.aspx.designer.vb">
+      <DependentUpon>Subproject.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Subproject.aspx.vb">
+      <DependentUpon>Subproject.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\Weather.aspx.designer.vb">
+      <DependentUpon>Weather.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Weather.aspx.vb">
+      <DependentUpon>Weather.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="My Project\Resources.resx">
+      <Generator>VbMyResourcesResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.vb</LastGenOutput>
+      <CustomToolNamespace>My.Resources</CustomToolNamespace>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="My Project\Application.myapp">
+      <Generator>MyApplicationCodeGenerator</Generator>
+      <LastGenOutput>Application.Designer.vb</LastGenOutput>
+    </None>
+    <None Include="My Project\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <CustomToolNamespace>My</CustomToolNamespace>
+      <LastGenOutput>Settings.Designer.vb</LastGenOutput>
+    </None>
+    <Content Include="Site.Master" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="App_xml\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{3259AA49-8AA1-44D3-9025-A0B520596A8C}" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadataStorage Include="Service References\GetSoilsInfo\" />
+    <WCFMetadataStorage Include="Service References\GetWeatherInfo\" />
+    <WCFMetadataStorage Include="Service References\NTTCalcHU1\" />
+    <WCFMetadataStorage Include="Service References\NTTCalcHU\" />
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.VisualBasic.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>False</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>2941</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>
+          </IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

@@ -1,0 +1,120 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ordesignerObjectsDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 11, 12.125" name="NTTDB">
+  <DataContextMoniker Name="/NTTDBDataContext" />
+  <nestedChildShapes>
+    <classShape Id="f82c595a-90b3-4b5c-9d9c-185e5ee50b4b" absoluteBounds="0.5, 0.5, 2, 6.0015283203125">
+      <DataClassMoniker Name="/NTTDBDataContext/APEXCROP" />
+      <nestedChildShapes>
+        <elementListCompartment Id="ddfc97d8-6329-4c9d-b04b-7a51dec31262" absoluteBounds="0.515, 0.96, 1.9700000000000002, 5.4415283203125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="b5794008-54b9-48b0-b3b0-999eb32f310a" absoluteBounds="1.875, 0.5, 2, 1.9631982421875">
+      <DataClassMoniker Name="/NTTDBDataContext/Operation" />
+      <nestedChildShapes>
+        <elementListCompartment Id="b6ccedef-cad3-48c7-b477-cb37a8b44d6a" absoluteBounds="1.8900000000000001, 0.96, 1.9700000000000002, 1.4031982421875" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="9de87122-9589-4b69-a38c-25036eb96257" absoluteBounds="3.125, 0.5, 2, 1.7708968098958331">
+      <DataClassMoniker Name="/NTTDBDataContext/weatherCoor" />
+      <nestedChildShapes>
+        <elementListCompartment Id="16766adf-4ac5-497b-ade7-05ed138ec0d1" absoluteBounds="3.1399999999999997, 0.96, 1.9700000000000002, 1.2108968098958333" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="dff2803d-fb0c-4374-aa3c-82a9fed406a1" absoluteBounds="4.375, 0.5, 2, 2.5401025390625">
+      <DataClassMoniker Name="/NTTDBDataContext/County" />
+      <nestedChildShapes>
+        <elementListCompartment Id="df008f54-7471-4b76-8c67-d1f3569f120b" absoluteBounds="4.39, 0.96, 1.9700000000000002, 1.9801025390625" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="04021260-953f-470a-9454-1faf4300ff1d" absoluteBounds="1.875, 2.25, 2, 2.9247054036458331">
+      <DataClassMoniker Name="/NTTDBDataContext/AnimalUnit" />
+      <nestedChildShapes>
+        <elementListCompartment Id="f7813df1-c847-4a4c-b126-f7cb7face07a" absoluteBounds="1.8900000000000001, 2.71, 1.9700000000000002, 2.364705403645833" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="b843e9f2-77d1-45c0-b53b-05cdccf7b60a" absoluteBounds="3, 2.25, 2, 3.1170068359375">
+      <DataClassMoniker Name="/NTTDBDataContext/WStation" />
+      <nestedChildShapes>
+        <elementListCompartment Id="9f4ed3c8-9842-4d87-ac29-499d6e6b4bec" absoluteBounds="3.0149999999999997, 2.71, 1.9700000000000002, 2.5570068359375" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="ba9fc40e-8d66-452e-b1aa-ea69c6fc1a9c" absoluteBounds="1.875, 4.625, 2, 1.9631982421875">
+      <DataClassMoniker Name="/NTTDBDataContext/SSArea" />
+      <nestedChildShapes>
+        <elementListCompartment Id="2a524b32-deb2-4d2a-8e35-e8bcecabe435" absoluteBounds="1.8899999999999997, 5.085, 1.9700000000000002, 1.4031982421875" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="2c8aa30c-153a-488a-9b99-caee9833897d" absoluteBounds="3, 4.625, 2, 2.5401025390625">
+      <DataClassMoniker Name="/NTTDBDataContext/APEXFert" />
+      <nestedChildShapes>
+        <elementListCompartment Id="eb9c13b7-c823-4f8f-9282-b8f0de4f8bfd" absoluteBounds="3.0149999999999997, 5.085, 1.9700000000000002, 1.9801025390625" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="69e2a563-a2ad-4541-b676-bdd93811d675" absoluteBounds="0.5, 6.375, 2, 5.0400211588541657">
+      <DataClassMoniker Name="/NTTDBDataContext/Equipment" />
+      <nestedChildShapes>
+        <elementListCompartment Id="0dafed23-5bd0-48be-a160-d1fbc1b1410a" absoluteBounds="0.51500000000000012, 6.835, 1.9700000000000002, 4.4800211588541661" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="68739cd9-1008-4082-860e-2390a91905f1" absoluteBounds="1.875, 6.375, 2, 3.1170068359375">
+      <DataClassMoniker Name="/NTTDBDataContext/Feed" />
+      <nestedChildShapes>
+        <elementListCompartment Id="73b4f3f9-fec0-4182-ac5d-b103441320c1" absoluteBounds="1.8900000000000001, 6.8350000000000009, 1.9700000000000002, 2.5570068359375" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="ac0ea9f2-9c51-4380-9e8e-4763ce6cf675" absoluteBounds="3, 6.375, 2, 3.6939111328124996">
+      <DataClassMoniker Name="/NTTDBDataContext/Structure" />
+      <nestedChildShapes>
+        <elementListCompartment Id="fb11d946-1530-46d4-9df3-25615751e400" absoluteBounds="3.0149999999999997, 6.835, 1.9700000000000002, 3.1339111328125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="b5e0a8e9-11eb-440e-b0d6-2cb870633d3d" absoluteBounds="4.625, 6.5, 2, 1.5785953776041666">
+      <DataClassMoniker Name="/NTTDBDataContext/OtherInput" />
+      <nestedChildShapes>
+        <elementListCompartment Id="5ee74afe-af1f-42a5-b296-4b497d40c536" absoluteBounds="4.64, 6.96, 1.9700000000000002, 1.0185953776041665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="3100fe93-f51f-4389-b156-caf0b58b7709" absoluteBounds="4.375, 4.625, 2, 1.3862939453125">
+      <DataClassMoniker Name="/NTTDBDataContext/Crops_Event" />
+      <nestedChildShapes>
+        <elementListCompartment Id="7e9b6a78-afd3-4ae0-a74d-f234f0f55505" absoluteBounds="4.39, 5.085, 1.9700000000000002, 0.8262939453125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="687e029a-87eb-477b-835b-3e4885b8cd69" absoluteBounds="4.625, 7.75, 2, 3.5016097005208326">
+      <DataClassMoniker Name="/NTTDBDataContext/OpType" />
+      <nestedChildShapes>
+        <elementListCompartment Id="17555e78-fd21-4062-821a-f58b8bdf0052" absoluteBounds="4.64, 8.21, 1.9700000000000002, 2.941609700520833" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="18cdc58c-7401-46b4-b999-d6ea4f4da6f4" absoluteBounds="5.875, 0.5, 2, 7.7322412109375005">
+      <DataClassMoniker Name="/NTTDBDataContext/EventsTypicalExtended" />
+      <nestedChildShapes>
+        <elementListCompartment Id="344e73c0-69e3-4cb2-ba08-4165c40457b3" absoluteBounds="5.8900000000000006, 0.96000000000000085, 1.9700000000000002, 7.1722412109375" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="fdc99f0c-678a-4200-8ba4-516e9160b311" absoluteBounds="1.875, 8.75, 2, 3.1170068359375">
+      <DataClassMoniker Name="/NTTDBDataContext/CropMatrixTypical" />
+      <nestedChildShapes>
+        <elementListCompartment Id="5bc45a5c-a6e6-4663-9c0c-25cf4e333b92" absoluteBounds="1.8900000000000001, 9.21, 1.9700000000000002, 2.5570068359375" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="cbcfef11-700e-4816-a7b9-e839f7717bf9" absoluteBounds="3.125, 8.75, 2, 1.9631982421875">
+      <DataClassMoniker Name="/NTTDBDataContext/State" />
+      <nestedChildShapes>
+        <elementListCompartment Id="8b8e81a2-6197-4ec8-bdf9-9d009b54257c" absoluteBounds="3.1399999999999997, 9.21, 1.9700000000000002, 1.4031982421875" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="7d4ba6b7-7aa6-4c0a-8215-f6e1d4a7e026" absoluteBounds="7.5, 4.25, 2, 1.9631982421875">
+      <DataClassMoniker Name="/NTTDBDataContext/ParmsDesc" />
+      <nestedChildShapes>
+        <elementListCompartment Id="e1222637-2e6c-4629-b5ed-fc305d4913f9" absoluteBounds="7.515, 4.71, 1.9700000000000002, 1.4031982421875" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="4b47ee0d-ec9f-49d8-ab4a-4e4dd69875f2" absoluteBounds="7.625, 3.25, 2, 1.9631982421875">
+      <DataClassMoniker Name="/NTTDBDataContext/ControlsDesc" />
+      <nestedChildShapes>
+        <elementListCompartment Id="f047d93e-6895-4b90-baf3-1ae4335bd733" absoluteBounds="7.64, 3.71, 1.9700000000000002, 1.4031982421875" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+  </nestedChildShapes>
+</ordesignerObjectsDiagram>

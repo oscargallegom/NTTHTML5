@@ -1,0 +1,7 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<parameters>
+  <setParameter name="IIS Web Application Name" value="Default/NTTG3" />
+  <setParameter name="SSURGO_SOILDBConnectionString-Deployment Connection String" value="" />
+  <setParameter name="NTTDBConnectionString-Web.config Connection String" value="Data Source=T-NN\SQLEXPRESS;Initial Catalog=NTTDB;Persist Security Info=True;User ID=sa;Password=pass$word" />
+  <setParameter name="SSURGOSOILDB2014ConnectionString-Web.config Connection String" value="Data Source=T-NN1\SQLEXPRESS;Initial Catalog=SSURGOSOILDB2014;Persist Security Info=True;User ID=sa;Password=pass$word" />
+</parameters>

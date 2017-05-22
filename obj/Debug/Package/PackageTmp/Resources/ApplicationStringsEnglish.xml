@@ -1,0 +1,92 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <AboutPageTitle>About</AboutPageTitle>
+  <AlreadyRegisteredLabel>Already registered?</AlreadyRegisteredLabel>
+  <ApplicationName>Application Name</ApplicationName>
+  <AuthenticatingMessage>authenticating...</AuthenticatingMessage>
+  <BackToLoginButton>Back to Login</BackToLoginButton>
+  <BusyIndicatorLoadingUser>Initializing Application....</BusyIndicatorLoadingUser>
+    <!--Displayed while LoadUser() is taking progress during application initialization-->
+  <BusyIndicatorLoggingIn>Logging in...</BusyIndicatorLoggingIn>
+    <!--Displayed while a LoginOperation is taking progress-->
+  <BusyIndicatorRegisteringUser>Submitting Registration...</BusyIndicatorRegisteringUser>
+    <!--Displayed while registration is being processed by the server-->
+  <CancelButton>Cancel</CancelButton>
+  <HomePageTitle>Home</HomePageTitle>
+  <LoginButton>login</LoginButton>
+  <LoginWindowTitle>Login</LoginWindowTitle>
+  <LogOffButton>logout</LogOffButton>
+  <NotRegisteredYetLabel>Not registered yet?</NotRegisteredYetLabel>
+  <OKButton>OK</OKButton>
+  <RegisterNowButton>Register now</RegisterNowButton>
+  <RegistrationFormHeader>Please complete all required fields to create your account</RegistrationFormHeader>
+  <RegistrationWindowTitle>Register</RegistrationWindowTitle>
+  <RememberMeLabel>Keep me signed in</RememberMeLabel>
+  <WelcomeMessage>Welcome {0}</WelcomeMessage>
+    <!--{0} = User.DisplayName property-->
+  <WelcomePageTitle>Welcome</WelcomePageTitle>
+  <WelcomeToEat>
+    Thank you very much for using this program.  The current version of “Nutrient Tracking Tool (NTT): Next generation” is designed to assess the environmental and economic impacts of various management practices on water and air quality at the field or small watershed level. The NTT is an Internet-based program and requires no software to download. NTT imports the required databases, such as weather, soil, management, and land geometry at the selected land (agricultural, forestry, and urban) for the user using the existing GIS and non-GIS based database anywhere in the mainland United States. The NTT simulates the baseline and numerous conservation management scenarios using the APEX (Agricultural Policy/Extender; Williams et al. 2010) (Version 0806) model. Please review “about NTT” section for information regarding the new functions and science in current version of NTT. For detailed information please refer to the manual or contact Dr. Ali Saleh by e-mail at saleh@tiaer.tarleton.edu or by phone (254) 968-9799. br br
+   bold NOTE: bold/ br 
+    1.	Although the database in NTT available for mainland USA, access to the databases for NTT simulation is limited to where the NTT has been tested and verified. This assure the users that results obtained from this version of NTT is relatively reliable for the conditions where the program has been verified. However, the last version of NTT (www.nn.tarleton.edu/ntt) allows the users to access the data throughout the mainland US. br
+    2.	This version of NTT is written both in English and Spanish languages. br br
+    Finally, as the NTT project leader and behalf of all of my project team (Oscar Gallego and Edward Osei), I would like to thank the funding sources and our colleagues, in particular the farmers and producers, for their contribution in designing this program.br br
+    Dr. Ali Saleh
+  </WelcomeToEat>
+  <WelcomeToEat1>
+    NOTE:    
+    1.	Although the database in NTT available for mainland USA, access to the databases for NTT simulation is limited to where the NTT has been tested and verified. This assure the users that results obtained from this version of NTT is relatively reliable for the conditions where the program has been verified. However, the last version of NTT (www.nn.tarleton.edu/ntt) allows the users to access the data throughout the mainland US.
+    2.	This version of NTT is written both in English and Spanish languages.
+    Finally, as the NTT project leader and behalf of all of my project team, I would like to thank the funding sources and our colleagues, in particular the farmers and producers, for their contribution in designing this program.
+  </WelcomeToEat1>
+  <WelcomeToEat2>
+    Dr. Ali Saleh
+  </WelcomeToEat2>
+  <WelcomeToEatOld>The Nutrient Tracking Tool (N.T.T.) is designed to assess the environmental and economic impacts of various management practices on water and air quality of an ecosystem. This program is Internet-based and requires no software to download. NTT imports the required databases, such as weather, soil, management, and land geometry at the selected land (agricultural, forestry, and urban) for the user using the existing GIS and non-GIS based database anywhere in the mainland United States. The simulation of NTT is executed by APEX (Agricultural Policy/Extender; Williams et al. 2010) program. For detailed information please refer to the manual or contact Dr. Ali Saleh by e-mail saleh@tiaer.tarleton.edu or by phone (254) 968-9799.</WelcomeToEatOld>
+  <ProjectPageTitle>Start / Modify a Project</ProjectPageTitle>
+  <LocationPageTitle>Select Location From Map or State/County</LocationPageTitle>
+  <WeatherPageTitle>Select Weather</WeatherPageTitle>
+  <FieldPageTitle>Enter/Edit Fields</FieldPageTitle>
+  <SoilPageTitle>Select/Edit Soils for each field in the project</SoilPageTitle>
+  <ManagementPageTitle>Create / Modify Management and BMPs Information</ManagementPageTitle>
+  <SubprojectPageTitle>Create subprojects from using fields and scenarios in the project</SubprojectPageTitle>
+  <EconomicsPageTitle>Update Economics Input Data</EconomicsPageTitle>
+  <SimulationPageTitle>Select scenario to simulate</SimulationPageTitle>
+  <ResultPageTitle>Display and Print Summary and Detailed Results</ResultPageTitle>
+  <ModifyPageTitle>Modify APEX Information</ModifyPageTitle>
+  <LayerPageTitle>Create/Edit Soil Layers</LayerPageTitle>
+  <LogInPageTitle>Log In</LogInPageTitle>
+  <RegisterPageTitle>Register</RegisterPageTitle>
+  <InstructionsProject>To Start a Project you have three options: 1. Click The "Create New Project" button to start a project from scratch. 2. Click "Open Saved Project" button or 3. Click "Open an Example Project" button to load one from a list of examples. Select "Save Active Project" to save the curernt project at any time. Just remember the model is going to save whatever the user has entered at that moment. After you are done click "Save and Continue" button to save the information and continue to the "Location" page.</InstructionsProject>
+  <InstructionsLocation>There are three choices to select location for a project 1) Click the "Map System" option to draw the area of interest (farm) and the fields using a web map. You draw the farm and inside the farm the fields. Do not worry if the fields are not completly inside the farm, the farm is just for reference. Fields are the ones used;  2) Click the "State/County" option to select an area of interest by state, county, and dominant soils. Max of three soils for field; 3) Click "User Input" to enter all of the information needed to run the model manually. After you are done click "Save and Continue" button to save the information and continue to the "Weather" page.</InstructionsLocation>
+  <InstructionsWeather>The weather information is loaded automatically for GIS-based map and State/County options. So, user has the option to confirm the weather already chosen by the model by clicking Save and Continue, which will show the period to be simulated, or the users can upload their own weather file. If user selected User Input in location page the only option available for weather is loading own weather file. To upload a weather file the user needs to have a text file with the following format (all of the columns should be separated by at least one physical space (please do not use tab to insert space): year(i.e. 1990), month, day, solar radiation (could be zeros), max. temperature, min. temperature in Celsius, precipitation in mm. Example(1981  1       8   0   2.0  -13.5    11.30). To upload your own weather file select the "Load Your Own Weather File" and then click "Upload Weather File" button, then select your weather file from your computer and finally click Open. The uploading will start and will show the progress. After all of the information has been entered click "Save" to save it and then Continue to go to Fields page. Keep in mind that if you upload your own weather file this will not be saved when you save the project. If you upload a saved project and you used uploading own weather file you will need to upload the weather file again but just in case you need to simulate any scenario again</InstructionsWeather>
+  <InstructionsFields>The Fields page allows user to define the fields in the area of interest (farm). If user selected Mapping System the fields shown are those drawn in the map and the user is not allowed to add fields through this page (to delete fields in this case user needs to go back to location and do it on the web map). However, user is allowed to modify other field characteristitics. If State/County or User Input was selected, user is able to add, modify, and delete them from the list. To change the Channel Vegetation Condition or Channel Erodibily just click the specific field/column and a new window will pop up where user can select the new choice from the list. After the selection was made the pop-up window will close and the new selection is shown in the field/column. If no change is needed in the pop-up window just click the close button to go back to the main window. After all of the information has been entred click "Save" to save the information and the continue to go to Soils page.</InstructionsFields>
+  <InstructionsSoils>The Soils page allows user to enter the soils for each field. First select the field you want to work with. If GIS-based map was selected in location page the soils (three dominant soils) are automatically uploaded based on the area of interest and fields selected. If "State/County was selected user can add soils selecting the soils survey area, then the soils from the list and then click on "Add Soil" button. The number, name, component, symbol, and hydrologic group are not allowed to be changed for these two options; however, user is allowed to change the soil's characteristics such as albedo, slope, or area. If "User Input" option was selected, user should enter all of the information for each soils (maximum three soils are accepted). After all of the information was entered click "Save and Continue" to save the information and continue to the "Management" page.</InstructionsSoils>
+  <InstructionsManagement>The Management page allows the user to enter the field management information and the Best Management Practices (BMP). Several scenarios are allow for each field, so the user can then compare two different scenarios. First, user needs to select the field to work with. If a field has been selected in the previous page, that field is shown as the selected one in this page. The user can change the field by selecting it in the fields dropdown list. To add a new scenario user needs to click the "Add New Scenario" button, which will present a text box to enter the name of the new scenario. Enter the name and then click the "Add Scenario" button to add the new scenario. After user clicked the "Add Scenario" button the new scenario is added to the scenarios dropdown list. The user can select the scenario to work with at any time. If there are operations listed and/or BMPs the tree view for the management and/or for those BMPs will be expanded. After scenario was created user can add the cropping system clicking the Cropping System title, then select the way you want to enter the management information as follow 1) Select Existing Cropping System allows the user to select a pre-existing cropping system from a list, 2) Upload Saved Cropping System allows user to upload a previous saved Cropping System 3) Enter the operations from scratch expandig the "Management Operations" subtitle. Under the management operations users can add new opertions, delte selected operations, order operations by date, and copy operations from an other field/scenario. After the cropping system has been added the user can add BMPs expanding the Best management Practices title and then expanding the especific BPM. Each BMP required different inputs. The user needs to enter the information required for the selected BMP. Severall BMPs can be added tothe same scenarios. There are some of them that are not allow to be together. After the cropping system and the BMPs have been added the user can click on "Save and Continue" link to go to the "Subprojects" page</InstructionsManagement>
+  <InstructionsSubproject>Select the field and scenario to add to the subproject. Keep in mind that the subproject will be simulated in the order the fields/scenarios are entered, meaning the first field routes to the second one, the second one to the third one and so on. After you have set up your subproject you can click "Save and Cotinue" to go to the simulation page. The results for subprojects are shown in the same way as single field/scenario.</InstructionsSubproject>
+  <InstructionsEconomics>The Economics page allows the user to select from four types of information loaded automatically called equipment, structure, feed, and other input. People have the option to chose from the different list of information and change values. After the user has selected the information, they can check the "Show only" box to see only the information that has been selected. When the user is done they can click on "Save and Continue" link to go to the "Simulation" page.</InstructionsEconomics>
+  <InstructionsSimulation>In this page the user is able to run the simulations for scenarios or subprojects created. Just select the field and then a scenario within that field and finaly click "Run Scenario" button. If all of the information is in place the simulation start. User needs to check that all of the information required is ready just looking at the list shown. If the list of items show a check mark in green it means that section is completed. If instead, there is a red X, that means that section is not completed. So, the user needs to go to that section to review or complete it. If the simulation ran successfully, a green message will be shown telling that. If the simulation is not successful, a red message will appeare. After simulation finishes click continue to go to Results page.</InstructionsSimulation>
+  <InstructionsResults>After scenarios have been simulated the results for that scenario is ready to be seen. In this page user can compare two different scenarios (First Scenario and Second Scenario). User can selecte any scenarios in the two combo boxes including the same scenario in both. After field, First Scenario, and Second Scenario were selected, click "See Results" to see the comparison between this two scenarios or click "See Graphs" button to see the annual average (Last twelve years) or monthly average to see the average for the entire period simulated.</InstructionsResults>
+  <InstructionsModifications>This page is design to be used for people with APEX knowledge. Select the type of file you want to work with and the select field and scenario if they are needed depending on the file selected. After all of the required data have been selected click the "Edit File" button to see the file. the variables shown have the same names as they appeared in the APEX manual. Here the user also could download the folder with all of the APEX files corresponding to the last simulation clicking the "Download APEX Folder" button</InstructionsModifications>
+  <InstructionsLayers>The layers page allows user to enter the soil characteristics for each layer. First select the field and soil you want to work with. If GIS-based map or State/County option was selected in location page the layers are automatically uploaded and layers are not allow to be added; however, user are able to delete those layers. If User Input was selected in location page user are able to add/delete layers. Without regarding the option selected in location page user can change the layer characteristics at any time.  After all of the information was entered click "Save" to save the information and then continue to go to Management page.</InstructionsLayers>
+  <InstructionsLogIn>Users need to enter the e-mail address and the password to be able to access the NTT web page. If you forgot your password, just enter you e-mail address and click forgot my password link and a new password will be sent to your e-mail. If you want to change your password, click change my password and then enter your e-mail address, your current password, and a new password. Finally click change password</InstructionsLogIn>
+  <InstructionsRegister>To be able to have acces to NTT web page you need to register. Enter the information required, e-mail, password, name, and institution, and clikc login botton. The program will create your user and will send you to the NTT web page</InstructionsRegister>
+  <Welcome>Welcome</Welcome>
+  <Project>Project</Project>
+  <Location>Location</Location>
+  <Weather>Weather</Weather>
+  <Fields>Fields</Fields>
+  <Soils>Soils</Soils>
+  <Management>Management</Management>
+  <Subproject>Subproject</Subproject>
+  <Economics>Economics</Economics>
+  <Simulation>Simulation</Simulation>
+  <Results>Results</Results>
+  <Modifications>Modifications</Modifications>
+  <Signoff>Sign-off</Signoff>
+  <NameMessage>Please enter your name.</NameMessage>
+  <EmailMessage>Please enter your email address, so we can contact you when the problem is solved.</EmailMessage>
+  <EmailMessageError>The email address is not well formed. Please check it out.</EmailMessageError>
+  <SubjectMessage>Comment on NTT or Problem Report.</SubjectMessage>
+  <MessageBox>Please enter the problem o comment about NTT. Thank you.</MessageBox>
+</root>
